@@ -1,0 +1,13 @@
+
+<div class="card" *ngIf="product">
+  <div class="card-body" (onAddNewProduct)="onAddNewPost($event)" >
+    <h5 class="card-title">{{product.key}}</h5>
+    <p class="card-text">{{product.title}}</p>
+    <p class="card-text">{{product.body}}</p>
+    <p class="card-text">{{product.price}}</p>
+    <button class="btn btn-danger" *ngIf="isAdmin" (click)="onDelete(product.key)">Delete</button>
+    <button class="btn btn-primary" *ngIf="isAdmin" (click)="onEdit(product.key)">Edit</button>
+    <button class="btn btn-primary">Comments</button>
+  </div>
+</div>
+
