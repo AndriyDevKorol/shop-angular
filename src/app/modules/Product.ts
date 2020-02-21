@@ -1,7 +1,7 @@
 import { Review } from "./Review";
 
 export interface Product {
-  key?: string;
+  $key?: string;
   name?: string;
   title?: string;
   body?: string;

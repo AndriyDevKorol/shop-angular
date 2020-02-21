@@ -27,14 +27,15 @@ export class ProductComponent implements OnInit {
     this.productService.getProducts().snapshotChanges();
   }
 
-  onDelete(price: string){
-    console.log('deleted on productComponent ', price);
-    console.log(this.product.key);
-    this.productService.onDelete(this.product.body);
+  onDelete($key: string){
+    console.log('deleted on productComponent ', $key);
+    console.log(this.product.$key);
+    this.productService.onDelete(this.product.$key);
   }
 
-  onEdit(key:string){
-     this.editProduct.emit(key);
+  onEdit($key:string){
+    console.log('edit on productComponent ', $key);
+    //  this.editProduct.emit(key);
     //  this.productService.updateProduct(key);
   }
 }

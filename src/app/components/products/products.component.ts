@@ -41,11 +41,12 @@ export class ProductsComponent implements OnInit {
 
   this.productService.getProducts().snapshotChanges()
   .subscribe(data => {this.products = data.map(e=>{
+    // console.log(e.key);
     return {
-      key: e.payload.key,
+      $key: e.key,
       ...e.payload.val()
-    } ;
-    // console.log(e)
+
+    }
   })})
 
     // .snapshotChanges().pipe(

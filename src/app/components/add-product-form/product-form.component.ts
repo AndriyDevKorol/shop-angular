@@ -1,10 +1,8 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { Product } from '../../modules/Product';
 import { NgForm, FormGroup } from '@angular/forms';
 import { ProductService } from '../../services/product/product.service';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { database } from 'firebase';
-import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -15,10 +13,10 @@ import { map } from 'rxjs/operators';
 
 export class ProductFormComponent implements OnInit {
 
+  @Input()
   @Output() onAddNewProduct: EventEmitter<Product> = new EventEmitter
 
   formData: Product = {
-    key: '',
     title: 'a title',
     price: 2,
     body: 'some text',
@@ -35,19 +33,23 @@ export class ProductFormComponent implements OnInit {
 
   onAddProduct (form:NgForm){
     const NewProduct: Product = {
-      key: this.formData.key,
       title: this.formData.title,
       price: this.formData.price,
       body: this.formData.body
     }
-    this.poroductService.addProduct(NewProduct)
-      // .subscribe((data: Product) => {
-      //   if(data.id) {
-      //     this.onAddNewProduct.emit(data);
-      //   }
-      // });
+    this.poroductService.addProduct(NewProduct);
 
-      // firecloud
+
+      // for firecloud
     // this.firestore.collection('products').add(NewProduct);
+   }
+
+   updateProduct(key, form:NgForm){
+    const NewProduct: Product = {
+      title: this.formData.title,
+      price: this.formData.price,
+      body: this.formData.body
+    }
+      this.poroductService.updateProduct(key, NewProduct);
    }
 }

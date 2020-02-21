@@ -20,7 +20,7 @@ export class ProductService {
     }
 
   getProducts() {
-     return this.products
+     return this.products;
   }
 
   addProduct(product: Product):void{
