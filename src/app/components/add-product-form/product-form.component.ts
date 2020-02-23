@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 
+
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -18,17 +19,20 @@ export class ProductFormComponent implements OnInit {
   @Input()
   @Output() onAddNewProduct: EventEmitter<Product> = new EventEmitter
 
+  public ccclass={"btn-color": true};
+
   formData: Product = {
-    title: 'a title',
-    price: 2,
-    body: 'some text',
+    title: '',
+    price: 0,
+    body: '',
   };
 
   constructor(
     private poroductService: ProductService,
     private firestore: AngularFirestore,
     private router: Router,
-    private afauth: AngularFireAuth,
+    private afauth: AngularFireAuth
+
   ) { }
 
   ngOnInit() {
@@ -48,8 +52,6 @@ export class ProductFormComponent implements OnInit {
       alert("You are not logged. Plaes log in!");
       this.router.navigate(['/login']);
     }
-
-
 
       // for firecloud
     // this.firestore.collection('products').add(NewProduct);

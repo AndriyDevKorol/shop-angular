@@ -19,7 +19,11 @@ export class AuthService {
 
    logout(){
      if(this.afauth.auth.currentUser){
+<<<<<<< HEAD
       console.log(this.afauth.auth.currentUser);
+=======
+
+>>>>>>> fcb453601e1427905d3316725d536d8d471cd0a3
      }
    }
 
