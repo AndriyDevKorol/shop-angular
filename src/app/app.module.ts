@@ -32,8 +32,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { AuthService } from './services/auth/auth.service';
 // import { MaterialModule } from './material.module';
 
 @NgModule({
@@ -73,12 +73,12 @@ import { SharedModule } from './shared/shared.module';
     AngularFirestoreModule.enablePersistence(),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    CoreModule,
     SharedModule,
     // MaterialModule
   ],
   providers: [
-    ProductService
+    ProductService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

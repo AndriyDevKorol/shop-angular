@@ -13,5 +13,5 @@
     <input type="number" id="price" class="form-control" [(ngModel)] = "formData.price" name="price" required>
   </div>
   <button class="btn btn-primary" [disabled]="form.invalid">Add product</button>
-  <button class="btn btn-secondary" >Update product</button>
+  <button [ngClass]="ccclass" >Update product</button>
 </form>
