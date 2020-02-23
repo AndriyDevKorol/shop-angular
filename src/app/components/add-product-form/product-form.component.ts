@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 
-
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -45,7 +44,6 @@ export class ProductFormComponent implements OnInit {
       price: this.formData.price,
       body: this.formData.body
     }
-
     if(this.afauth.auth.currentUser){
       this.poroductService.addProduct(NewProduct);
     }else{
