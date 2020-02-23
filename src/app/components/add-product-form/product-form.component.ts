@@ -6,6 +6,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { resetFakeAsyncZone } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class ProductFormComponent implements OnInit {
   constructor(
     private poroductService: ProductService,
     private firestore: AngularFirestore,
+    private router: Router,
     private afauth: AngularFireAuth,
   ) { }
 
