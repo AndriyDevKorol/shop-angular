@@ -1,38 +1,33 @@
 <div class="container">
   <div class="card mb-3">
     <div class="card-body">
-      <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+      <form (ngSubmit)="onLogin()" #form="ngForm">
         <div class="form-group">
-          <label for="title">Email</label>
+          <label for="email">Email</label>
           <input
           type="text"
-          id="title"
-          class="form-control"
-          [(ngModel)]="item.title"
-           name="title"
-           #itemName="ngModel"
-           [ngClass]="{'is-invalid': itemName.errors && itemName.dirty && itemName.touched}"
-           (focus)= "onFocus(itemName)"
+          id="email"
+          [(ngModel)]="email"
+           name="email"
            required
+           placeholder="Email..."
+           class="form-control"
            >
-           <div class="invalid-feedback" [hidden]="!itemName.errors?.required">Required field</div>
         </div>
         <div class="form-group">
-          <label for="count">Password</label>
+          <label for="password">Password</label>
           <input
-          type="number"
-          id="count"
-          class="form-control"
-          [(ngModel)]="item.count"
-          name="count"
-          #itemCount="ngModel"
-          [ngClass]="{'is-invalid': itemCount.errors && itemCount.dirty && itemCount.touched}"
-          (focus)= "onFocus(itemCount)"
+          type="text"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
           required
+          placeholder="Password..."
+          class="form-control"
           >
-          <div class="invalid-feedback" [hidden]="!itemCount.errors?.required">Required field</div>
+
         </div>
-        <button type="submit" class="btn-primary" [disabled]="form.invalid">Login</button>
+        <button type="submit" class="btn-primary" >Login</button>
       </form>
     </div>
   </div>
