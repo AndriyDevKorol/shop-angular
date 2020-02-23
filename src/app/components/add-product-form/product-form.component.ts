@@ -3,6 +3,8 @@ import { Product } from '../../modules/Product';
 import { NgForm, FormGroup } from '@angular/forms';
 import { ProductService } from '../../services/product/product.service';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 @Component({
@@ -24,7 +26,9 @@ export class ProductFormComponent implements OnInit {
 
   constructor(
     private poroductService: ProductService,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private router: Router,
+    private afauth: AngularFireAuth,
   ) { }
 
   ngOnInit() {
@@ -37,7 +41,14 @@ export class ProductFormComponent implements OnInit {
       price: this.formData.price,
       body: this.formData.body
     }
-    this.poroductService.addProduct(NewProduct);
+
+    if(this.afauth.auth.currentUser){
+      this.poroductService.addProduct(NewProduct);
+    }else{
+      alert("You are not logged. Plaes log in!");
+      this.router.navigate(['/login']);
+    }
+
 
 
       // for firecloud
