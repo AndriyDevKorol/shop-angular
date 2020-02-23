@@ -43,11 +43,11 @@ export class ProductFormComponent implements OnInit {
       price: this.formData.price,
       body: this.formData.body
     }
-    if(!this.afauth.auth.currentUser){
-      alert("You are not logged. Please log in!");
-
-    }else {
+    if(this.afauth.auth.currentUser){
       this.poroductService.addProduct(NewProduct);
+    }else{
+      alert("You are not logged. Plaes log in!");
+      this.router.navigate(['/login']);
     }
 
       // for firecloud
