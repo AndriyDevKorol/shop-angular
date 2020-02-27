@@ -35,4 +35,6 @@ export class ProductService {
   updateProduct(key:string, val:any){
     return this.products.update(key, val);
   }
+
+
 }

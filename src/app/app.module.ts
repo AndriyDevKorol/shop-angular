@@ -34,7 +34,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { SharedModule } from './shared/shared.module';
 import { AuthService } from './services/auth/auth.service';
-// import { MaterialModule } from './material.module';
+import { SearchComponent } from './components/search/search.component';
+import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { AuthService } from './services/auth/auth.service';
     AlertComponent,
     ProductComponent,
     ProductFormComponent,
-    RestorPasswordComponent
+    RestorPasswordComponent,
+    SearchComponent,
+    FilterBarComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +78,7 @@ import { AuthService } from './services/auth/auth.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     SharedModule,
-    // MaterialModule
+
   ],
   providers: [
     ProductService,

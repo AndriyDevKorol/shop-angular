@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, Input, Output, OnInit } from '@angular/core';
 import { Product } from 'src/app/modules/Product';
 import { EventEmitter } from '@angular/core';
 import { ProductService } from "../../services/product/product.service";
+import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -13,14 +14,26 @@ export class ProductComponent implements OnInit {
   @Input('product') product: Product;
   @Output('') deleteProduct: EventEmitter<string> = new EventEmitter();
   @Output('') editProduct: EventEmitter<string> = new EventEmitter();
+
   isAdmin = true;
 
+
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private cartService: CartService
   ) { }
 
-  ngOnInit() {
-    this.getProduct();
+  ngOnInit(){
+
+  }
+
+
+  addToCart($key:string):void{
+    this.cartService.addToCart($key);
+  }
+
+  clearCart():void{
+    this.cartService.clearCart();
   }
 
   getProduct(){
@@ -29,7 +42,7 @@ export class ProductComponent implements OnInit {
 
   onDelete($key: string){
     console.log('deleted on productComponent ', $key);
-    console.log(this.product.$key);
+    console.log($key);
     this.productService.onDelete(this.product.$key);
   }
 
@@ -38,4 +51,5 @@ export class ProductComponent implements OnInit {
     //  this.editProduct.emit(key);
     //  this.productService.updateProduct(key);
   }
+
 }

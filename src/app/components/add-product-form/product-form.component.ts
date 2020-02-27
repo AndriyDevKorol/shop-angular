@@ -15,8 +15,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 export class ProductFormComponent implements OnInit {
 
-  @Input()
-  @Output() onAddNewProduct: EventEmitter<Product> = new EventEmitter
+  // @Output() onAddNewProduct: EventEmitter<Product> = new EventEmitter
 
   public ccclass={"btn-color": true};
 

@@ -1,10 +1,5 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ProductService } from '../../services/product/product.service';
-import { map } from 'rxjs/operators';
-import { firestore } from 'firebase';
-import { Observable } from 'rxjs';
-import { Product } from 'src/app/modules/Product';
-import { Key } from 'protractor';
 
 
 @Component({
@@ -47,7 +42,7 @@ export class ProductsComponent implements OnInit {
       ...e.payload.val()
 
     }
-  })})
+  })});
 
     // .snapshotChanges().pipe(
     //   map(action => {
@@ -60,4 +55,10 @@ export class ProductsComponent implements OnInit {
     //       products => {this.products = products}
     //     );
  }
+
+
+ onAddToCart($key){
+console.log('products c ', $key);
+ }
+
 }

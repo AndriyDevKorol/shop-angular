@@ -8,6 +8,7 @@
     <button class="btn btn-danger" *ngIf="isAdmin" (click)="onDelete(product.$key)">Delete</button>
     <button class="btn btn-secondary" *ngIf="isAdmin" (click)="onEdit(product.$key)">Edit</button>
     <a [routerLink]="['/product-details']" routerLinkActive="active" class="link"><button class="btn btn-primary">Details</button></a>
+    <button class="btn" mat-raised-button color="accent" (click)="addToCart(product.$key)">To Cart</button>
   </div>
 </div>
 
