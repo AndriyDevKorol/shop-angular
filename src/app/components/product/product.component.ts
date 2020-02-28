@@ -1,8 +1,8 @@
 import { Component, Input, Output, OnInit } from '@angular/core';
-import { Product } from 'src/app/modules/Product';
+import { Product } from 'src/app/shared/modules/Product';
 import { EventEmitter } from '@angular/core';
-import { ProductService } from "../../services/product/product.service";
-import { CartService } from 'src/app/services/cart/cart.service';
+import { ProductService } from "../../shared/services/product/product.service";
+import { CartService } from 'src/app/shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -27,17 +27,8 @@ export class ProductComponent implements OnInit {
 
   }
 
-
   addToCart($key:string):void{
     this.cartService.addToCart($key);
-  }
-
-  clearCart():void{
-    this.cartService.clearCart();
-  }
-
-  getProduct(){
-    this.productService.getProducts().snapshotChanges();
   }
 
   onDelete($key: string){

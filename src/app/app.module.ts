@@ -6,8 +6,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { LoaderComponent } from './shared/loader/loader.component';
-import { ConfirmationButtonComponent } from './shared/confirmation-button/confirmation-button.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { ConfirmationButtonComponent } from './shared/components/confirmation-button/confirmation-button.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -21,11 +21,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './components/products/products.component';
-import { AlertComponent } from './shared/alert/alert.component';
+import { AlertComponent } from './shared/components/alert/alert.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductFormComponent } from './components/add-product-form/product-form.component';
-import { ProductService } from './services/product/product.service';
-import { RestorPasswordComponent } from './shared/restor-password/restor-password.component';
+import { ProductService } from './shared/services/product/product.service';
+import { RestorPasswordComponent } from './shared/components/restor-password/restor-password.component';
 import { environment } from '../environments/environment';
 import { AngularFireLite } from 'angularfire-lite';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -33,9 +33,10 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { SharedModule } from './shared/shared.module';
-import { AuthService } from './services/auth/auth.service';
+import { AuthService } from './shared/services/auth/auth.service';
 import { SearchComponent } from './components/search/search.component';
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
+import { FilterPipe } from './shared/pipes/filter.pipe';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
     ProductFormComponent,
     RestorPasswordComponent,
     SearchComponent,
-    FilterBarComponent
+    FilterBarComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

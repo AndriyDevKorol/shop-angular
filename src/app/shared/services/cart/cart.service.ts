@@ -10,7 +10,7 @@ export class CartService {
   currebtMessage = this.messageSourse.asObservable();
 
 
-  addToCart(productKey){
+  addToCart(productKey:string){
     console.log('addcartMethod.', productKey);
     // this.pr.subscribe(data =>{
     //   console.log('fewfwef')

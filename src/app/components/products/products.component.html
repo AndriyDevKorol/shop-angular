@@ -17,7 +17,8 @@
 
 <div class="container">
   <app-product-form class="card card-body col-6 mx-auto mb-5 mt-5" (onAddProduct)="addProduct($event)"></app-product-form>
+  <input [(ngModel)]="searchText" placeholder="search text goes here">
   <div class="row" >
-    <app-product class="col col-6 mb-3" *ngFor="let product of products" [product]="product" (deleteProduct)="onDelete($event)" (editProduct)="onEdit($event)" (onAddToCart)="onAddToCart($event)"></app-product>
+    <app-product class="col col-6 mb-3" *ngFor="let product of products | filter: searchText" [product]="product" (deleteProduct)="onDelete($event)" (editProduct)="onEdit($event)" (onAddToCart)="onAddToCart($event)"></app-product>
   </div>
 </div>

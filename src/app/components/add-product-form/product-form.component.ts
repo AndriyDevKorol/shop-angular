@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
-import { Product } from '../../modules/Product';
+import { Product } from '../../shared/modules/Product';
 import { NgForm, FormGroup } from '@angular/forms';
-import { ProductService } from '../../services/product/product.service';
+import { ProductService } from '../../shared/services/product/product.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';

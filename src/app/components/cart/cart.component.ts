@@ -1,7 +1,7 @@
 import { Component, OnDestroy} from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Product } from 'src/app/modules/Product';
-import { CartService } from 'src/app/services/cart/cart.service';
+import { Product } from 'src/app/shared/modules/Product';
+import { CartService } from 'src/app/shared/services/cart/cart.service';
 
 
 @Component({
@@ -40,5 +40,8 @@ key: string;
     // console.log('cart', this.cart);
   }
 
+  clearCart():void{
+    this.cartService.clearCart();
+  }
 
 }
