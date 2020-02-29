@@ -1,5 +1,5 @@
-<h5 class="card-title">Add product</h5>
-<form novalidate #form="ngForm" (ngSubmit)="onAddProduct()" >
+<h5 class="card-title">{{formData.$key ? 'Edit ' : 'Add '}} product</h5>
+<form novalidate #form="ngForm" >
   <div class="form-group">
     <label for="title">Title</label>
     <input type="text" id="title" class="form-control"  [(ngModel)] = "formData.title" name="title" required>
@@ -12,6 +12,8 @@
     <label for="price">price</label>
     <input type="number" id="price" class="form-control" [(ngModel)] = "formData.price" name="price" required>
   </div>
-  <button class="btn btn-primary" [disabled]="form.invalid">Add product</button>
-  <button [ngClass]="ccclass" >Update product</button>
+  <button class="btn btn-secondary" [disabled]="form.invalid" *ngIf="formData"(click)="onReset()" >Cancel</button>
+  <button class="btn btn-primary" [disabled]="form.invalid" *ngIf="!formData.$key" type="submit" (click)="onAddProduct()">Save</button>
+  <button [ngClass]="ccclass" *ngIf="formData.$key" (click)="updateProduct($event)">Edit product</button>
+
 </form>
