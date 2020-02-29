@@ -34,7 +34,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { SharedModule } from './shared/shared.module';
 import { AuthService } from './shared/services/auth/auth.service';
-import { SearchComponent } from './components/search/search.component';
+import { SearchComponent } from './shared/components/search/search.component';
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { FilterPipe } from './shared/pipes/filter.pipe';
 

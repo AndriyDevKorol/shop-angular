@@ -5,6 +5,7 @@ import { ProductService } from '../../shared/services/product/product.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { resetFakeAsyncZone } from '@angular/core/testing';
 
 
 @Component({
@@ -18,8 +19,10 @@ export class ProductFormComponent implements OnInit {
   // @Output() onAddNewProduct: EventEmitter<Product> = new EventEmitter
 
   public ccclass={"btn-color": true};
+  productKey: string;
 
   formData: Product = {
+    $key:'',
     title: '',
     price: 0,
     body: '',
@@ -34,6 +37,9 @@ export class ProductFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.poroductService.editProductEvent.subscribe((product: Product) => {
+      this.formData = product;
+    })
   }
 
 
@@ -45,6 +51,7 @@ export class ProductFormComponent implements OnInit {
     }
     if(this.afauth.auth.currentUser){
       this.poroductService.addProduct(NewProduct);
+      this.onReset();
     }else{
       alert("You are not logged. Plaes log in!");
       this.router.navigate(['/login']);
@@ -54,12 +61,11 @@ export class ProductFormComponent implements OnInit {
     // this.firestore.collection('products').add(NewProduct);
    }
 
-   updateProduct(key, form:NgForm){
-    const NewProduct: Product = {
-      title: this.formData.title,
-      price: this.formData.price,
-      body: this.formData.body
-    }
-      this.poroductService.updateProduct(key, NewProduct);
+   updateProduct(form:NgForm){
+      this.poroductService.updateProduct(this.formData.$key, this.formData);
+   }
+
+   onReset(){
+    this.poroductService.emitEditProduct({});
    }
 }
