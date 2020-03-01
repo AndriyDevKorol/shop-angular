@@ -9,7 +9,7 @@
     <button class="btn btn-secondary" *ngIf="!editProductKey" (click)="onEdit(product)" >Edit</button>
     <button class="btn btn-secondary" (click)="onReset()" *ngIf="editProductKey">Cancel</button>
     <a [routerLink]="['/product-details']" routerLinkActive="active" class="link"><button class="btn btn-primary">Details</button></a>
-    <button class="btn" mat-raised-button color="accent" (click)="addToCart(product.$key)">To Cart</button>
+    <button class="btn" mat-raised-button color="accent" (click)="addToCart(product)">To Cart</button>
   </div>
 </div>
 

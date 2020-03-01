@@ -33,19 +33,21 @@ export class ProductComponent implements OnInit {
     })
   }
 
-  addToCart($key:string):void{
-    this.cartService.addToCart($key);
+  addToCart(product:Product):void{
+    console.log('pr component')
+    this.cartService.emitAddToCart(product);
+    console.log('pr com', product)
   }
 
-  onDelete($key: string){
+  onDelete($key: string):void{
     this.productService.onDelete(this.product.$key);
   }
 
-  onEdit(product:Product){
+  onEdit(product:Product):void{
      this.productService.emitEditProduct(product);
   }
 
-  onReset(){
+  onReset():void{
      this.productService.emitEditProduct({});
   }
 }

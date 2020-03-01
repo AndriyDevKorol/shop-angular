@@ -1,8 +1,8 @@
-import { Component, OnDestroy} from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/modules/Product';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
-
+// import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,35 +10,57 @@ import { CartService } from 'src/app/shared/services/cart/cart.service';
   styleUrls: ['./cart.component.less']
 })
 
-export class CartComponent implements OnDestroy{
+export class CartComponent implements OnInit{
 
+editProductKey: string;
 subscription: Subscription;
-cart: any;
-products: Product[];
-key: string;
+products: any[];
+
+
+product: Product = {
+  $key:'',
+  title: '',
+  price: 0,
+  body: '',
+};
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
   ) {}
 
   ngOnInit(){
-   console.log(this.cartService.currebtMessage);
+   this.cartService.addToCartEvent.subscribe((product: Product) => {
+     this.product = product;
+      let products = [];
+      products.push(product);
+      this.products = products
 
-    // console.log('cart', this.cartService.getCart());
-   this.cartService.currebtMessage.subscribe(key =>{
-     console.log('cart -', this.key);
-     this.key = key
-    });
-   console.log('cart -key', this.key);
+    this.product.count = 1;
+
+    // if(localStorage.getItem('cart') == null){
+    //   let cart = this.products;
+    //   cart.push(JSON.stringify(product));
+    //   localStorage.setItem('cart', JSON.stringify(product));
+    // }
+  })
+
+  //   // console.log('cart', this.cartService.getCart());
+  //  this.cartService.currebtMessage.subscribe(key =>{
+  //    console.log('cart -', this.key);
+  //    this.key = key
+  //   });
+  //  console.log('cart -key', this.key);
 
   }
 
-  ngOnDestroy(){
-    // console.log()
-    this.subscription.unsubscribe();
-    // this.cart = this.cartService.getCart();
-    // console.log('cart', this.cart);
-  }
+
+
+  // ngOnDestroy(){
+  //   console.log("onDestroy")
+  //   this.subscription.unsubscribe();
+  //   // this.cart = this.cartService.getCart();
+  //   // console.log('cart', this.cart);
+  // }
 
   clearCart():void{
     this.cartService.clearCart();

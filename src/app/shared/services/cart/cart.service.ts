@@ -1,25 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { Product } from '../../modules/Product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  private messageSourse = new Subject<any>();
-  currebtMessage = this.messageSourse.asObservable();
+  // private messageSourse = new Subject<any>();
+  // currebtMessage = this.messageSourse.asObservable();
+  private addToCart: BehaviorSubject<Product> = new BehaviorSubject({});
+  addToCartEvent = this.addToCart.asObservable();
+
+  constructor( ) { }
 
 
-  addToCart(productKey:string){
+
+  onAddToCart(productKey:string){
     console.log('addcartMethod.', productKey);
     // this.pr.subscribe(data =>{
     //   console.log('fewfwef')
     // });
-    this.messageSourse.next(productKey);
+    // this.messageSourse.next(productKey);
   }
 
   clearCart(){
-    this.messageSourse.next();
+    // this.messageSourse.next();
   }
 
   getCart(){
@@ -30,5 +36,10 @@ export class CartService {
 
   }
 
-  constructor() { }
+
+  emitAddToCart(product: Product){
+    console.log('emit')
+    this.addToCart.next(product);
+    console.log(product);
+  }
 }

@@ -1,11 +1,10 @@
 import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { Product } from '../../shared/modules/Product';
-import { NgForm, FormGroup } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { ProductService } from '../../shared/services/product/product.service';
-import { AngularFirestore } from 'angularfire2/firestore';
+// import { AngularFirestore } from 'angularfire2/firestore';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { resetFakeAsyncZone } from '@angular/core/testing';
 
 
 @Component({
@@ -29,19 +28,18 @@ export class ProductFormComponent implements OnInit {
   };
 
   constructor(
-    private poroductService: ProductService,
-    private firestore: AngularFirestore,
+    private productService: ProductService,
+    // private firestore: AngularFirestore,
     private router: Router,
     private afauth: AngularFireAuth
 
   ) { }
 
   ngOnInit() {
-    this.poroductService.editProductEvent.subscribe((product: Product) => {
+    this.productService.editProductEvent.subscribe((product: Product) => {
       this.formData = product;
     })
   }
-
 
   onAddProduct (form:NgForm){
     const NewProduct: Product = {
@@ -50,7 +48,7 @@ export class ProductFormComponent implements OnInit {
       body: this.formData.body
     }
     if(this.afauth.auth.currentUser){
-      this.poroductService.addProduct(NewProduct);
+      this.productService.addProduct(NewProduct);
       this.onReset();
     }else{
       alert("You are not logged. Plaes log in!");
@@ -62,10 +60,10 @@ export class ProductFormComponent implements OnInit {
    }
 
    updateProduct(form:NgForm){
-      this.poroductService.updateProduct(this.formData.$key, this.formData);
+      this.productService.updateProduct(this.formData.$key, this.formData);
    }
 
    onReset(){
-    this.poroductService.emitEditProduct({});
+    this.productService.emitEditProduct({});
    }
 }
