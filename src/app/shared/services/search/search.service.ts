@@ -13,6 +13,7 @@ export class SearchService {
   products: AngularFireList<Product[]> = null;
   private dbPath = '/products';
   productDoc: AngularFirestoreDocument<Product>;
+  search: string;
 
 
   constructor(
@@ -22,8 +23,10 @@ export class SearchService {
   }
 
   searchProducts() {
-    console.log(this.products.valueChanges())
-    return this.products.valueChanges();
+    console.log('productDoc', this.productDoc)
+    return this.products.valueChanges().subscribe((searchtxt) =>{
+      this.products.
+    });
     // .pipe(
     //   map(res => console.log('search service', value))
     //   // return this.getProducts = res["text"];

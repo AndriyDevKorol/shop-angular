@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ProductService } from '../../shared/services/product/product.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 
 
 @Component({
@@ -25,7 +25,6 @@ export class ProductsComponent implements OnInit {
   this.productService
   .getProducts().snapshotChanges()
   .subscribe(data => {
-    // this.products = data.filter(dat => dat.prevKey)
     this.products = data.map(e=>{
       return {
         $key: e.key,
@@ -33,5 +32,9 @@ export class ProductsComponent implements OnInit {
 
       }
     }).reverse()});
+ }
+
+ onSearch(form:NgForm){
+   console.log(form);
  }
 }
