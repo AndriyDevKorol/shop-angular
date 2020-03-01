@@ -33,15 +33,15 @@ product: Product = {
      this.product = product;
       let products = [];
       products.push(product);
-      this.products = products
+      this.products = products;
 
     this.product.count = 1;
 
-    // if(localStorage.getItem('cart') == null){
-    //   let cart = this.products;
-    //   cart.push(JSON.stringify(product));
-    //   localStorage.setItem('cart', JSON.stringify(product));
-    // }
+    if(localStorage.getItem('cart') == null){
+      let cart = this.products;
+      cart.push(JSON.stringify(product));
+      localStorage.setItem('cart', JSON.stringify(product));
+    }
   })
 
   //   // console.log('cart', this.cartService.getCart());
