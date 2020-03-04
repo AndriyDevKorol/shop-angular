@@ -29,20 +29,34 @@ product: Product = {
   ) {}
 
   ngOnInit(){
-   this.cartService.addToCartEvent.subscribe((product: Product) => {
-     this.product = product;
-      let products = [];
-      products.push(product);
-      this.products = products;
+     this.cartService.addToCartEvent.pipe().subscribe((product: Product) => {
+        // product.count = 1;
+        // products = []
+        // products.map(()=>{
 
-    this.product.count = 1;
+        //   products.push(...products, product);
+        // })
 
-    if(localStorage.getItem('cart') == null){
-      let cart = this.products;
-      cart.push(JSON.stringify(product));
-      localStorage.setItem('cart', JSON.stringify(product));
-    }
-  })
+        console.log(this.products);
+      })
+
+  //  this.cartService.addToCartEvent.subscribe((product: Product) => {
+  //   // product.count = 1;
+  //   // this.product = product;
+  //   // let products = [];
+  //   // products.push(product, ...products);
+  //   this.products.push(product, ...this.products);
+  //   // products.push(product, ...products);
+  //   // this.products.push(...this.products, product);
+
+  //   if(localStorage.getItem('cart') == null){
+  //     let cart = this.products;
+  //     cart.push(JSON.stringify(product));
+  //     localStorage.setItem('cart', JSON.stringify(product));
+  //   }
+
+  //   return this.products;
+  // })
 
   //   // console.log('cart', this.cartService.getCart());
   //  this.cartService.currebtMessage.subscribe(key =>{

@@ -24,13 +24,8 @@ export class ProductComponent implements OnInit {
   ) { }
 
   ngOnInit(){
-    this.productService.editProductEvent.subscribe((product: Product) => {
-      if(product.$key === this.product.$key) {
-        this.editProductKey = product.$key;
-      }else{
-        this.editProductKey = ''
-      }
-    })
+    this.editEventListener();
+    this.addToCartListener();
   }
 
   addToCart(product:Product):void{
@@ -49,5 +44,25 @@ export class ProductComponent implements OnInit {
 
   onReset():void{
      this.productService.emitEditProduct({});
+  }
+
+  editEventListener(){
+    this.productService.editProductEvent.subscribe((product: Product) => {
+      if(product.$key === this.product.$key) {
+        this.editProductKey = product.$key;
+      }else{
+        this.editProductKey = ''
+      }
+    })
+  }
+
+  addToCartListener(){
+    this.cartService.addToCartEvent.subscribe((product: Product) => {
+      if(product.$key){
+        this.editProductKey = product.$key;
+      }else{
+        this.editProductKey = ''
+      }
+    })
   }
 }
