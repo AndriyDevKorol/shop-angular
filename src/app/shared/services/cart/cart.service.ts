@@ -6,23 +6,11 @@ import { Product } from '../../modules/Product';
   providedIn: 'root'
 })
 export class CartService {
-
-  // private messageSourse = new Subject<any>();
-  // currebtMessage = this.messageSourse.asObservable();
-  private addToCart: BehaviorSubject<Product> = new BehaviorSubject({});
+  private addToCart: BehaviorSubject<Product[]> = new BehaviorSubject([]);
   addToCartEvent = this.addToCart.asObservable();
+  products: Product[] = [];
 
   constructor( ) { }
-
-
-
-  onAddToCart(productKey:string){
-    console.log('addcartMethod.', productKey);
-    // this.pr.subscribe(data =>{
-    //   console.log('fewfwef')
-    // });
-    // this.messageSourse.next(productKey);
-  }
 
   clearCart(){
     // this.messageSourse.next();
@@ -37,9 +25,8 @@ export class CartService {
   }
 
 
-  emitAddToCart(product: Product){
-    console.log('emit')
-    this.addToCart.next(product);
-    console.log(product);
+  emitAddToCart(product: Product){   
+    this.products.push(product);
+    this.addToCart.next(this.products);   
   }
 }

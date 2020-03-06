@@ -10,12 +10,11 @@ import { CartService } from 'src/app/shared/services/cart/cart.service';
   styleUrls: ['./cart.component.less']
 })
 
-export class CartComponent implements OnInit{
-
+export class CartComponent implements OnInit, OnDestroy {
 editProductKey: string;
 subscription: Subscription;
-products: any[];
-
+products: Product[] = [];
+cartEventSubscription: Subscription;
 
 product: Product = {
   $key:'',
@@ -29,55 +28,21 @@ product: Product = {
   ) {}
 
   ngOnInit(){
-     this.cartService.addToCartEvent.pipe().subscribe((product: Product) => {
-        // product.count = 1;
-        // products = []
-        // products.map(()=>{
+     this.cartEventSubscription = this.cartService.addToCartEvent.subscribe((products: Product[]) => {    
+  
+        this.products = products;
+        // localStorage.getItem('cart');
 
-        //   products.push(...products, product);
-        // })
-
-        console.log(this.products);
+        console.log('cart',this.products);
       })
-
-  //  this.cartService.addToCartEvent.subscribe((product: Product) => {
-  //   // product.count = 1;
-  //   // this.product = product;
-  //   // let products = [];
-  //   // products.push(product, ...products);
-  //   this.products.push(product, ...this.products);
-  //   // products.push(product, ...products);
-  //   // this.products.push(...this.products, product);
-
-  //   if(localStorage.getItem('cart') == null){
-  //     let cart = this.products;
-  //     cart.push(JSON.stringify(product));
-  //     localStorage.setItem('cart', JSON.stringify(product));
-  //   }
-
-  //   return this.products;
-  // })
-
-  //   // console.log('cart', this.cartService.getCart());
-  //  this.cartService.currebtMessage.subscribe(key =>{
-  //    console.log('cart -', this.key);
-  //    this.key = key
-  //   });
-  //  console.log('cart -key', this.key);
-
   }
-
-
-
-  // ngOnDestroy(){
-  //   console.log("onDestroy")
-  //   this.subscription.unsubscribe();
-  //   // this.cart = this.cartService.getCart();
-  //   // console.log('cart', this.cart);
-  // }
 
   clearCart():void{
     this.cartService.clearCart();
   }
 
+  ngOnDestroy(): void {
+    console.log("destroyed");
+    this.cartEventSubscription.unsubscribe();
+  }
 }

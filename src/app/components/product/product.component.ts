@@ -16,6 +16,7 @@ export class ProductComponent implements OnInit {
   @Output('') editProduct: EventEmitter<string> = new EventEmitter();
   editProductKey: string;
   isAdmin = true;
+  products: Product;
 
 
   constructor(
@@ -28,10 +29,8 @@ export class ProductComponent implements OnInit {
     this.addToCartListener();
   }
 
-  addToCart(product:Product):void{
-    console.log('pr component')
-    this.cartService.emitAddToCart(product);
-    console.log('pr com', product)
+  addToCart(products:Product):void{        
+    this.cartService.emitAddToCart(products);    
   }
 
   onDelete($key: string):void{
@@ -57,12 +56,12 @@ export class ProductComponent implements OnInit {
   }
 
   addToCartListener(){
-    this.cartService.addToCartEvent.subscribe((product: Product) => {
-      if(product.$key){
-        this.editProductKey = product.$key;
-      }else{
-        this.editProductKey = ''
-      }
+    this.cartService.addToCartEvent.subscribe((products: Product[]) => {
+      // if(products){
+      //   this.editProductKey = product.$key;
+      // }else{
+      //   this.editProductKey = ''
+      // }
     })
   }
 }
