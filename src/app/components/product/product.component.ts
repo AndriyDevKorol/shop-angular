@@ -29,8 +29,8 @@ export class ProductComponent implements OnInit {
     this.addToCartListener();
   }
 
-  addToCart(products:Product):void{        
-    this.cartService.emitAddToCart(products);    
+  addToCart(products:Product):void{
+    this.productService.emitAddToCart(products);
   }
 
   onDelete($key: string):void{

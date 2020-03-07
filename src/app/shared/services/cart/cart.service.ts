@@ -12,21 +12,17 @@ export class CartService {
 
   constructor( ) { }
 
-  clearCart(){
-    // this.messageSourse.next();
-  }
+  // clearCart(){
+  //   this.products = [];
+  // }
 
-  getCart(){
-    console.log('cart Service');
-    // this.pr.subscribe(data => {
-    //   console.log(data);
-    // });
+  // getCart(){
 
-  }
+  // }
 
 
-  emitAddToCart(product: Product){   
-    this.products.push(product);
-    this.addToCart.next(this.products);   
-  }
+  // emitAddToCart(product: Product){
+  //   this.products.push(product);
+  //   this.addToCart.next(this.products);
+  // }
 }

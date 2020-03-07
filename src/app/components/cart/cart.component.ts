@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/modules/Product';
-import { CartService } from 'src/app/shared/services/cart/cart.service';
-// import { ProductService } from 'src/app/shared/services/product/product.service';
+// import { CartService } from 'src/app/shared/services/cart/cart.service';
+import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
   selector: 'app-cart',
@@ -24,21 +24,19 @@ product: Product = {
 };
 
   constructor(
-    private cartService: CartService,
+    private productService: ProductService,
   ) {}
 
   ngOnInit(){
-     this.cartEventSubscription = this.cartService.addToCartEvent.subscribe((products: Product[]) => {    
-  
+     this.cartEventSubscription = this.productService.addToCartEvent.subscribe((products: Product[]) => {
         this.products = products;
         // localStorage.getItem('cart');
-
         console.log('cart',this.products);
       })
   }
 
   clearCart():void{
-    this.cartService.clearCart();
+    // this.productService.clearCart();
   }
 
   ngOnDestroy(): void {
