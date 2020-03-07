@@ -1,8 +1,8 @@
-import { Component, OnDestroy} from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/modules/Product';
-import { CartService } from 'src/app/shared/services/cart/cart.service';
-
+// import { CartService } from 'src/app/shared/services/cart/cart.service';
+import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,38 +10,37 @@ import { CartService } from 'src/app/shared/services/cart/cart.service';
   styleUrls: ['./cart.component.less']
 })
 
-export class CartComponent implements OnDestroy{
-
+export class CartComponent implements OnInit, OnDestroy {
+editProductKey: string;
 subscription: Subscription;
-cart: any;
-products: Product[];
-key: string;
+products: Product[] = [];
+cartEventSubscription: Subscription;
+
+product: Product = {
+  $key:'',
+  title: '',
+  price: 0,
+  body: '',
+};
 
   constructor(
-    private cartService: CartService
+    private productService: ProductService,
   ) {}
 
   ngOnInit(){
-   console.log(this.cartService.currebtMessage);
-
-    // console.log('cart', this.cartService.getCart());
-   this.cartService.currebtMessage.subscribe(key =>{
-     console.log('cart -', this.key);
-     this.key = key
-    });
-   console.log('cart -key', this.key);
-
-  }
-
-  ngOnDestroy(){
-    // console.log()
-    this.subscription.unsubscribe();
-    // this.cart = this.cartService.getCart();
-    // console.log('cart', this.cart);
+     this.cartEventSubscription = this.productService.addToCartEvent.subscribe((products: Product[]) => {
+        this.products = products;
+        // localStorage.getItem('cart');
+        console.log('cart',this.products);
+      })
   }
 
   clearCart():void{
-    this.cartService.clearCart();
+    // this.productService.clearCart();
   }
 
+  ngOnDestroy(): void {
+    console.log("destroyed");
+    this.cartEventSubscription.unsubscribe();
+  }
 }

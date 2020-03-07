@@ -1,6 +1,7 @@
 <div class="container">
-  <app-product-form class="card card-body col-6 mx-auto mb-5 mt-5" (onAddProduct)="addProduct($event)"></app-product-form>
   <div class="row" >
-    <app-product class="col col-6 mb-3" *ngFor="let product of products" [product]="product" (onAddToCart)="onAddToCart($event)" (editProduct)="onEdit($event)">{{product.title}}</app-product>
+    <button (click)="ClearCart()">Clear Cart</button>
+    <app-product class="col col-6 mb-3" *ngFor="let product of products" [product]="product" (deleteProduct)="onDelete($event)" >
+    </app-product>
   </div>
 </div>

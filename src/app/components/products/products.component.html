@@ -16,10 +16,15 @@
 </ul> -->
 
 <div class="container">
-  <app-product-form class="card card-body col-6 mx-auto mb-5 mt-5" (onAddProduct)="addProduct($event)"></app-product-form>
-  <input [(ngModel)]="query" placeholder="search text goes here"  >
-  <button class="btn btn-danger">Search</button>
+
+  <app-product-form class="card card-body col-4 mx-auto mb-5 mt-5" (onAddProduct)="addProduct($event)"></app-product-form>
+
+  <input [(ngModel)]="searchTitle" placeholder="title"  name="searchTitle">
+  <input [(ngModel)]="searchPrice" placeholder="price"  name="searchPrice">
+  <input [(ngModel)]="searchBody" placeholder="body"  name="searchBody">
+
   <div class="row" >
-    <app-product class="col col-6 mb-3" *ngFor="let product of products | filter : 'title,body,price': query" [product]="product" (deleteProduct)="onDelete($event)" (editProduct)="onEdit($event)" (onAddToCart)="onAddToCart($event)"></app-product>
+    <app-product class="col col-6 mb-3" *ngFor="let product of products | filter: 'price': searchPrice | filter: 'title': searchTitle | filter: 'body': searchBody" [product]="product" (deleteProduct)="onDelete($event)" (editProduct)="onEdit($event)" (onAddToCart)="onAddToCart($event)"></app-product>
+
   </div>
 </div>

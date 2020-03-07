@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from "../../modules/Product";
 import { AngularFireDatabase,AngularFireList } from '@angular/fire/database';
-import { map } from 'rxjs/operators';
 import { AngularFirestoreDocument } from 'angularfire2/firestore';
 import { BehaviorSubject } from 'rxjs';
 
@@ -15,6 +14,9 @@ export class ProductService {
   private dbPath = '/products';
   private editeProduct: BehaviorSubject<Product> = new BehaviorSubject({});
   editProductEvent = this.editeProduct.asObservable();
+  private addToCart: BehaviorSubject<Product[]> = new BehaviorSubject([]);
+  addToCartEvent = this.addToCart.asObservable();
+  cartProducts: Product[] = [];
 
 
   constructor(
@@ -41,5 +43,11 @@ export class ProductService {
 
   emitEditProduct(product: Product){
     this.editeProduct.next(product);
+  }
+
+  emitAddToCart(product: Product){
+    console.log(product)
+    this.cartProducts.push(product);
+    this.addToCart.next(this.cartProducts);
   }
 }

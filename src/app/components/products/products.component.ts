@@ -1,10 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ProductService } from '../../shared/services/product/product.service';
-import { filter, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { FormControl } from '@angular/forms';
-import { Product } from 'src/app/shared/modules/Product';
-
+import { FormControl, NgForm } from '@angular/forms';
 
 
 @Component({
@@ -22,15 +18,6 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.getProductList();
-    // this.productService.editProductEvent.subscribe((product: Product) => {
-    //   // console.log('Edit event11', product);
-    //   if(product.$key) {
-    //     this.editProductKey = product.$key;
-    //     console.log(this.editProductKey);
-    //   }else{
-    //     this.editProductKey = '0'
-    //   }
-    // })
   }
 
 
@@ -38,7 +25,6 @@ export class ProductsComponent implements OnInit {
   this.productService
   .getProducts().snapshotChanges()
   .subscribe(data => {
-    // this.products = data.filter(dat => dat.prevKey)
     this.products = data.map(e=>{
       return {
         $key: e.key,
@@ -48,9 +34,7 @@ export class ProductsComponent implements OnInit {
     }).reverse()});
  }
 
-
- onAddToCart($key){
-  console.log('products c ', $key);
-  }
-
+ onSearch(form:NgForm){
+   console.log(form);
+ }
 }

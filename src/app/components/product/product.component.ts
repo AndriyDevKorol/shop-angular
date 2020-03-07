@@ -16,6 +16,7 @@ export class ProductComponent implements OnInit {
   @Output('') editProduct: EventEmitter<string> = new EventEmitter();
   editProductKey: string;
   isAdmin = true;
+  products: Product;
 
 
   constructor(
@@ -24,6 +25,27 @@ export class ProductComponent implements OnInit {
   ) { }
 
   ngOnInit(){
+    this.editEventListener();
+    this.addToCartListener();
+  }
+
+  addToCart(products:Product):void{
+    this.productService.emitAddToCart(products);
+  }
+
+  onDelete($key: string):void{
+    this.productService.onDelete(this.product.$key);
+  }
+
+  onEdit(product:Product):void{
+     this.productService.emitEditProduct(product);
+  }
+
+  onReset():void{
+     this.productService.emitEditProduct({});
+  }
+
+  editEventListener(){
     this.productService.editProductEvent.subscribe((product: Product) => {
       if(product.$key === this.product.$key) {
         this.editProductKey = product.$key;
@@ -33,19 +55,13 @@ export class ProductComponent implements OnInit {
     })
   }
 
-  addToCart($key:string):void{
-    this.cartService.addToCart($key);
-  }
-
-  onDelete($key: string){
-    this.productService.onDelete(this.product.$key);
-  }
-
-  onEdit(product:Product){
-     this.productService.emitEditProduct(product);
-  }
-
-  onReset(){
-     this.productService.emitEditProduct({});
+  addToCartListener(){
+    this.cartService.addToCartEvent.subscribe((products: Product[]) => {
+      // if(products){
+      //   this.editProductKey = product.$key;
+      // }else{
+      //   this.editProductKey = ''
+      // }
+    })
   }
 }

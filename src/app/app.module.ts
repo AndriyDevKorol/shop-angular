@@ -37,6 +37,7 @@ import { AuthService } from './shared/services/auth/auth.service';
 import { SearchComponent } from './shared/components/search/search.component';
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { FilterPipe } from './shared/pipes/filter.pipe';
+import { CartService } from './shared/services/cart/cart.service';
 
 
 @NgModule({
@@ -84,6 +85,7 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
   ],
   providers: [
     ProductService,
+    CartService,
     AuthService
   ],
   bootstrap: [AppComponent]
