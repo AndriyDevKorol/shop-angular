@@ -15,6 +15,7 @@ editProductKey: string;
 subscription: Subscription;
 products: Product[] = [];
 cartEventSubscription: Subscription;
+pr:any[]=[]
 
 product: Product = {
   $key:'',
@@ -30,17 +31,14 @@ product: Product = {
   ngOnInit(){
      this.cartEventSubscription = this.productService.addToCartEvent.subscribe((products: Product[]) => {
         this.products = products;
-        // localStorage.getItem('cart');
-        console.log('cart',this.products);
       })
   }
 
-  clearCart():void{
-    // this.productService.clearCart();
+  clearCart(){
+    this.productService.clearCart();
   }
 
   ngOnDestroy(): void {
-    console.log("destroyed");
     this.cartEventSubscription.unsubscribe();
   }
 }

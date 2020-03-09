@@ -20,13 +20,12 @@ export class ProductComponent implements OnInit {
 
 
   constructor(
-    private productService: ProductService,
-    private cartService: CartService
+    private productService: ProductService
   ) { }
 
   ngOnInit(){
     this.editEventListener();
-    this.addToCartListener();
+
   }
 
   addToCart(products:Product):void{
@@ -55,13 +54,4 @@ export class ProductComponent implements OnInit {
     })
   }
 
-  addToCartListener(){
-    this.cartService.addToCartEvent.subscribe((products: Product[]) => {
-      // if(products){
-      //   this.editProductKey = product.$key;
-      // }else{
-      //   this.editProductKey = ''
-      // }
-    })
-  }
 }

@@ -34,7 +34,5 @@ export class ProductsComponent implements OnInit {
     }).reverse()});
  }
 
- onSearch(form:NgForm){
-   console.log(form);
- }
+
 }

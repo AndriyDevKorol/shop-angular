@@ -46,8 +46,12 @@ export class ProductService {
   }
 
   emitAddToCart(product: Product){
-    console.log(product)
     this.cartProducts.push(product);
+    this.addToCart.next(this.cartProducts);
+  }
+
+  clearCart(){
+    this.cartProducts = [];
     this.addToCart.next(this.cartProducts);
   }
 }
