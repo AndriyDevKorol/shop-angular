@@ -1,11 +1,10 @@
-<mat-toolbar color="primary" class="mb-2">
+<mat-toolbar color="primary" class="mb-2 nav-bar">
     <span class="mr-5" ><a [routerLink]="['']" class="logo">Web Shop</a></span>
     <nav class="nav">
-      <a [routerLink]="['']"  class="link">Home</a>
-      <a class="link">About Us</a>
-      <a [routerLink]="['/cart']"  routerLinkActive="active"  class="link">Cart</a>
+      <a [routerLink]="['/cart']"  routerLinkActive="active"  class="link"> <i class="fa fa-shopping-cart">
+        <!-- <span class="mt-2"></span> -->
+      </i></a>
       <a [routerLink]="['/login']" routerLinkActive="active"  class="link">login</a>
       <a [routerLink]="['/signup']" routerLinkActive="active"  class="link">signup</a>
     </nav>
-
 </mat-toolbar>
