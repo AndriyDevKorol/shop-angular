@@ -86,7 +86,7 @@ import { CartService } from './shared/services/cart/cart.service';
   providers: [
     ProductService,
     CartService,
-    AuthService
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })
