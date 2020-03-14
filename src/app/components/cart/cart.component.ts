@@ -3,8 +3,10 @@ import { Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/modules/Product';
 // import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { HttpClient } from '@angular/common/http';
+import { EmailSenderService } from 'src/app/shared/services/emailSender/email-sender.service';
 
 @Component({
   selector: 'app-cart',
@@ -37,7 +39,9 @@ product: Product = {
   constructor(
     private productService: ProductService,
     private fb: FormBuilder,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private http: HttpClient,
+    private emailSender: EmailSenderService,
   ) {}
 
   ngOnInit(){
@@ -60,15 +64,28 @@ product: Product = {
     this.cartEventSubscription.unsubscribe();
   }
 
-  submitData(value: any) {
-    // console.log(this.submitted);
+  submitData(form: NgForm){
+    // const value = form.value;
+    // const name = value.name;
+    // const email = value.email;
+    // const message = value.content;
+    // const subject = value.subject;
 
-    this.submitting = true;
-    this.submissionForm.add(value).then(res => {
-      this.submitted = true;
-    }).catch(err => console.log(err)
-    ).finally(() => {
-      this.submitting = false;
-    });
+
+
+    // let formRequest = { name, email, subject, message};
+
+    let commonPost = {
+      "personalizations":[{"to":[{"email":"edsdvgsd@mailinator.com","name":"John Doe"}, {"email":"andriykorol@yahoo.com","name":"@@@ Doe"}],
+                "subject":"wqgggHello, World! fewefewf"}],
+      "content": [{"type": "text/plain", "value": "Heya!"}],
+      "from":{"email":"napuwunapuwu@gmail.com","name":"Sam Smith"},
+      "reply_to":{"email":"edsdvgsd@mailintor.com","name":"Sam Smith"}
+      }
+    console.log(commonPost);
+    // this.firestore.collection('formRequest');
+    // this.db.list('/messages').push(formRequest);
+this.emailSender.sendMessage(commonPost);
+    // form.reset();
   }
 }
