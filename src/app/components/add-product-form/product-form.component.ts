@@ -25,6 +25,7 @@ export class ProductFormComponent implements OnInit {
     title: '',
     price: 0,
     body: '',
+    category: ''
   };
 
   constructor(
@@ -36,7 +37,7 @@ export class ProductFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.productService.editProductEvent.subscribe((product: Product) => {
+    this.productService.editProductEvent.subscribe((product:any) => {
       this.formData = product;
     })
   }
@@ -45,7 +46,8 @@ export class ProductFormComponent implements OnInit {
     const NewProduct: Product = {
       title: this.formData.title,
       price: this.formData.price,
-      body: this.formData.body
+      body: this.formData.body,
+      category: this.formData.category,
     }
     if(this.afauth.auth.currentUser){
       this.productService.addProduct(NewProduct);
@@ -64,6 +66,6 @@ export class ProductFormComponent implements OnInit {
    }
 
    onReset(){
-    this.productService.emitEditProduct({});
+    this.productService.emitEditProduct([]);
    }
 }

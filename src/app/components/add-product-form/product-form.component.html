@@ -1,18 +1,27 @@
-<h5 class="card-title">{{formData.$key ? 'Edit ' : 'Add '}} product</h5>
-<form novalidate #form="ngForm" >
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" id="title" class="form-control"  [(ngModel)] = "formData.title" name="title" required>
+<h5 class="card-title">{{formData.$key ? 'Редагувати ' : 'Створити '}} продукт</h5>
+<form novalidate #form="ngForm" class="subForm">
+  <div class="inpuFields">
+    <div class="form-group">
+      <label for="title">Назва</label>
+      <input type="text" id="title" class="form-control"  [(ngModel)] = "formData.title" name="title" required>
+    </div>
+    <div class="form-group">
+      <label for="category">Категорія</label>
+      <input type="text" id="category" class="form-control"  [(ngModel)] = "formData.category" name="category" required>
+    </div>
+    <div class="form-group">
+      <label for="body">Опис</label>
+      <input type="text" id="body" class="form-control"  [(ngModel)] = "formData.body" name="body" required>
+    </div>
+    <div class="form-group">
+      <label for="price">Ціна</label>
+      <input type="number" id="price" class="form-control" [(ngModel)] = "formData.price" name="price" required>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="body">Body</label>
-    <input type="text" id="body" class="form-control"  [(ngModel)] = "formData.body" name="body" required>
-  </div>
-  <div class="form-group">
-    <label for="price">price</label>
-    <input type="number" id="price" class="form-control" [(ngModel)] = "formData.price" name="price" required>
-  </div>
-  <button class="btn btn-secondary" [disabled]="form.invalid" *ngIf="formData"(click)="onReset()" >Cancel</button>
-  <button class="btn btn-primary" [disabled]="form.invalid" *ngIf="!formData.$key" type="submit" (click)="onAddProduct()">Save</button>
+  <div class="buttons">
+    <button class="btn btn-secondary" [hidden]="form.invalid" [disabled]="form.invalid" *ngIf="formData"(click)="onReset()" >Cancel</button>
+    <button class="btn btn-primary" [disabled]="form.invalid" *ngIf="!formData.$key" type="submit" (click)="onAddProduct()">Save</button>
   <button [ngClass]="ccclass" *ngIf="formData.$key" (click)="updateProduct($event)">Edit product</button>
-</form>
+
+  </div>
+  </form>

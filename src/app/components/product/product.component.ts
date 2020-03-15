@@ -36,16 +36,16 @@ export class ProductComponent implements OnInit {
     this.productService.onDelete(this.product.$key);
   }
 
-  onEdit(product:Product):void{
+  onEdit(product:Product[]):void{
      this.productService.emitEditProduct(product);
   }
 
   onReset():void{
-     this.productService.emitEditProduct({});
+     this.productService.emitEditProduct([]);
   }
 
   editEventListener(){
-    this.productService.editProductEvent.subscribe((product: Product) => {
+    this.productService.editProductEvent.subscribe((product: any) => {
       if(product.$key === this.product.$key) {
         this.editProductKey = product.$key;
       }else{
@@ -53,5 +53,4 @@ export class ProductComponent implements OnInit {
       }
     })
   }
-
 }
