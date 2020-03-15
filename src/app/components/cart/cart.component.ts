@@ -80,12 +80,14 @@ product: Product = {
                 "subject":"wqgggHello, World! fewefewf"}],
       "content": [{"type": "text/plain", "value": "Heya!"}],
       "from":{"email":"napuwunapuwu@gmail.com","name":"Sam Smith"},
-      "reply_to":{"email":"edsdvgsd@mailintor.com","name":"Sam Smith"}
+      // "reply_to":{"email":"edsdvgsd@mailintor.com","name":"Sam Smith"}
       }
     console.log(commonPost);
     // this.firestore.collection('formRequest');
     // this.db.list('/messages').push(formRequest);
-this.emailSender.sendMessage(commonPost);
+this.emailSender.sendMessage(commonPost).subscribe(res => console.log(res));
     // form.reset();
   }
+
+
 }

@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'bearer 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'
+    'Authorization': 'bearer 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'
   })
 };
 
@@ -21,8 +22,14 @@ export class EmailSenderService {
 
 
   sendMessage(body: any) {
-    console.log('active send service');
-    return this.Http.post(this.ROOT_URL, body, httpOptions);
+
+    var subject = new Subject<number>()
+    const req = new HttpRequest('POST', this.ROOT_URL, body, {
+        reportProgress: true,
+    });
+    console.log('active send service', req);
+    // return this.Http.post(this.ROOT_URL, body, httpOptions);
+    return this.Http.request(req);
   }
 
 }
