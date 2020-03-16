@@ -22,6 +22,7 @@ product: Product = {
   title: '',
   price: 0,
   body: '',
+  category:''
 };
 
   constructor(

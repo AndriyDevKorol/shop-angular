@@ -12,7 +12,7 @@ export class ProductService {
   products: AngularFireList<Product[]> = null;
   productDoc: AngularFirestoreDocument<Product>;
   private dbPath = '/products';
-  private editeProduct: BehaviorSubject<Product> = new BehaviorSubject({});
+  private editeProduct: BehaviorSubject<Product[]> = new BehaviorSubject([]);
   editProductEvent = this.editeProduct.asObservable();
   private addToCart: BehaviorSubject<Product[]> = new BehaviorSubject([]);
   addToCartEvent = this.addToCart.asObservable();
@@ -41,7 +41,7 @@ export class ProductService {
     return this.products.update(val, undefined);
   }
 
-  emitEditProduct(product: Product){
+  emitEditProduct(product: Product[]){
     this.editeProduct.next(product);
   }
 
