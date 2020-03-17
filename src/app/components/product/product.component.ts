@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit {
   @Output('') editProduct: EventEmitter<string> = new EventEmitter();
   editProductKey: string;
   isAdmin = true;
-  products: Product;
+  products: Product[];
 
 
   constructor(

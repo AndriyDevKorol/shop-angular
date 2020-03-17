@@ -88,7 +88,7 @@ import { RangePipe } from './shared/pipes/range.pipe';
   providers: [
     ProductService,
     CartService,
-    AuthService
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })
