@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Product } from '../../shared/modules/Product';
 import { NgForm } from '@angular/forms';
 import { ProductService } from '../../shared/services/product/product.service';
@@ -25,7 +25,7 @@ export class ProductFormComponent implements OnInit {
     title: '',
     price: 0,
     body: '',
-    category: ''
+    category:'',
   };
 
   constructor(
@@ -37,6 +37,7 @@ export class ProductFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.productService.editProductEvent.subscribe((product:any) => {
       this.formData = product;
     })

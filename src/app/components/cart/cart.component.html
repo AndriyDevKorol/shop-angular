@@ -1,6 +1,18 @@
 <div class="container">
   <div class="row" >
     <button (click)="clearCart()">Clear Cart</button>
+
+    <form [formGroup]="ourForm">
+      <input type="email" id="email" placeholder="email" formControlName="email" />
+      <label for="email">Email</label>
+      <input type="text" name="subject" placeholder="subject" formControlName="subject"/>
+      <label for="subject"> Subject</label>
+      <textarea type="text" name="email_body" placeholder="some note" formControlName="email_body"></textarea>
+      <label for="email_body">Description</label>
+      <button type="submit" value="Submit" (click)="submitData(ourForm.value)">Send Cart</button>
+
+    </form>
+
     <app-product class="col col-6 mb-3" *ngFor="let product of products" [product]="product" (deleteProduct)="onDelete($event)" >
     </app-product>
   </div>
