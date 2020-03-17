@@ -1,30 +1,26 @@
-
-<!-- <div class="alert alert-info mb-3">Item name: {{item.name || 'n/a'}}, item count: {{item.count || 'n/a'}}</div> -->
-
-<!-- <app-alert></app-alert> -->
-<!-- <ul *ngIf="products?.length">
-  <li *ngFor="let product of products">
-    <span>{{ product.name }}, {{product.price}}</span>
-    <button (click)="onShowReview">Show reviews</button>
-    <ul>
-      <li *ngFor="let review of reviews">
-        <span>{{review.name}}</span>
-        <p>{{review.text}}</p>
-      </li>
-    </ul>
-  </li >
-</ul> -->
-
 <div class="container">
+  <app-product-form class="add-form" (onAddProduct)="addProduct($event)"></app-product-form>
+  <div class="filter">
+    <p>Filter: </p>
+    <input [(ngModel)]="searchTitle" placeholder="title"  name="searchTitle">
+    <input [(ngModel)]="searchPrice" placeholder="0-1000 price"  name="searchPrice" >
+    <input [(ngModel)]="searchBody" placeholder="body"  name="searchBody">
+    <div>
+      <label for="cars">Категорія:</label>
+      <select [(ngModel)]="searchCategory" name="searchCategory" >
+        <option value="" selected>Всі</option>
+        <option value="1" >К-1</option>
+        <option value="2" >К-2</option>
+        <option value="3">К-3</option>
+      </select>
+    </div>
+  </div>
 
-  <app-product-form class="card card-body col-4 mx-auto mb-5 mt-5" (onAddProduct)="addProduct($event)"></app-product-form>
 
-  <input [(ngModel)]="searchTitle" placeholder="title"  name="searchTitle">
-  <input [(ngModel)]="searchPrice" placeholder="price"  name="searchPrice">
-  <input [(ngModel)]="searchBody" placeholder="body"  name="searchBody">
 
-  <div class="row" >
-    <app-product class="col col-6 mb-3" *ngFor="let product of products | filter: 'price': searchPrice | filter: 'title': searchTitle | filter: 'body': searchBody" [product]="product" (deleteProduct)="onDelete($event)" (editProduct)="onEdit($event)" (onAddToCart)="onAddToCart($event)"></app-product>
+  <!-- <app-filter-bar></app-filter-bar> -->
 
+  <div class="product-list" >
+    <app-product class="col col-6 mb-3" *ngFor="let product of products | filter: 'price': searchPrice  | filter: 'category': searchCategory | filter: 'body': searchBody | filter: 'title': searchTitle" [product]="product" (deleteProduct)="onDelete($event)" (editProduct)="onEdit($event)" (onAddToCart)="onAddToCart($event)"></app-product>
   </div>
 </div>

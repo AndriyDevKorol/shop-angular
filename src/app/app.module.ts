@@ -38,6 +38,7 @@ import { SearchComponent } from './shared/components/search/search.component';
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { FilterPipe } from './shared/pipes/filter.pipe';
 import { CartService } from './shared/services/cart/cart.service';
+import { RangePipe } from './shared/pipes/range.pipe';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { CartService } from './shared/services/cart/cart.service';
     RestorPasswordComponent,
     SearchComponent,
     FilterBarComponent,
-    FilterPipe
+    FilterPipe,
+    RangePipe
   ],
   imports: [
     BrowserModule,

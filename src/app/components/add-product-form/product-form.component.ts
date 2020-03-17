@@ -37,7 +37,8 @@ export class ProductFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.productService.editProductEvent.subscribe((product: any) => {
+
+    this.productService.editProductEvent.subscribe((product:any) => {
       this.formData = product;
     })
   }
