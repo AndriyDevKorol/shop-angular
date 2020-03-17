@@ -8,9 +8,10 @@ export const environment = {
     storageBucket: "web-shop-fc3e0.appspot.com",
     messagingSenderId: "445703680065",
     appId: "1:445703680065:web:f33d33d116e9cdfb7b96c0",
-    measurementId: "G-T2WJDJGMJ7"
+    measurementId: "G-T2WJDJGMJ7",
+    SENDGRID_KEY: "bearer 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",
+    SENGRID_URL: 'https://cors-anywhere.herokuapp.com/https://api.sendgrid.com/v3/mail/send',
   }
-
 };
 
 

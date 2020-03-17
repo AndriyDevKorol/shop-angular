@@ -33,7 +33,9 @@ product: Product = {
   title: '',
   price: 0,
   body: '',
+  category: '',
 };
+
   isValidURL: any;
 
   constructor(
@@ -75,17 +77,15 @@ product: Product = {
 
     // let formRequest = { name, email, subject, message};
 
-    let commonPost = {
+    let commonPost = JSON.stringify({
       "personalizations":[{"to":[{"email":"edsdvgsd@mailinator.com","name":"John Doe"}, {"email":"andriykorol@yahoo.com","name":"@@@ Doe"}],
                 "subject":"wqgggHello, World! fewefewf"}],
       "content": [{"type": "text/plain", "value": "Heya!"}],
-      "from":{"email":"napuwunapuwu@gmail.com","name":"Sam Smith"},
-      // "reply_to":{"email":"edsdvgsd@mailintor.com","name":"Sam Smith"}
-      }
-    console.log(commonPost);
-    // this.firestore.collection('formRequest');
-    // this.db.list('/messages').push(formRequest);
+      "from":{"email":"napuwunapuwu@gmail.com","name":"Sam Smith"}
+      })
+
 this.emailSender.sendMessage(commonPost).subscribe(res => console.log(res));
+alert("Email was sent");
     // form.reset();
   }
 
