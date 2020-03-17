@@ -8,5 +8,5 @@ export interface Product {
   price: number;
   count?: number;
   reviewShow?: boolean;
-  category: string;
+
 }
