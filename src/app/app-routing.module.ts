@@ -5,7 +5,7 @@ import { CartComponent } from "./components/cart/cart.component";
 import { LoginComponent } from './shared/components/login/login.component';
 import { SignupComponent } from './shared/components/signup/signup.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
 
 
 const routes: Routes = [
@@ -16,7 +16,6 @@ const routes: Routes = [
   {path: 'product-details', component: ProductDetailsComponent},
 
   {path: "**", component: PageNotFoundComponent}
-
 ];
 
 @NgModule({

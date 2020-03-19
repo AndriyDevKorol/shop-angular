@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/modules/Product';
-// import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -35,7 +34,6 @@ product: Product = {
   body: '',
   category: '',
   shortDescription:''
-
 };
 
   isValidURL: any;

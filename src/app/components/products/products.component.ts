@@ -28,10 +28,7 @@ export class ProductsComponent implements OnInit {
       return {
         $key: e.key,
         ...e.payload.val()
-
       }
     }).reverse()});
  }
-
-
 }
