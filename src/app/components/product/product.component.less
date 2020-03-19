@@ -1,15 +1,73 @@
-.productCard{
-  display: block;
-  border: 1px solid black;
+.danger{
+  background-color: #dc143c;
+  color: white !important;
 }
-.card-header{
+
+.secondary{
+  background-color: dodgerblue;
+  color: white !important;
+}
+
+.primary{
+  background-color: goldenrod;
+  color: white !important;
+}
+
+.buy{
+  background: linear-gradient(4deg, #b70919, transparent) ;
+  color: white !important;
+}
+
+.productCard{
   display: flex;
   justify-content: space-between;
+  background-color: white;
+  box-shadow: 10px 5px 10px #88888845;
+  border-radius: 10px;
+  border: 0.5px solid #88888838;
 }
+
+.card-body{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.section{
+  display: flex;
+  flex-direction: column;
+  min-width: 25%;
+}
+
+.transformed{
+  // width: 100px;
+	// height: 50px;
+	transform: skew(420deg);
+	background-color: #555;
+}
+
+.wider{
+  flex-grow: 2;
+}
+
+.cardHeader{
+  display: flex;
+  justify-content: space-between;
+  max-height: 3rem;
+  background: linear-gradient(to bottom, #cecdcd66,rgba(250, 249, 249, 0));
+  border-bottom:none;
+}
+
+.button{
+  border-radius: 0.75rem;
+  color: #556b2ffa;
+}
+
 
 .flex-content{
   display: flex;
   flex-wrap: wrap;
+
 }
 
 .image{
@@ -30,4 +88,8 @@
   flex-direction: column;
   justify-content: center;
   flex-grow: 1;
+}
+
+.cena{
+  margin-top: 3rem;
 }

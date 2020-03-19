@@ -23,6 +23,12 @@ export class AuthService {
      }
    }
 
+   logout1() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+    // this.isLoggedin = false;
+  }
+
    signup(email, password): Promise<any>{
      return this.afauth.auth.createUserWithEmailAndPassword(email, password);
    }
