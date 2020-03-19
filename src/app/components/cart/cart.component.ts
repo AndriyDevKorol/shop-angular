@@ -34,6 +34,8 @@ product: Product = {
   price: 0,
   body: '',
   category: '',
+  shortDescription:''
+
 };
 
   isValidURL: any;
