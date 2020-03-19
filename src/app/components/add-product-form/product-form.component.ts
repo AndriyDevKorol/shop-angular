@@ -19,6 +19,8 @@ export class ProductFormComponent implements OnInit {
 
   public ccclass={"btn-color": true};
   productKey: string;
+  admin = this.afauth.auth.currentUser;
+
 
   formData: Product = {
     $key:'',
@@ -26,6 +28,7 @@ export class ProductFormComponent implements OnInit {
     price: 0,
     body: '',
     category:'',
+    shortDescription:'',
   };
 
   constructor(
@@ -37,7 +40,7 @@ export class ProductFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+console.log('isAdmin',this.admin);
     this.productService.editProductEvent.subscribe((product:any) => {
       this.formData = product;
     })
@@ -49,8 +52,9 @@ export class ProductFormComponent implements OnInit {
       price: this.formData.price,
       body: this.formData.body,
       category: this.formData.category,
+      shortDescription: this.formData.shortDescription
     }
-    if(this.afauth.auth.currentUser){
+    if(this.admin){
       this.productService.addProduct(NewProduct);
       this.onReset();
     }else{

@@ -9,7 +9,6 @@ import { FormControl, NgForm } from '@angular/forms';
   styleUrls: ['./products.component.less']
 })
 export class ProductsComponent implements OnInit {
-
   products: any[];
   searchFormControl: FormControl;
   editProductKey: string;

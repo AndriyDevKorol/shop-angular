@@ -83,7 +83,6 @@ import { RangePipe } from './shared/pipes/range.pipe';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     SharedModule,
-
   ],
   providers: [
     ProductService,
