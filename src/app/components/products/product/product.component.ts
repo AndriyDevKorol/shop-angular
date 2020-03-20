@@ -2,6 +2,7 @@ import { Component, Input, Output, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/modules/Product';
 import { EventEmitter } from '@angular/core';
 import { ProductService } from "../../../shared/services/product/product.service";
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -11,8 +12,10 @@ import { ProductService } from "../../../shared/services/product/product.service
 export class ProductComponent implements OnInit {
 
   @Input('product') product: Product;
-  @Output('') deleteProduct: EventEmitter<string> = new EventEmitter();
-  @Output('') editProduct: EventEmitter<string> = new EventEmitter();
+  // @Output('') deleteProduct: EventEmitter<string> = new EventEmitter();
+  // @Output('') editProduct: EventEmitter<string> = new EventEmitter();
+  // private detailsProduct: BehaviorSubject<Product[]> = new BehaviorSubject([]);
+  // detailProductEvent = this.detailsProduct.asObservable();
   editProductKey: string;
   isAdmin = true;
   products: Product[];
@@ -27,8 +30,9 @@ export class ProductComponent implements OnInit {
 
   }
 
-  addToCart(products:Product):void{
-    this.productService.emitAddToCart(products);
+  addToCart(product:Product):void{
+    console.log('to cart', product)
+    this.productService.emitAddToCart(product);
   }
 
   onDelete($key: string):void{
@@ -52,4 +56,12 @@ export class ProductComponent implements OnInit {
       }
     })
   }
+
+  onDetailsProduct(product: Product){
+    this.productService.emitDetailProduct(product);
+  }
+
+  // emitDetailProduct(product: Product[]){
+  //   this.detailsProduct.next(product);
+  // }
 }

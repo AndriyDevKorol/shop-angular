@@ -36,7 +36,7 @@
           <button class="button danger" *ngIf="isAdmin" (click)="onDelete(product.$key)">Delete</button>
           <button class="button secondary" *ngIf="!editProductKey" (click)="onEdit(product)" >Edit</button>
           <button class="button secondary" (click)="onReset()" *ngIf="editProductKey">Cancel</button>
-          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link"><button class="button primary">Details</button></a>
+          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link"><button class="button primary" (click)="onDetailsProduct(product)">Details</button></a>
         </div>
       </div>
       <div class="flex-content">

@@ -48,6 +48,7 @@ product: Product = {
 
   ngOnInit(){
      this.cartEventSubscription = this.productService.addToCartEvent.subscribe((products: Product[]) => {
+       console.log('cart', products);
         this.products = products;
       })
       this.submissionForm = this.firestore.collection('submissions');
