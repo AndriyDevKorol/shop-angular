@@ -1,8 +1,10 @@
-<!-- <app-header></app-header> -->
-<app-navbar></app-navbar>
-<div class="filter-bar">
-  <!-- <app-filter-bar></app-filter-bar>
-  <app-search></app-search> -->
+<div class="container-fluid none-padding">
+  <!-- <app-header></app-header> -->
+  <app-navbar class="global-navbar"></app-navbar>
+  <!-- <div class="filter-bar"> -->
+    <!-- <app-filter-bar></app-filter-bar>
+    <app-search></app-search> -->
+  <!-- </div> -->
+  <router-outlet class="main-content"></router-outlet>
+  <app-footer class="global-footer"></app-footer>
 </div>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
