@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/shared/modules/Product';
+import { Subscription } from 'rxjs';
+import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
   selector: 'app-product-details',
@@ -7,9 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor() { }
+  detailsEventSubscription: Subscription;
+  products: Product[];
+
+  product: Product = {
+    $key:'',
+    title: '',
+    price: 0,
+    body: '',
+    category: '',
+    shortDescription:''
+  };
+
+  constructor(
+    private productService: ProductService,
+  ) { }
 
   ngOnInit() {
+    this.detailsEventSubscription = this.productService.detailProductEvent.subscribe((product: Product[])=>{
+      console.log(product);
+      this.products = product
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.detailsEventSubscription.unsubscribe();
   }
 
 }

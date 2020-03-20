@@ -16,7 +16,10 @@ export class ProductService {
   editProductEvent = this.editeProduct.asObservable();
   private addToCart: BehaviorSubject<Product[]> = new BehaviorSubject([]);
   addToCartEvent = this.addToCart.asObservable();
+  private detailsProduct: BehaviorSubject<Product[]> = new BehaviorSubject([]);
+  detailProductEvent = this.detailsProduct.asObservable();
   cartProducts: Product[] = [];
+  productDetails: Product[] = [];
 
 
   constructor(
@@ -43,6 +46,12 @@ export class ProductService {
 
   emitEditProduct(product: Product[]){
     this.editeProduct.next(product);
+  }
+
+  emitDetailProduct(product: Product){
+    this.productDetails=[];
+    this.productDetails.push(product);
+    this.detailsProduct.next(this.productDetails);
   }
 
   emitAddToCart(product: Product){
