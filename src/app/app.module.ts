@@ -40,7 +40,7 @@ import { CartService } from './shared/services/cart/cart.service';
 import { RangePipe } from './shared/pipes/range.pipe';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
-
+import { RecipeComponent } from './components/cart/recipe/recipe.component';
 
 
 @NgModule({
@@ -61,7 +61,8 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
     FilterBarComponent,
     FilterPipe,
     RangePipe,
-    CartItemComponent
+    CartItemComponent,
+    RecipeComponent,
   ],
   imports: [
     BrowserModule,
