@@ -12,5 +12,25 @@
       <label for="email_body">Description</label>
       <button type="submit" value="Submit" (click)="submitData(ourForm.value)">Send Cart</button>
     </form> -->
+
+    <div class="hidde modal-bg" [ngStyle]="{'display' : isShow ? 'flex' : 'none'}"  >
+      <span class="close-bg" (click)="hideRecipe()"></span>
+      <div class="modal-content">
+        <span (click)="hideRecipe()" class="close-btn">+</span>
+        <span class="header">Замовлення</span>
+        <div class="product-grid">
+          <div class="grid-container">
+            <div class="id">#</div>
+            <div class="name">Продукт</div>
+            <div class="count">К-сть</div>
+            <div class="price">Ціна</div>
+          </div>
+        </div>
+        <app-recipe [product]="product" *ngFor="let product of products"></app-recipe>
+        <div class="total">Total: 5 786 грн.</div>
+        <div><button (click)="hideRecipe()">Відправити замовлення</button></div>
+      </div>
+    </div>
+    <div><button (click)="showRecipe()">Зробити замовлення</button></div>
   </div>
 </div>

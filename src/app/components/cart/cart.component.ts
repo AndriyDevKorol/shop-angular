@@ -37,6 +37,7 @@ product: Product = {
 };
 
   isValidURL: any;
+  isShow:boolean;
 
   constructor(
     private productService: ProductService,
@@ -47,8 +48,8 @@ product: Product = {
   ) {}
 
   ngOnInit(){
+    this.isShow = false;
      this.cartEventSubscription = this.productService.addToCartEvent.subscribe((products: Product[]) => {
-       console.log('cart', products);
         this.products = products;
       })
       this.submissionForm = this.firestore.collection('submissions');
@@ -61,6 +62,15 @@ product: Product = {
 
   clearCart(){
     this.productService.clearCart();
+  }
+
+  showRecipe(){
+    this.isShow = !this.isShow;
+  }
+
+  hideRecipe(){
+    console.log('close');
+    this.isShow = !this.isShow;
   }
 
   ngOnDestroy(): void {
