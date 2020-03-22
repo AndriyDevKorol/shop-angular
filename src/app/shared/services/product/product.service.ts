@@ -42,8 +42,8 @@ export class ProductService {
     return this.products.remove(key);
   }
 
-  updateProduct(key:string, val:any){
-    return this.products.update(val, undefined);
+  updateProduct(key:string, val){
+    return this.products.update(key, val);
   }
 
   emitEditProduct(product: Product[]){
