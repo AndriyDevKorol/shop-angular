@@ -18,11 +18,9 @@ export class RangePipe implements PipeTransform {
     if (!term) return value;
     keys=keys.toLowerCase();
     term=term.toLowerCase();
-    console.log('key', keys);
-    console.log('term', term)
     return (value || []).filter(item => keys.split(',').some(key => {
 
-     keys.split(',').some(key => console.log(new RegExp(term, 'gi').test(item[key])));
+     keys.split(',').some(key => new RegExp(term, 'gi').test(item[key]));
     }));
   }
 }

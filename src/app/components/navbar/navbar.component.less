@@ -1,13 +1,8 @@
-@import '../../app.component.less';
-
-.primary{
-  margin: 0;
-  padding: 0;
-}
+@import '../../styles/global/_colors.less';
 
 .link{
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
+  color: @color-black;
 }
 
 .link + .link{
@@ -16,18 +11,18 @@
 
 .logo{
   font-size: 28px;
-  color: rgba(255, 255, 255, 0.6);
+  color: @color-black;
   text-decoration: none;
 }
 
 .logo:hover{
-  color: rgba(255, 255, 255, 1);
+  color: @color-gray-line-gradient;
   cursor: pointer;
 }
 
 .link:hover,
 .link.action {
-  color: rgba(255, 255, 255, 1);
+  color: @color-red-line-gradient;
   cursor: pointer;
 }
 
@@ -38,4 +33,17 @@
 .nav-bar{
   display: flex;
   justify-content:space-between;
+  padding: 0 13rem;
+  background-color: white;
+}
+
+.contacts, .working-hour{
+  display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 3rem;
+    font-size: 0.7rem;
+    width: 10rem;
+    line-height: 1.5;
+    text-align: center;
 }

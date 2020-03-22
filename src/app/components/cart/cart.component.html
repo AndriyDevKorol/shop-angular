@@ -1,8 +1,12 @@
 <div class="container">
+  <div *ngIf="!products.length "><p>Корзина пуста</p></div>
   <div class="row" >
-    <button (click)="clearCart()">Clear Cart</button>
+    <button (click)="clearCart()" *ngIf="products.length > 0" class="clear-cart">Clear Cart</button>
+    <button (click)="showRecipe()" *ngIf="products.length > 0" class="createOrder">Зробити замовлення</button>
 
-    <form [formGroup]="ourForm">
+    <app-cart-item class="cart-item" *ngFor="let product of products" [product]="product"></app-cart-item>
+
+    <!-- <form [formGroup]="ourForm">
       <input type="email" id="email" placeholder="email" formControlName="email" />
       <label for="email">Email</label>
       <input type="text" name="subject" placeholder="subject" formControlName="subject"/>
@@ -10,10 +14,26 @@
       <textarea type="text" name="email_body" placeholder="some note" formControlName="email_body"></textarea>
       <label for="email_body">Description</label>
       <button type="submit" value="Submit" (click)="submitData(ourForm.value)">Send Cart</button>
+    </form> -->
 
-    </form>
+    <div class="hidde modal-bg" [ngStyle]="{'display' : isShow ? 'flex' : 'none'}"  >
+      <span class="close-bg" (click)="hideRecipe()"></span>
+      <div class="modal-content" *ngIf="products.length > 0">
+        <span (click)="hideRecipe()" class="close-btn">+</span>
+        <span class="header">Замовлення</span>
+        <div class="product-grid">
+          <div class="grid-container">
+            <div class="id">#</div>
+            <div class="name">Продукт</div>
+            <div class="count">К-сть</div>
+            <div class="price">Ціна</div>
+          </div>
+        </div>
+        <app-recipe [product]="product" *ngFor="let product of products"></app-recipe>
+        <div class="total">Total: 5 786 грн.</div>
+        <div><button (click)="hideRecipe()">Відправити замовлення</button></div>
+      </div>
+    </div>
 
-    <app-product class="col col-6 mb-3" *ngFor="let product of products" [product]="product" (deleteProduct)="onDelete($event)" >
-    </app-product>
   </div>
 </div>

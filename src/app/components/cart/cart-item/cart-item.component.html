@@ -1,0 +1,55 @@
+
+<div class="productCard" *ngIf="product">
+  <div class="card-body" (onAddNewProduct)="onAddNewPost($event)" >
+    <div class="section">
+      <div class="cardHeader">
+        <p class="card-text">Product: {{product.title}}</p>
+      </div>
+      <div class="flex-content">
+        <div class="image">
+          <a class="imgages-view" href="">
+            <img src="https://source.unsplash.com/random/150x150" alt="product" className="card-img-top" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="section wider">
+      <div class="cardHeader">
+        <label >Категорія: {{product.category}}</label>
+      </div>
+      <div class="flex-content">
+        <div class="product-details" >
+          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link" (click)="onDetailsProduct(product)">
+            <p class="card-text">Деталі продукта:</p>
+            <ul class="attribute-list">
+              <li><p class="card-text">Категорія: {{product.category}}</p></li>
+              <li><p class="card-text">Короткий опис: {{product.shortDescription}}</p></li>
+              <li><p class="card-text">Опис: {{product.body}}</p></li>
+            </ul>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="cardHeader">
+        <div class="buttons-section" >
+          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link">
+            <button class="button primary" (click)="onDetailsProduct(product)">Details</button>
+          </a>
+          <button class="button danger" (click)="deleteItem(product.$key)">Delete</button>
+        </div>
+      </div>
+      <div class="flex-content">
+        <div class="price">
+          <div class="cena text-center-xs">{{product.price}} грн/шт </div>
+          <span class="q-field">
+            <span  class="down-quantity icon icon-angle-left"></span>
+            <input name="quantity" type="text" value="1" class="">
+            <span class="up-quantity icon icon-angle-right"></span>
+          </span>
+          <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
+      </div>
+    </div>
+  </div>
+</div>
+

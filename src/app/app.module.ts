@@ -22,7 +22,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './components/products/products.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
-import { ProductComponent } from './components/product/product.component';
+import { ProductComponent } from './components/products/product/product.component';
 import { ProductFormComponent } from './components/add-product-form/product-form.component';
 import { ProductService } from './shared/services/product/product.service';
 import { RestorPasswordComponent } from './shared/components/restor-password/restor-password.component';
@@ -35,10 +35,12 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { SharedModule } from './shared/shared.module';
 import { AuthService } from './shared/services/auth/auth.service';
 import { SearchComponent } from './shared/components/search/search.component';
-import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { FilterPipe } from './shared/pipes/filter.pipe';
 import { CartService } from './shared/services/cart/cart.service';
 import { RangePipe } from './shared/pipes/range.pipe';
+import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
+import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
+import { RecipeComponent } from './components/cart/recipe/recipe.component';
 
 
 @NgModule({
@@ -58,7 +60,9 @@ import { RangePipe } from './shared/pipes/range.pipe';
     SearchComponent,
     FilterBarComponent,
     FilterPipe,
-    RangePipe
+    RangePipe,
+    CartItemComponent,
+    RecipeComponent,
   ],
   imports: [
     BrowserModule,

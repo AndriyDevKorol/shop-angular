@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/modules/Product';
-// import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -19,8 +18,8 @@ export class CartComponent implements OnInit, OnDestroy {
 private submissionForm: AngularFirestoreCollection<any>;
 editProductKey: string;
 subscription: Subscription;
-products: Product[] = [];
 cartEventSubscription: Subscription;
+products: Product[] = [];
 pr:any[]=[];
 title = 'project';
 ourForm: FormGroup;
@@ -34,9 +33,11 @@ product: Product = {
   price: 0,
   body: '',
   category: '',
+  shortDescription:''
 };
 
   isValidURL: any;
+  isShow:boolean;
 
   constructor(
     private productService: ProductService,
@@ -47,6 +48,7 @@ product: Product = {
   ) {}
 
   ngOnInit(){
+    this.isShow = false;
      this.cartEventSubscription = this.productService.addToCartEvent.subscribe((products: Product[]) => {
         this.products = products;
       })
@@ -61,6 +63,15 @@ product: Product = {
   clearCart(){
     this.productService.clearCart();
   }
+
+  showRecipe(){
+    this.isShow = !this.isShow;
+  }
+
+  hideRecipe(){
+    this.isShow = !this.isShow;
+  }
+
 
   ngOnDestroy(): void {
     this.cartEventSubscription.unsubscribe();

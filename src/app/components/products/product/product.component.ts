@@ -1,8 +1,8 @@
-import { Component, Input, Output, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/modules/Product';
-import { EventEmitter } from '@angular/core';
-import { ProductService } from "../../shared/services/product/product.service";
-import { CartService } from 'src/app/shared/services/cart/cart.service';
+import { ProductService } from "../../../shared/services/product/product.service";
+import { AngularFireAuth } from 'angularfire2/auth';
+
 
 @Component({
   selector: 'app-product',
@@ -12,24 +12,22 @@ import { CartService } from 'src/app/shared/services/cart/cart.service';
 export class ProductComponent implements OnInit {
 
   @Input('product') product: Product;
-  @Output('') deleteProduct: EventEmitter<string> = new EventEmitter();
-  @Output('') editProduct: EventEmitter<string> = new EventEmitter();
   editProductKey: string;
-  isAdmin = true;
+  isAdmin = this.afauth.auth.currentUser;
   products: Product[];
 
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private afauth: AngularFireAuth,
   ) { }
 
   ngOnInit(){
     this.editEventListener();
-
   }
 
-  addToCart(products:Product):void{
-    this.productService.emitAddToCart(products);
+  addToCart(product:Product):void{
+    this.productService.emitAddToCart(product);
   }
 
   onDelete($key: string):void{
@@ -52,5 +50,9 @@ export class ProductComponent implements OnInit {
         this.editProductKey = ''
       }
     })
+  }
+
+  onDetailsProduct(product: Product){
+    this.productService.emitDetailProduct(product);
   }
 }

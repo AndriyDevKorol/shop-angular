@@ -15,10 +15,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 export class ProductFormComponent implements OnInit {
 
-  // @Output() onAddNewProduct: EventEmitter<Product> = new EventEmitter
-
   public ccclass={"btn-color": true};
   productKey: string;
+  isAdmin = this.afauth.auth.currentUser;
+
 
   formData: Product = {
     $key:'',
@@ -26,6 +26,7 @@ export class ProductFormComponent implements OnInit {
     price: 0,
     body: '',
     category:'',
+    shortDescription:'',
   };
 
   constructor(
@@ -37,7 +38,7 @@ export class ProductFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+console.log('isAdmin',this.isAdmin);
     this.productService.editProductEvent.subscribe((product:any) => {
       this.formData = product;
     })
@@ -49,8 +50,9 @@ export class ProductFormComponent implements OnInit {
       price: this.formData.price,
       body: this.formData.body,
       category: this.formData.category,
+      shortDescription: this.formData.shortDescription
     }
-    if(this.afauth.auth.currentUser){
+    if(this.isAdmin){
       this.productService.addProduct(NewProduct);
       this.onReset();
     }else{
@@ -63,7 +65,16 @@ export class ProductFormComponent implements OnInit {
    }
 
    updateProduct(form:NgForm){
-      this.productService.updateProduct(this.formData.$key, this.formData);
+    let data = {
+      title: this.formData.title,
+      price: this.formData.price,
+      body: this.formData.body,
+      category: this.formData.category,
+      shortDescription: this.formData.shortDescription
+    }
+
+    let key: string = this.formData.$key;
+      this.productService.updateProduct(key, data);
    }
 
    onReset(){

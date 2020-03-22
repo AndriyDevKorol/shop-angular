@@ -16,7 +16,12 @@ export class ProductService {
   editProductEvent = this.editeProduct.asObservable();
   private addToCart: BehaviorSubject<Product[]> = new BehaviorSubject([]);
   addToCartEvent = this.addToCart.asObservable();
+  private detailsProduct: BehaviorSubject<Product[]> = new BehaviorSubject([]);
+  detailProductEvent = this.detailsProduct.asObservable();
+  private deleteFromCart: BehaviorSubject<Product[]> = new BehaviorSubject([]);
+  deleteFromCartEvent = this.deleteFromCart.asObservable();
   cartProducts: Product[] = [];
+  productDetails: Product[] = [];
 
 
   constructor(
@@ -37,21 +42,41 @@ export class ProductService {
     return this.products.remove(key);
   }
 
-  updateProduct(key:string, val:any){
-    return this.products.update(val, undefined);
+  updateProduct(key:string, val){
+    return this.products.update(key, val);
   }
 
   emitEditProduct(product: Product[]){
     this.editeProduct.next(product);
   }
 
+  emitDetailProduct(product: Product){
+    this.productDetails=[];
+    this.productDetails.push(product);
+    this.detailsProduct.next(this.productDetails);
+  }
+
   emitAddToCart(product: Product){
-    this.cartProducts.push(product);
-    this.addToCart.next(this.cartProducts);
+
+    let exist = this.cartProducts.includes(product);
+    if(!exist){
+      this.cartProducts.push(product);
+      this.addToCart.next(this.cartProducts);
+    }else{return exist};
   }
 
   clearCart(){
     this.cartProducts = [];
+    this.addToCart.next(this.cartProducts);
+  }
+
+  deleteCart(key){
+    console.log('key', key);
+    console.log('enter', this.cartProducts);
+
+    this.cartProducts = this.cartProducts.filter(item => {item.$key !== key});
+
+    console.log('out',this.cartProducts);
     this.addToCart.next(this.cartProducts);
   }
 }

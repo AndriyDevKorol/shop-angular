@@ -1,0 +1,98 @@
+@import '../../../styles/global/_colors.less';
+
+
+.danger{
+  background-color: @color-danger-btn;
+  color: @color-white !important;
+}
+
+.secondary{
+  background-color: @color-edit-btn;
+  color: @color-white !important;
+}
+
+.primary{
+  background-color: @color-warning-btn;
+  color: @color-white !important;
+}
+
+.buy{
+  background: linear-gradient(4deg, @color-red, transparent) ;
+  color: @color-white !important;
+}
+
+.productCard{
+  display: flex;
+  justify-content: space-between;
+  background-color: @color-white;
+  box-shadow: 10px 5px 10px #88888845;
+  border-radius: 10px;
+  border: 0.5px solid #88888838;
+}
+
+.card-body{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.section{
+  display: flex;
+  flex-direction: column;
+  min-width: 25%;
+}
+
+.transformed{
+  // width: 100px;
+	// height: 50px;
+	transform: skew(420deg);
+	background-color: @color-trnsformed;
+}
+
+.wider{
+  flex-grow: 2;
+}
+
+.cardHeader{
+  display: flex;
+  justify-content: space-between;
+  max-height: 3rem;
+  background: @color-gray-line-gradient;
+  border-bottom:none;
+}
+
+.button{
+  border-radius: 0.75rem;
+  color: #556b2ffa;
+}
+
+
+.flex-content{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.image{
+  flex-grow: 1;
+}
+
+.product-details,
+.price{
+  margin-top: 1rem;
+}
+
+.product-details{
+  flex-grow: 2;
+}
+
+.price{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.cena{
+  margin-top: 3rem;
+}
