@@ -1,3 +1,4 @@
+
 export const environment = {
   production: true,
   config: {
@@ -10,7 +11,7 @@ export const environment = {
     appId: "1:445703680065:web:f33d33d116e9cdfb7b96c0",
     measurementId: "G-T2WJDJGMJ7",
     SENDGRID_KEY: "bearer ",
-    SENGRID_URL: '',
+    SENGRID_URL: "",
   }
 };
 
