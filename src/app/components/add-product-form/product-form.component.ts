@@ -65,7 +65,16 @@ console.log('isAdmin',this.isAdmin);
    }
 
    updateProduct(form:NgForm){
-      this.productService.updateProduct(this.formData.$key, this.formData);
+    let data = {
+      title: this.formData.title,
+      price: this.formData.price,
+      body: this.formData.body,
+      category: this.formData.category,
+      shortDescription: this.formData.shortDescription
+    }
+
+    let key: string = this.formData.$key;
+      this.productService.updateProduct(key, data);
    }
 
    onReset(){
