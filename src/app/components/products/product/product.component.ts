@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/modules/Product';
 import { ProductService } from "../../../shared/services/product/product.service";
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 @Component({
@@ -12,12 +13,13 @@ export class ProductComponent implements OnInit {
 
   @Input('product') product: Product;
   editProductKey: string;
-  isAdmin = true;
+  isAdmin = this.afauth.auth.currentUser;
   products: Product[];
 
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private afauth: AngularFireAuth,
   ) { }
 
   ngOnInit(){

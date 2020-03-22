@@ -1,7 +1,13 @@
 
 <div class="main-content">
+  <div class="carousel">
+    <div class="carosel-bg">
+      <p>Сухі суміші</p>
+    </div>
+    <p>Сухі суміші</p>
+  </div>
   <div class="container">
-    <app-product-form class="add-form" (onAddProduct)="addProduct($event)" ></app-product-form>
+    <app-product-form class="add-form" (onAddProduct)="addProduct($event)" *ngIf="isAdmin" ></app-product-form>
     <div class="filter">
       <div class="filter-category">
         <label for="cars" class="category_lable">Категорія:</label>

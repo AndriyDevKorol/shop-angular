@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Product } from '../../modules/Product';
+import { ProductService } from '../product/product.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +11,15 @@ export class CartService {
   addToCartEvent = this.addToCart.asObservable();
   products: Product[] = [];
 
-  constructor( ) { }
+  constructor(
+    private productService: ProductService,
+  ) { }
 
-  // clearCart(){
-  //   this.products = [];
+  // onClearCart(){
+  //   this.productService.clearCart();
   // }
 
-  // getCart(){
+  // onDelete(key){
 
-  // }
-
-
-  // emitAddToCart(product: Product){
-  //   this.products.push(product);
-  //   this.addToCart.next(this.products);
   // }
 }

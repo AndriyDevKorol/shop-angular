@@ -18,8 +18,8 @@ export class CartComponent implements OnInit, OnDestroy {
 private submissionForm: AngularFirestoreCollection<any>;
 editProductKey: string;
 subscription: Subscription;
-products: Product[] = [];
 cartEventSubscription: Subscription;
+products: Product[] = [];
 pr:any[]=[];
 title = 'project';
 ourForm: FormGroup;
@@ -69,9 +69,9 @@ product: Product = {
   }
 
   hideRecipe(){
-    console.log('close');
     this.isShow = !this.isShow;
   }
+
 
   ngOnDestroy(): void {
     this.cartEventSubscription.unsubscribe();

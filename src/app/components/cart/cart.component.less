@@ -1,7 +1,10 @@
+@import '../../styles/global/_colors.less';
+
 .container{
   display: flex;
   flex-wrap: wrap;
-  padding-top: 2rem;
+  padding-top: 4rem;
+  justify-content: center;
 }
 
 .row{
@@ -11,8 +14,20 @@
 
 .clear-cart{
   position: absolute;
-  right: 100px;
+  right: 8rem;
+  width: 8rem;
   top: 5rem;
+  border-radius: 1rem;
+  background: @color-gray-line-gradient;
+}
+
+.createOrder{
+  position: absolute;
+  left: 24rem;
+  top: 5rem;
+  border-radius: 1rem;
+  width: 25rem;
+  background: @color-green-line-gradient;
 }
 
 .hidden{

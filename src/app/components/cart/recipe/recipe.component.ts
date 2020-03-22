@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/shared/modules/Product';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-recipe',
@@ -9,6 +10,8 @@ import { Product } from 'src/app/shared/modules/Product';
 export class RecipeComponent implements OnInit {
 
   @Input() product: Product[];
+  subscription: Subscription;
+  recipeEventSubscription: Subscription;
 
   constructor() { }
 
@@ -17,6 +20,9 @@ export class RecipeComponent implements OnInit {
   }
 
 
-  ngOndestroy(){}
+  ngOndestroy(){
+    console.log('destroy recipe');
+    this.recipeEventSubscription.unsubscribe();
+  }
 
 }

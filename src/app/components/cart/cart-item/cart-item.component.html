@@ -18,8 +18,8 @@
         <label >Категорія: {{product.category}}</label>
       </div>
       <div class="flex-content">
-        <div class="product-details">
-          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link">
+        <div class="product-details" >
+          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link" (click)="onDetailsProduct(product)">
             <p class="card-text">Деталі продукта:</p>
             <ul class="attribute-list">
               <li><p class="card-text">Категорія: {{product.category}}</p></li>
@@ -33,10 +33,10 @@
     <div class="section">
       <div class="cardHeader">
         <div class="buttons-section" >
-          <button class="button danger" *ngIf="isAdmin" (click)="onDelete(product.$key)">Delete</button>
-          <button class="button secondary" *ngIf="!editProductKey" (click)="onEdit(product)" >Edit</button>
-          <button class="button secondary" (click)="onReset()" *ngIf="editProductKey">Cancel</button>
-          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link"><button class="button primary">Details</button></a>
+          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link">
+            <button class="button primary" (click)="onDetailsProduct(product)">Details</button>
+          </a>
+          <button class="button danger" (click)="deleteItem(product.$key)">Delete</button>
         </div>
       </div>
       <div class="flex-content">

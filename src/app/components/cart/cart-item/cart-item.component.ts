@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/shared/modules/Product';
+import { ProductService } from 'src/app/shared/services/product/product.service';
 
 
 
@@ -10,12 +11,22 @@ import { Product } from 'src/app/shared/modules/Product';
 })
 export class CartItemComponent implements OnInit {
 
-  @Input('product') product: Product;
+  @Input('product') product: Product[];
+  products: Product[];
 
-  constructor() { }
+  constructor(
+    private productService: ProductService,
+  ) { }
 
   ngOnInit() {
-
+    console.log('ngOnInit');
+    this.products;
+  }
+  deleteItem(key):void{
+    this.productService.deleteCart(key);
   }
 
+  onDetailsProduct(product){
+    this.productService.emitDetailProduct(product);
+  }
 }

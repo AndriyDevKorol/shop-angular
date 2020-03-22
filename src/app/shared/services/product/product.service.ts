@@ -18,6 +18,8 @@ export class ProductService {
   addToCartEvent = this.addToCart.asObservable();
   private detailsProduct: BehaviorSubject<Product[]> = new BehaviorSubject([]);
   detailProductEvent = this.detailsProduct.asObservable();
+  private deleteFromCart: BehaviorSubject<Product[]> = new BehaviorSubject([]);
+  deleteFromCartEvent = this.deleteFromCart.asObservable();
   cartProducts: Product[] = [];
   productDetails: Product[] = [];
 
@@ -55,12 +57,26 @@ export class ProductService {
   }
 
   emitAddToCart(product: Product){
-    this.cartProducts.push(product);
-    this.addToCart.next(this.cartProducts);
+
+    let exist = this.cartProducts.includes(product);
+    if(!exist){
+      this.cartProducts.push(product);
+      this.addToCart.next(this.cartProducts);
+    }else{return exist};
   }
 
   clearCart(){
     this.cartProducts = [];
+    this.addToCart.next(this.cartProducts);
+  }
+
+  deleteCart(key){
+    console.log('key', key);
+    console.log('enter', this.cartProducts);
+
+    this.cartProducts = this.cartProducts.filter(item => {item.$key !== key});
+
+    console.log('out',this.cartProducts);
     this.addToCart.next(this.cartProducts);
   }
 }
