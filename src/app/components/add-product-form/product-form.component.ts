@@ -15,19 +15,21 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 export class ProductFormComponent implements OnInit {
 
-  public ccclass={"btn-color": true};
+  public ccclass = { 'btn-color': true };
   productKey: string;
   isAdmin = this.afauth.auth.currentUser;
 
 
   formData: Product = {
-    $key:'',
+    $key: '',
     title: '',
     price: 0,
     body: '',
-    category:'',
-    shortDescription:'',
+    category: '',
+    shortDescription: '',
   };
+  afStorage: any;
+  ref: any;
 
   constructor(
     private productService: ProductService,
@@ -38,25 +40,25 @@ export class ProductFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-console.log('isAdmin',this.isAdmin);
-    this.productService.editProductEvent.subscribe((product:any) => {
+console.log('isAdmin', this.isAdmin);
+this.productService.editProductEvent.subscribe((product: any) => {
       this.formData = product;
-    })
+    });
   }
 
-  onAddProduct (form:NgForm){
+  onAddProduct(form: NgForm) {
     const NewProduct: Product = {
       title: this.formData.title,
       price: this.formData.price,
       body: this.formData.body,
       category: this.formData.category,
       shortDescription: this.formData.shortDescription
-    }
-    if(this.isAdmin){
+    };
+    if (this.isAdmin) {
       this.productService.addProduct(NewProduct);
       this.onReset();
-    }else{
-      alert("You are not logged. Plaes log in!");
+    } else {
+      alert('You are not logged. Plaes log in!');
       this.router.navigate(['/login']);
     }
 
@@ -64,20 +66,30 @@ console.log('isAdmin',this.isAdmin);
     // this.firestore.collection('products').add(NewProduct);
    }
 
-   updateProduct(form:NgForm){
-    let data = {
+   updateProduct(form: NgForm) {
+    const data = {
       title: this.formData.title,
       price: this.formData.price,
       body: this.formData.body,
       category: this.formData.category,
       shortDescription: this.formData.shortDescription
-    }
+    };
 
-    let key: string = this.formData.$key;
-      this.productService.updateProduct(key, data);
+    const key: string = this.formData.$key;
+    this.productService.updateProduct(key, data);
    }
 
-   onReset(){
+  //  upload(event) {
+  //   // create a random id
+  //   const randomId = Math.random().toString(36).substring(2);
+  //   // create a reference to the storage bucket location
+  //   this.ref = this.afStorage.ref(randomId);
+  //   // the put method creates an AngularFireUploadTask
+  //   // and kicks off the upload
+  //   this.ref.put(event.target.files[0]);
+  // }
+
+   onReset() {
     this.productService.emitEditProduct([]);
    }
 }

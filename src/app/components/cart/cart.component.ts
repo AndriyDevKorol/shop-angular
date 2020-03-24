@@ -20,7 +20,7 @@ editProductKey: string;
 subscription: Subscription;
 cartEventSubscription: Subscription;
 products: Product[] = [];
-pr:any[]=[];
+pr: any[] = [];
 title = 'project';
 ourForm: FormGroup;
 submitting = false;
@@ -28,16 +28,16 @@ submitted = false;
 
 
 product: Product = {
-  $key:'',
+  $key: '',
   title: '',
   price: 0,
   body: '',
   category: '',
-  shortDescription:''
+  shortDescription: ''
 };
 
   isValidURL: any;
-  isShow:boolean;
+  isShow: boolean;
 
   constructor(
     private productService: ProductService,
@@ -47,28 +47,28 @@ product: Product = {
     private emailSender: EmailSenderService,
   ) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.isShow = false;
-     this.cartEventSubscription = this.productService.addToCartEvent.subscribe((products: Product[]) => {
+    this.cartEventSubscription = this.productService.addToCartEvent.subscribe((products: Product[]) => {
         this.products = products;
-      })
-      this.submissionForm = this.firestore.collection('submissions');
-      this.ourForm = this.fb.group({
-        email: ['', [Validators.required, Validators.email]],
-        subject: ['', Validators.required],
-        email_body: ['', Validators.required]
       });
+      // this.submissionForm = this.firestore.collection('submissions');
+      // this.ourForm = this.fb.group({
+      //   email: ['', [Validators.required, Validators.email]],
+      //   subject: ['', Validators.required],
+      //   email_body: ['', Validators.required]
+      // });
   }
 
-  clearCart(){
+  clearCart() {
     this.productService.clearCart();
   }
 
-  showRecipe(){
+  showRecipe() {
     this.isShow = !this.isShow;
   }
 
-  hideRecipe(){
+  hideRecipe() {
     this.isShow = !this.isShow;
   }
 
@@ -77,7 +77,7 @@ product: Product = {
     this.cartEventSubscription.unsubscribe();
   }
 
-  submitData(form: NgForm){
+  submitData(form: NgForm) {
     // const value = form.value;
     // const name = value.name;
     // const email = value.email;
@@ -88,15 +88,16 @@ product: Product = {
 
     // let formRequest = { name, email, subject, message};
 
-    let commonPost = JSON.stringify({
-      "personalizations":[{"to":[{"email":"edsdvgsd@mailinator.com","name":"John Doe"}, {"email":"andriykorol@yahoo.com","name":"@@@ Doe"}],
-                "subject":"wqgggHello, World! fewefewf"}],
-      "content": [{"type": "text/plain", "value": "Heya!"}],
-      "from":{"email":"napuwunapuwu@gmail.com","name":"Sam Smith"}
-      })
+//     let commonPost = JSON.stringify({
+// tslint:disable-next-line:max-line-length
+//       "personalizations":[{"to":[{"email":"edsdvgsd@mailinator.com","name":"John Doe"}, {"email":"andriykorol@yahoo.com","name":"@@@ Doe"}],
+//                 "subject":"wqgggHello, World! fewefewf"}],
+//       "content": [{"type": "text/plain", "value": "Heya!"}],
+//       "from":{"email":"napuwunapuwu@gmail.com","name":"Sam Smith"}
+//       })
 
-this.emailSender.sendMessage(commonPost).subscribe(res => console.log(res));
-alert("Email was sent");
+// this.emailSender.sendMessage(commonPost).subscribe(res => console.log(res));
+// alert("Email was sent");
     // form.reset();
   }
 

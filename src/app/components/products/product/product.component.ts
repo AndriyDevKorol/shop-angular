@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/modules/Product';
-import { ProductService } from "../../../shared/services/product/product.service";
+import { ProductService } from '../../../shared/services/product/product.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 
@@ -11,7 +11,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class ProductComponent implements OnInit {
 
-  @Input('product') product: Product;
+  // tslint:disable-next-line:no-input-rename
+  @Input('product')product: Product;
   editProductKey: string;
   isAdmin = this.afauth.auth.currentUser;
   products: Product[];
@@ -22,37 +23,40 @@ export class ProductComponent implements OnInit {
     private afauth: AngularFireAuth,
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.editEventListener();
   }
 
-  addToCart(product:Product):void{
+  addToCart(product: Product): void {
     this.productService.emitAddToCart(product);
+    alert('Продукт успішно додано в корзину');
   }
 
-  onDelete($key: string):void{
+  onDelete($key: string): void {
     this.productService.onDelete(this.product.$key);
+    alert('Продукт буде видалено');
   }
 
-  onEdit(product:Product[]):void{
+  onEdit(product: Product[]): void {
      this.productService.emitEditProduct(product);
   }
 
-  onReset():void{
+  onReset(): void {
      this.productService.emitEditProduct([]);
   }
 
-  editEventListener(){
+  editEventListener() {
     this.productService.editProductEvent.subscribe((product: any) => {
-      if(product.$key === this.product.$key) {
+      if (product.$key === this.product.$key) {
         this.editProductKey = product.$key;
-      }else{
-        this.editProductKey = ''
+      } else {
+        this.editProductKey = '';
       }
-    })
+    });
+    this.onReset();
   }
 
-  onDetailsProduct(product: Product){
+  onDetailsProduct(product: Product) {
     this.productService.emitDetailProduct(product);
   }
 }
