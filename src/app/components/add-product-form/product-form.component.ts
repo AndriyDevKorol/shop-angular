@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Inject} from '@angular/core';
 import { Product } from '../../shared/modules/Product';
 import { NgForm } from '@angular/forms';
 import { ProductService } from '../../shared/services/product/product.service';
@@ -18,7 +18,7 @@ export class ProductFormComponent implements OnInit {
   public ccclass = { 'btn-color': true };
   productKey: string;
   isAdmin = this.afauth.auth.currentUser;
-
+  selectedImage: any = null;
 
   formData: Product = {
     $key: '',
@@ -28,23 +28,46 @@ export class ProductFormComponent implements OnInit {
     category: '',
     shortDescription: '',
   };
-  afStorage: any;
-  ref: any;
+
 
   constructor(
     private productService: ProductService,
     // private firestore: AngularFirestore,
     private router: Router,
-    private afauth: AngularFireAuth
+    private afauth: AngularFireAuth,
+    // private storage: AngularFireStorage,
+    // private fileService: FileService
 
   ) { }
 
   ngOnInit() {
-console.log('isAdmin', this.isAdmin);
-this.productService.editProductEvent.subscribe((product: any) => {
+  console.log('isAdmin', this.isAdmin);
+  // this.fileService.getImageDetailList();
+  this.productService.editProductEvent.subscribe((product: any) => {
       this.formData = product;
     });
   }
+
+  showPreview(event: any) {
+    this.selectedImage = event.target.files[0];
+    }
+  // save() {
+  //     const name = this.selectedImage.name;
+  //     const fileRef = this.storage.ref(name);
+  //     this.storage.upload(name, this.selectedImage)
+  //     .snapshotChanges().pipe(
+  //       // finalize(() => {
+  //       //   fileRef.getDownloadURL().subscribe((url) => {
+  //       //     this.url = url;
+  //       //     this.fileService.insertImageDetails(this.id,this.url);
+  //       //     alert('Upload Successful');
+  //       //   });
+  //       // })
+  //     ).subscribe();
+  //   }
+  // view(){
+  //   this.fileService.getImage(this.file);
+  // }
 
   onAddProduct(form: NgForm) {
     const NewProduct: Product = {

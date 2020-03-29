@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Product } from '../../modules/Product';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { AngularFirestoreDocument } from 'angularfire2/firestore';
@@ -22,10 +22,13 @@ export class ProductService {
   deleteFromCartEvent = this.deleteFromCart.asObservable();
   cartProducts: Product[] = [];
   productDetails: Product[] = [];
+  fileList: any[];
+  imageDetailList: AngularFireList<any>;
 
 
   constructor(
     public db: AngularFireDatabase,
+    @Inject(AngularFireDatabase) private firebase: AngularFireDatabase
   ) {
         this.products = db.list(this.dbPath);
     }
@@ -46,11 +49,43 @@ export class ProductService {
     return this.products.update(key, val);
   }
 
-  emitEditProduct(product: Product[]) {
+  getImageDetailList() {
+    this.imageDetailList = this.firebase.list('imageDetails');
+    }
+
+  getImage(value: any) {
+    this.imageDetailList.snapshotChanges().subscribe(
+    list => {
+      this.fileList = list.map(item => item.payload.val());
+     }
+    );
+  }
+
+  // showPreview(event: any) {
+  //   this.selectedImage = event.target.files[0];
+  //   }
+  //   save() {
+  //     var name = this.selectedImage.name;
+  //     const fileRef = this.storage.ref(name);
+  //     this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
+  //       finalize(() => {
+  //         fileRef.getDownloadURL().subscribe((url) => {
+  //           this.url = url;
+  //           this.fileService.insertImageDetails(this.id,this.url);
+  //           alert('Upload Successful');
+  //         })
+  //         })
+  //       ).subscribe();
+  //     }
+  //     view() {
+  //     this.fileService.getImage(this.file);
+  //   }
+
+    emitEditProduct(product: Product[]) {
     this.editeProduct.next(product);
   }
 
-  emitDetailProduct(product: Product) {
+    emitDetailProduct(product: Product) {
     this.productDetails = [];
     this.productDetails.push(product);
     this.detailsProduct.next(this.productDetails);
@@ -70,10 +105,11 @@ export class ProductService {
     this.addToCart.next(this.cartProducts);
   }
 
-  deleteCart(key) {
+  deleteCart(key: string) {
     console.log('key', key);
     console.log('enter', this.cartProducts);
 
+    // tslint:disable-next-line:no-unused-expression
     this.cartProducts = this.cartProducts.filter(item => { item.$key !== key; });
 
     console.log('out', this.cartProducts);

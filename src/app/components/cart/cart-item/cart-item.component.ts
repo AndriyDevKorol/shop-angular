@@ -11,7 +11,8 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 })
 export class CartItemComponent implements OnInit {
 
-  @Input('product') product: Product[];
+  // tslint:disable-next-line:no-input-rename
+  @Input('product')product: Product[];
   products: Product[];
 
   constructor(
@@ -20,13 +21,19 @@ export class CartItemComponent implements OnInit {
 
   ngOnInit() {
     console.log('ngOnInit');
+    this.getProducts();
+  }
+
+  getProducts() {
+    // tslint:disable-next-line:no-unused-expression
     this.products;
   }
-  deleteItem(key):void{
+
+  deleteItem(key): void {
     this.productService.deleteCart(key);
   }
 
-  onDetailsProduct(product){
+  onDetailsProduct(product) {
     this.productService.emitDetailProduct(product);
   }
 }

@@ -32,6 +32,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { SharedModule } from './shared/shared.module';
 import { AuthService } from './shared/services/auth/auth.service';
 import { SearchComponent } from './shared/components/search/search.component';
@@ -84,6 +85,8 @@ import { RecipeComponent } from './components/cart/recipe/recipe.component';
     AngularFireLite.forRoot(environment.config),
     AngularFireModule.initializeApp(environment.config),
     AngularFirestoreModule.enablePersistence(),
+    AngularFireStorageModule,
+    // FileService,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     SharedModule,

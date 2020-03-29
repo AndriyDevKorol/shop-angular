@@ -33,19 +33,19 @@
     <div class="section">
       <div class="cardHeader">
         <div class="buttons-section" >
-          <button class="button danger" *ngIf="isAdmin" (click)="onDelete(product.$key)">Delete</button>
-          <button class="button secondary" *ngIf="isAdmin" (click)="onEdit(product)"  >Edit</button>
-          <button class="button secondary" (click)="onReset()" *ngIf="editProductKey">Cancel</button>
-          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link"><button class="button primary" (click)="onDetailsProduct(product)">Details</button></a>
+          <button class="button danger" *ngIf="isAdmin" (click)="onDelete(product.$key)">Видалити</button>
+          <button class="button secondary" *ngIf="isAdmin" (click)="onEdit(product)"  >Редагувати</button>
+          <button class="button secondary" (click)="onReset()" *ngIf="editProductKey">Видалити</button>
+          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link"><button class="button primary" (click)="onDetailsProduct(product)">Деталі</button></a>
         </div>
       </div>
       <div class="flex-content">
         <div class="price">
           <div class="cena text-center-xs">{{product.price}} грн/шт </div>
           <span class="q-field">
-            <span  class="down-quantity icon icon-angle-left"></span>
-            <input name="quantity" type="text" value="1" class="">
-            <span class="up-quantity icon icon-angle-right"></span>
+            <i class="material-icons">arrow_left</i>
+            <span>1234</span>
+            <i class="material-icons">arrow_right</i>
           </span>
           <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
       </div>

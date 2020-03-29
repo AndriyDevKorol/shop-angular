@@ -2,17 +2,19 @@
     <span class="mr-5" ><a [routerLink]="['']" class="logo">MiшBud</a></span>
     <div class="contacts">
       <p>097-565-8218 <br>097-565-8218<br>097-565-8218 </p>
-      <!-- <p>097-565-8218</p>
-      <p>097-565-8218</p> -->
     </div>
     <div class="working-hour">
       <p>понеділок-неділя:<br>
       8.00 - 21.00<br>
       (без визідних)</p>
     </div>
-    <nav class="nav">
-      <a [routerLink]="['/cart']"  routerLinkActive="active"  class="link">Корзина</a>
-      <a [routerLink]="['/login']" routerLinkActive="active"  class="link">login</a>
+    <nav class="nav-btn">
+      <span class="material-icons" [routerLink]="['/cart']"  routerLinkActive="active">
+        <a class="link">shopping_cart</a>
+        </span>
+        <span class="material-icons" [routerLink]="['/login']" routerLinkActive="active">
+        <a class="link">face</a>
+        </span>
       <!-- <a [routerLink]="['/signup']" routerLinkActive="active"  class="link">signup</a> -->
     </nav>
 </mat-toolbar>

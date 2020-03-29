@@ -1,7 +1,7 @@
 <div class="container">
   <div *ngIf="!products.length "><p>Корзина пуста</p></div>
   <div class="row" >
-    <button (click)="clearCart()" *ngIf="products.length > 0" class="clear-cart">Clear Cart</button>
+    <button (click)="clearCart()" *ngIf="products.length > 0" class="clear-cart">Очистити корзину</button>
     <button (click)="showRecipe()" *ngIf="products.length > 0" class="createOrder">Зробити замовлення</button>
 
     <app-cart-item class="cart-item" *ngFor="let product of products" [product]="product"></app-cart-item>
@@ -34,6 +34,5 @@
         <div><button (click)="hideRecipe()">Відправити замовлення</button></div>
       </div>
     </div>
-
   </div>
 </div>
