@@ -20,11 +20,10 @@ editProductKey: string;
 subscription: Subscription;
 cartEventSubscription: Subscription;
 products: Product[] = [];
-pr: any[] = [];
-title = 'project';
 ourForm: FormGroup;
 submitting = false;
 submitted = false;
+total = 0;
 
 
 product: Product = {
@@ -50,7 +49,9 @@ product: Product = {
   ngOnInit() {
     this.isShow = false;
     this.cartEventSubscription = this.productService.addToCartEvent.subscribe((products: Product[]) => {
-        this.products = products;
+      this.products = products;
+      console.log('tt - ', this.total);
+      this.products.map(pr => this.total = (pr.count * pr.price) + this.total);
       });
       // this.submissionForm = this.firestore.collection('submissions');
       // this.ourForm = this.fb.group({
@@ -62,6 +63,7 @@ product: Product = {
 
   clearCart() {
     this.productService.clearCart();
+    this.total = 0;
   }
 
   showRecipe() {

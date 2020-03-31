@@ -20,10 +20,12 @@ export class ProductService {
   detailProductEvent = this.detailsProduct.asObservable();
   private deleteFromCart: BehaviorSubject<Product[]> = new BehaviorSubject([]);
   deleteFromCartEvent = this.deleteFromCart.asObservable();
+  count: number;
   cartProducts: Product[] = [];
   productDetails: Product[] = [];
   fileList: any[];
   imageDetailList: AngularFireList<any>;
+
 
 
   constructor(
@@ -60,6 +62,7 @@ export class ProductService {
      }
     );
   }
+
 
   // showPreview(event: any) {
   //   this.selectedImage = event.target.files[0];

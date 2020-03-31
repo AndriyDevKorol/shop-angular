@@ -43,9 +43,9 @@
         <div class="price">
           <div class="cena text-center-xs">{{product.price}} грн/шт </div>
           <span class="q-field">
-            <span  class="down-quantity icon icon-angle-left"></span>
-            <input name="quantity" type="text" value="1" class="">
-            <span class="up-quantity icon icon-angle-right"></span>
+            <i class="material-icons" (click)="onCount(-1)">arrow_left</i>
+            <span>{{product.count}}</span>
+            <i class="material-icons" (click)="onCount(1)">arrow_right</i>
           </span>
           <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
       </div>

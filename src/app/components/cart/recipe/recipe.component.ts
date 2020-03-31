@@ -9,20 +9,24 @@ import { Subscription } from 'rxjs';
 })
 export class RecipeComponent implements OnInit {
 
-  @Input() product: Product[];
+  @Input()
+  product: Product[];
   subscription: Subscription;
   recipeEventSubscription: Subscription;
 
   constructor() { }
 
   ngOnInit() {
-    console.log('recipe')
+    console.log('recipe');
+    // this.total = this.total + (this.product.count * this.product.price);
   }
 
 
-  ngOndestroy(){
+  ngOndestroy() {
     console.log('destroy recipe');
     this.recipeEventSubscription.unsubscribe();
   }
+
+
 
 }

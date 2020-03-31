@@ -12,8 +12,10 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 export class CartItemComponent implements OnInit {
 
   // tslint:disable-next-line:no-input-rename
-  @Input('product')product: Product[];
+  @Input('product')
+  product: Product;
   products: Product[];
+
 
   constructor(
     private productService: ProductService,
@@ -33,7 +35,16 @@ export class CartItemComponent implements OnInit {
     this.productService.deleteCart(key);
   }
 
-  onDetailsProduct(product) {
+  onDetailsProduct(product: Product) {
     this.productService.emitDetailProduct(product);
+  }
+
+  onCount(counter: number) {
+    console.log('c', counter);
+    let prCount = this.product.count;
+    prCount = prCount + counter;
+    if (prCount < 0) {
+      prCount = 0;
+    }
   }
 }

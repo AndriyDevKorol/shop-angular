@@ -41,11 +41,11 @@
       </div>
       <div class="flex-content">
         <div class="price">
-          <div class="cena text-center-xs">{{product.price}} грн/шт </div>
+          <div class="cena text-center-xs">{{product.price }} грн/шт </div>
           <span class="q-field">
-            <i class="material-icons">arrow_left</i>
-            <span>1234</span>
-            <i class="material-icons">arrow_right</i>
+            <i class="material-icons" (click)="onCount(-1)">arrow_left</i>
+            <span>{{countVal}}</span>
+            <i class="material-icons" (click)="onCount(1)">arrow_right</i>
           </span>
           <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
       </div>

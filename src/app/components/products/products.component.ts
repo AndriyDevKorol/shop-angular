@@ -24,15 +24,16 @@ export class ProductsComponent implements OnInit {
   }
 
 
- getProductList(){
+ getProductList() {
   this.productService
   .getProducts().snapshotChanges()
   .subscribe(data => {
-    this.products = data.map(e=>{
+    this.products = data.map(e => {
       return {
         $key: e.key,
         ...e.payload.val()
       }
-    }).reverse()});
+    }).reverse();
+  });
  }
 }

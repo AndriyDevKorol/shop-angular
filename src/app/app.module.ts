@@ -90,7 +90,6 @@ import { RecipeComponent } from './components/cart/recipe/recipe.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     SharedModule,
-
   ],
   providers: [
     ProductService,
