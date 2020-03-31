@@ -10,7 +10,7 @@ const URL = environment.config.SENGRID_URL;
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': KEY
+    Authorization: KEY
   })
 };
 
