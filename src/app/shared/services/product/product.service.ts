@@ -108,14 +108,10 @@ export class ProductService {
     this.addToCart.next(this.cartProducts);
   }
 
-  deleteCart(key: string) {
-    console.log('key', key);
-    console.log('enter', this.cartProducts);
-
-    // tslint:disable-next-line:no-unused-expression
-    this.cartProducts = this.cartProducts.filter(item => { item.$key !== key; });
-
-    console.log('out', this.cartProducts);
+  deleteCart(prKey: string) {
+    this.cartProducts = this.cartProducts.filter(item => {
+      return item.$key !== prKey;
+    });
     this.addToCart.next(this.cartProducts);
   }
 }

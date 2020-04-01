@@ -31,8 +31,8 @@ export class CartItemComponent implements OnInit {
     this.products;
   }
 
-  deleteItem(key): void {
-    this.productService.deleteCart(key);
+  deleteItem(item): void {
+    this.productService.deleteCart(item);
   }
 
   onDetailsProduct(product: Product) {
