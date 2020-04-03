@@ -41,7 +41,6 @@ export class ProductFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  console.log('isAdmin', this.isAdmin);
   // this.fileService.getImageDetailList();
   this.productService.editProductEvent.subscribe((product: any) => {
       this.formData = product;

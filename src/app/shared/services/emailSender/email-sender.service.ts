@@ -26,7 +26,25 @@ export class EmailSenderService {
   constructor(private Http: HttpClient) {}
 
 
-  sendMessage(body: any) {
+  sendMessage(contentBody: any, name: string) {
+
+    const body = {
+      personalizations: [{
+        to: [{
+          email: 'napuwunapuwu@gmail.com',
+          name: 'John Doe'
+        }],
+        subject: `Замовлення `
+      }],
+      content: [{
+        type: 'text/html',
+        value: contentBody
+      }
+    ],
+      from: {
+        email: 'napuwunapuwu@gmail.com',
+        name: 'TEST Smith'}
+      };
 
     return this.Http.post(this.ROOT_URL, body, httpOptions);
   }

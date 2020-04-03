@@ -29,7 +29,6 @@
         <textarea type="text" id="body" class="form-control"  [(ngModel)] = "formData.body" name="body" required></textarea>
       </div>
     </div>
-
   </div>
   <div class="buttons">
     <button class="btn btn-secondary" [hidden]="form.invalid" [disabled]="form.invalid" *ngIf="formData"(click)="onReset()" >Відміна</button>
