@@ -17,7 +17,8 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     public productService: ProductService,
-    private afauth: AngularFireAuth, ) { }
+    private afauth: AngularFireAuth
+    ) { }
 
   ngOnInit() {
     this.getProductList();
@@ -32,7 +33,7 @@ export class ProductsComponent implements OnInit {
       return {
         $key: e.key,
         ...e.payload.val()
-      }
+      };
     }).reverse();
   });
  }
