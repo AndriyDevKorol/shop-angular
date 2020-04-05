@@ -5,6 +5,9 @@ import { ProductService } from '../../shared/services/product/product.service';
 // import { AngularFirestore } from 'angularfire2/firestore';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { FirebaseStoreService } from 'src/app/shared/services/firebaseStore/firebase-store.service';
+import { finalize } from 'rxjs/operators';
 
 
 @Component({
@@ -16,14 +19,18 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class ProductFormComponent implements OnInit {
 
   public ccclass = { 'btn-color': true };
-  productKey: string;
   isAdmin = this.afauth.auth.currentUser;
   selectedImage: any = null;
+  url: string;
+  id: string;
+  file: string;
+  pr: Product[];
 
   formData: Product = {
     $key: '',
     title: '',
     price: 0,
+    imgUrl: '',
     body: '',
     category: '',
     shortDescription: '',
@@ -31,18 +38,16 @@ export class ProductFormComponent implements OnInit {
 
 
   constructor(
+    @Inject(AngularFireStorage) private storage: AngularFireStorage,
+    @Inject(FirebaseStoreService) private firebaseStoraService: FirebaseStoreService,
     private productService: ProductService,
-    // private firestore: AngularFirestore,
     private router: Router,
-    private afauth: AngularFireAuth,
-    // private storage: AngularFireStorage,
-    // private fileService: FileService
-
+    private afauth: AngularFireAuth
   ) { }
 
   ngOnInit() {
-  // this.fileService.getImageDetailList();
-  this.productService.editProductEvent.subscribe((product: any) => {
+    // this.firebaseStoraService.getImageDetailList();
+    this.productService.editProductEvent.subscribe((product: any) => {
       this.formData = product;
     });
   }
@@ -50,33 +55,35 @@ export class ProductFormComponent implements OnInit {
   showPreview(event: any) {
     this.selectedImage = event.target.files[0];
     }
-  // save() {
-  //     const name = this.selectedImage.name;
-  //     const fileRef = this.storage.ref(name);
-  //     this.storage.upload(name, this.selectedImage)
-  //     .snapshotChanges().pipe(
-  //       // finalize(() => {
-  //       //   fileRef.getDownloadURL().subscribe((url) => {
-  //       //     this.url = url;
-  //       //     this.fileService.insertImageDetails(this.id,this.url);
-  //       //     alert('Upload Successful');
-  //       //   });
-  //       // })
-  //     ).subscribe();
-  //   }
-  // view(){
-  //   this.fileService.getImage(this.file);
-  // }
+
+  saveImg() {
+    const name = this.selectedImage.name;
+    const fileRef = this.storage.ref(name);
+    this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url) => {
+          this.url = url;
+          // this.firebaseStoraService.insertImageDetails(this.id, this.url);
+          alert('Upload Successful');
+        });
+      })
+    ).subscribe();
+  }
 
   onAddProduct(form: NgForm) {
     const NewProduct: Product = {
       title: this.formData.title,
       price: this.formData.price,
+      imgUrl: this.url,
       body: this.formData.body,
       category: this.formData.category,
       shortDescription: this.formData.shortDescription
     };
+
     if (this.isAdmin) {
+      console.log('fdf', this.url);
+      // this.saveImg();
+
       this.productService.addProduct(NewProduct);
       this.onReset();
     } else {
@@ -92,6 +99,7 @@ export class ProductFormComponent implements OnInit {
     const data = {
       title: this.formData.title,
       price: this.formData.price,
+      imgUrl: this.url,
       body: this.formData.body,
       category: this.formData.category,
       shortDescription: this.formData.shortDescription
@@ -101,17 +109,14 @@ export class ProductFormComponent implements OnInit {
     this.productService.updateProduct(key, data);
    }
 
-  //  upload(event) {
-  //   // create a random id
-  //   const randomId = Math.random().toString(36).substring(2);
-  //   // create a reference to the storage bucket location
-  //   this.ref = this.afStorage.ref(randomId);
-  //   // the put method creates an AngularFireUploadTask
-  //   // and kicks off the upload
-  //   this.ref.put(event.target.files[0]);
-  // }
-
    onReset() {
     this.productService.emitEditProduct([]);
    }
+
+  view() {
+  console.log(this.id);
+  console.log(this.firebaseStoraService.getImageDetailList());
+
+  this.firebaseStoraService.getImage(this.file);
+  }
 }
