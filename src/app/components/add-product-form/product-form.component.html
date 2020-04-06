@@ -5,8 +5,11 @@
       <div class="form-group">
         <!-- <input type="text" placeholder="Save with Key" name="id" [(ngModel)]="id">
         <br><br> -->
-        <input type="file" (change)="showPreview($event)" >
-        <button (click)="saveImg()">Save</button>
+        <div class="upload-form">
+          <input type="file" (change)="showPreview($event)" >
+          <button (click)="saveImg()" >Зберегти</button>
+        </div>
+
 
         <!-- <input type="text" name="file" [(ngModel)]="file" placeholder="Enter Unique Search Key">
         <button (click)="view()">View</button> -->
@@ -36,7 +39,7 @@
     </div>
   </div>
   <div class="buttons">
-    <button class="btn btn-secondary" [hidden]="form.invalid" [disabled]="form.invalid" *ngIf="formData"(click)="onReset()" >Відміна</button>
+    <button class="btn btn-secondary" [hidden]="form.invalid" [disabled]="form.invalid" *ngIf="formData" (click)="onReset()" >Відміна</button>
     <button class="btn btn-primary" [disabled]="form.invalid" *ngIf="!formData.$key" type="submit" (click)="onAddProduct()">Зберегти</button>
   <button [ngClass]="ccclass" *ngIf="formData.$key" (click)="updateProduct()">Редагувати</button>
 

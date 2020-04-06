@@ -12,14 +12,14 @@ export class ProductDetailsComponent implements OnInit {
 
   detailsEventSubscription: Subscription;
   products: Product[];
-
+  countVal = 1;
   product: Product = {
-    $key:'',
+    $key: '',
     title: '',
     price: 0,
     body: '',
     category: '',
-    shortDescription:''
+    shortDescription: ''
   };
 
   constructor(
@@ -29,12 +29,18 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit() {
     this.detailsEventSubscription = this.productService.detailProductEvent.subscribe((product: Product[])=>{
       console.log(product);
-      this.products = product
-    })
+      this.products = product;
+    });
   }
 
-  ngOnDestroy(): void {
-    this.detailsEventSubscription.unsubscribe();
+  addToCart(product: Product): void {
+    this.product.count = this.countVal;
+    this.productService.emitAddToCart(product);
+    alert('Продукт успішно додано в корзину');
   }
+
+  // ngOnDestroy(): void {
+  //   this.detailsEventSubscription.unsubscribe();
+  // }
 
 }
