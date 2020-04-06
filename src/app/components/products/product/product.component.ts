@@ -32,7 +32,6 @@ export class ProductComponent implements OnInit {
 
   addToCart(product: Product): void {
     this.product.count = this.countVal;
-    console.log('pr -', this.product);
     this.productService.emitAddToCart(product);
     alert('Продукт успішно додано в корзину');
   }

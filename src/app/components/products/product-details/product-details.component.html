@@ -1,7 +1,7 @@
-<app-cart-item class="cart-item" *ngFor="let product of products" [product]="product"  ></app-cart-item>
+<!-- <app-cart-item class="cart-item" *ngFor="let product of products" [product]="product"  ></app-cart-item> -->
 
-<!--
-<div class="productCard" *ngIf="product">
+
+<div class="productCard" *ngFor="let product of products" >
   <div class="card-body" (onAddNewProduct)="onAddNewPost($event)" >
     <div class="section">
       <div class="cardHeader">
@@ -10,7 +10,7 @@
       <div class="flex-content">
         <div class="image">
           <a class="imgages-view" href="">
-            <img src="https://source.unsplash.com/random/150x150" alt="product" className="card-img-top" />
+           <img src={{product.imgUrl}} alt="product" class="card-img" />
           </a>
         </div>
       </div>
@@ -34,12 +34,12 @@
     </div>
     <div class="section">
       <div class="cardHeader">
-        <div class="buttons-section" >
+        <!-- <div class="buttons-section" >
           <button class="button danger" *ngIf="isAdmin" (click)="onDelete(product.$key)">Delete</button>
           <button class="button secondary" *ngIf="!editProductKey" (click)="onEdit(product)" >Edit</button>
           <button class="button secondary" (click)="onReset()" *ngIf="editProductKey">Cancel</button>
           <a [routerLink]="['/product-details']" routerLinkActive="active" class="link"><button class="button primary">Details</button></a>
-        </div>
+        </div> -->
       </div>
       <div class="flex-content">
         <div class="price">
@@ -49,10 +49,9 @@
             <input name="quantity" type="text" value="1" class="">
             <span class="up-quantity icon icon-angle-right"></span>
           </span>
-          <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
+          <button [routerLink]="['']" class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
       </div>
     </div>
   </div>
 </div>
 
- -->

@@ -8,7 +8,7 @@
       <div class="flex-content">
         <div class="image">
           <a class="imgages-view" href="">
-            <img src="https://source.unsplash.com/random/150x150" alt="product" className="card-img-top" />
+            <img src={{product.imgUrl}} alt="product" class="card-img" />
           </a>
         </div>
       </div>
@@ -35,7 +35,7 @@
         <div class="buttons-section" >
           <button class="button danger" *ngIf="isAdmin" (click)="onDelete(product.$key)">Видалити</button>
           <button class="button secondary" *ngIf="isAdmin" (click)="onEdit(product)"  >Редагувати</button>
-          <button class="button secondary" (click)="onReset()" *ngIf="editProductKey">Видалити</button>
+          <button class="button editbtn" (click)="onReset()" *ngIf="editProductKey">Відмінити</button>
           <a [routerLink]="['/product-details']" routerLinkActive="active" class="link"><button class="button primary" (click)="onDetailsProduct(product)">Деталі</button></a>
         </div>
       </div>

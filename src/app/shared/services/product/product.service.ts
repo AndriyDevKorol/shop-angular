@@ -22,20 +22,17 @@ export class ProductService {
   deleteFromCartEvent = this.deleteFromCart.asObservable();
   count: number;
   cartProducts: Product[] = [];
-  productDetails: Product[] = [];
-  fileList: any[];
-  imageDetailList: AngularFireList<any>;
-
+  productDetails: any;
 
 
   constructor(
-    public db: AngularFireDatabase,
-    @Inject(AngularFireDatabase) private firebase: AngularFireDatabase
+    public db: AngularFireDatabase
   ) {
         this.products = db.list(this.dbPath);
     }
 
   getProducts() {
+
      return this.products;
   }
 
@@ -50,39 +47,6 @@ export class ProductService {
   updateProduct(key: string, val) {
     return this.products.update(key, val);
   }
-
-  getImageDetailList() {
-    this.imageDetailList = this.firebase.list('imageDetails');
-    }
-
-  getImage(value: any) {
-    this.imageDetailList.snapshotChanges().subscribe(
-    list => {
-      this.fileList = list.map(item => item.payload.val());
-     }
-    );
-  }
-
-
-  // showPreview(event: any) {
-  //   this.selectedImage = event.target.files[0];
-  //   }
-  //   save() {
-  //     var name = this.selectedImage.name;
-  //     const fileRef = this.storage.ref(name);
-  //     this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
-  //       finalize(() => {
-  //         fileRef.getDownloadURL().subscribe((url) => {
-  //           this.url = url;
-  //           this.fileService.insertImageDetails(this.id,this.url);
-  //           alert('Upload Successful');
-  //         })
-  //         })
-  //       ).subscribe();
-  //     }
-  //     view() {
-  //     this.fileService.getImage(this.file);
-  //   }
 
     emitEditProduct(product: Product[]) {
     this.editeProduct.next(product);
@@ -115,3 +79,5 @@ export class ProductService {
     this.addToCart.next(this.cartProducts);
   }
 }
+
+

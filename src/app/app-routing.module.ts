@@ -1,7 +1,7 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { CartComponent } from "./components/cart/cart.component";
+import { CartComponent } from './components/cart/cart.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { SignupComponent } from './shared/components/signup/signup.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'product-details', component: ProductDetailsComponent},
 
-  {path: "**", component: PageNotFoundComponent}
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
@@ -30,4 +30,4 @@ export const routingComponent = [
   SignupComponent,
   PageNotFoundComponent,
   ProductDetailsComponent
-]
+];
