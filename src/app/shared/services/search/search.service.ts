@@ -3,7 +3,7 @@ import {AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { AngularFirestoreDocument } from 'angularfire2/firestore';
 
 import { Product } from 'src/app/shared/modules/Product';
-import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
