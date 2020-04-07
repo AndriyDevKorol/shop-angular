@@ -8,23 +8,23 @@ import { Component, OnInit } from '@angular/core';
 export class AlertComponent implements OnInit {
 
   alertMsg: string;
-  alertError: boolean = true;
-  alertInfo: boolean = false;
+  alertError = true;
+  alertInfo = false;
   currentClasses = {};
 
   constructor() { }
 
   ngOnInit() {
     this.setClasses();
-    this.alertMsg='Some error!'
+    this.alertMsg = 'Some error!';
   }
 
-setClasses(){
+setClasses() {
   this.currentClasses = {
     'alert-danger': this.alertError,
     'alert-info': this.alertInfo
 
-  }
+  };
 }
 
 }

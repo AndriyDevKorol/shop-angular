@@ -8,7 +8,7 @@ import { Product } from '../../modules/Product';
 })
 export class SearchComponent implements OnInit {
 
-  @Input('product') product: Product;
+  // @Input('product') product: Product;
 
 
   constructor() { }

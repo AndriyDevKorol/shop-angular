@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable({
@@ -13,12 +13,12 @@ export class AuthService {
   ) { }
 
 
-  login(email,  password){
+  login(email,  password) {
     return this.afauth.auth.signInWithEmailAndPassword(email, password);
    }
 
-   logout(){
-     if(this.afauth.auth.currentUser){
+   logout() {
+     if (this.afauth.auth.currentUser) {
       console.log(this.afauth.auth.currentUser);
      }
    }
@@ -29,12 +29,12 @@ export class AuthService {
     // this.isLoggedin = false;
   }
 
-   signup(email, password): Promise<any>{
+   signup(email, password): Promise<any> {
      return this.afauth.auth.createUserWithEmailAndPassword(email, password);
    }
 
 
-   resetPassword(email){
+   resetPassword(email) {
     return this.afauth.auth.sendPasswordResetEmail(email);
    }
 }

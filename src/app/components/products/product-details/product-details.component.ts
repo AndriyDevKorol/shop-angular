@@ -27,7 +27,7 @@ export class ProductDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.detailsEventSubscription = this.productService.detailProductEvent.subscribe((product: Product[])=>{
+    this.detailsEventSubscription = this.productService.detailProductEvent.subscribe((product: Product[]) => {
       console.log(product);
       this.products = product;
     });

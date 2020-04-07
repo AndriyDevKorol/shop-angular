@@ -20,7 +20,7 @@ export class RangePipe implements PipeTransform {
     term = term.toLowerCase();
     return (value || []).filter(item => keys.split(',').some(key => {
 
-     keys.split(',').some(key => new RegExp(term, 'gi').test(item[key]));
+    //  keys.split(',').some(key => new RegExp(term, 'gi').test(item[key]));
     }));
   }
 }
