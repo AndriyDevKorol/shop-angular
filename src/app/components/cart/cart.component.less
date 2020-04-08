@@ -8,6 +8,87 @@
 
  }
 
+ .orderForm{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+ }
+
+ .form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+ }
+
+ .input-fields, .input-Area{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   justify-items: center;
+   margin-top: 0.5rem;
+ }
+
+
+ form{
+   display: flex;
+   flex-direction: column;
+   flex-flow: row wrap;
+   flex-wrap: wrap;
+   justify-content: center;
+   justify-items: center;
+   position: absolute;
+   top: 3rem;
+ }
+
+ input, textarea{
+  font-family: inherit;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 0.9rem;
+  color: black;
+  padding: 1.1rem 0rem 0rem 0rem;
+  background: transparent;
+  transition: border-color 0.2s;
+  height: 3rem;
+  margin: 0 0.3rem;
+
+  &:placeholder-shown ~ .form__label {
+    font-size: 1rem;
+    cursor: text;
+    top: 1.5rem;
+  }
+ }
+
+ input:focus, textarea:focus{
+  &::placeholder {
+    color: transparent;
+  }
+  border-width: 3px;
+  border-image: linear-gradient(to right, #e10505,#eaee96);
+  border-image-slice: 1;
+ }
+
+.txtArea{
+  flex: 2 0 0;
+}
+
+.product-list{
+  margin-top: 4rem;
+}
+
+
+ .createOrder{
+  // position: absolute;
+  flex: 1 0 0 ;
+  border-radius: 1rem;
+  background: @color-green-line-gradient;
+  height: 2rem;
+  margin-top: 0.5rem;
+}
+
+
 .container{
   display: flex;
   flex-wrap: wrap;
@@ -23,21 +104,18 @@
 
 .clear-cart{
   position: absolute;
-  right: 8rem;
+  right: 13rem;
   width: 11rem;
   top: 5rem;
   border-radius: 1rem;
   background: @color-gray-line-gradient;
 }
 
-.createOrder{
-  position: absolute;
-  left: 24rem;
-  top: 5rem;
-  border-radius: 1rem;
-  width: 25rem;
-  background: @color-green-line-gradient;
+
+.cart-item{
+  margin: 2rem;
 }
+
 
 .hidden{
   display: none;

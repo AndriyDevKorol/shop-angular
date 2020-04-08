@@ -1,18 +1,26 @@
 <div class="container">
   <div *ngIf="!products.length "><p>Корзина пуста</p></div>
   <div class="row" >
-    <button (click)="clearCart()" *ngIf="products.length > 0" class="clear-cart">Видалити все</button>
+    <button (click)="clearCart()" *ngIf="products.length > 0" class="clear-cart">Очистити все</button>
 
-    <form [formGroup]="ourForm">
-      <input type="text" name="name"  formControlName="name" placeholder="І'мя"/>
-      <input type="text" name="phone"  formControlName="phone" placeholder="Tel:"/>
-      <input type="email" id="email"  formControlName="email" placeholder="Email"/>
-      <textarea type="text" name="comment" formControlName="comment" placeholder="Коментар..."></textarea>
-      <button  value="Submit" (click)="submitData()" *ngIf="products.length >= 0" class="createOrder">Зробити замовлення</button>
-    </form>
-
-
-    <app-cart-item class="cart-item" *ngFor="let product of products" [product]="product"></app-cart-item>
+    <div class="orderForm"  *ngIf="products.length > 0">
+      <form [formGroup]="ourForm" #form="ngForm">
+        <div class="form-container">
+          <div class="input-fields">
+            <input type="text" name="name"  formControlName="name" placeholder="І'мя" required/>
+            <input type="text" name="phone"  formControlName="phone" placeholder="Tel:" required/>
+            <input type="email" id="email"  formControlName="email" placeholder="Email"/>
+          </div>
+          <div class="input-Area">
+              <textarea type="text" name="comment" formControlName="comment" placeholder="Коментар..." class="txtArea"></textarea>
+              <button  value="Submit" (click)="showRecipe()" *ngIf="products.length >= 0" class="createOrder" [disabled]="form.invalid">Зробити замовлення</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="product-list">
+      <app-cart-item class="cart-item" *ngFor="let product of products" [product]="product"></app-cart-item>
+    </div>
 
     <div class="hidde modal-bg" [ngStyle]="{'display' : isShow ? 'flex' : 'none'}"  >
       <span class="close-bg" (click)="hideRecipe()"></span>
