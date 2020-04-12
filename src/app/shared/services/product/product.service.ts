@@ -48,11 +48,11 @@ export class ProductService {
     return this.products.update(key, val);
   }
 
-    emitEditProduct(product: Product[]) {
+  emitEditProduct(product: Product[]) {
     this.editeProduct.next(product);
   }
 
-    emitDetailProduct(product: Product) {
+  emitDetailProduct(product: Product) {
     this.productDetails = [];
     this.productDetails.push(product);
     this.detailsProduct.next(this.productDetails);

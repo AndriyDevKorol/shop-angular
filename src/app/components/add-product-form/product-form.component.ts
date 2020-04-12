@@ -70,6 +70,12 @@ export class ProductFormComponent implements OnInit {
     ).subscribe();
   }
 
+  deleteImg() {
+    console.log('imgurl', this.url);
+    console.log(this.storage.ref(this.url).delete());
+    this.storage.ref(this.selectedImage).delete();
+  }
+
   onAddProduct(form: NgForm) {
     const NewProduct: Product = {
       title: this.formData.title,
