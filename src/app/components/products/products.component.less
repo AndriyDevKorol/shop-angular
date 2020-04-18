@@ -9,43 +9,21 @@
   margin: 0;
 }
 
+.top-container{
+
+}
+
+
+.main-content{
+  // background-color: #8888881a;
+  margin: 0;
+}
+
+
 //===============================================================
-
-mat-toolbar{
-  display: flex;
-  flex-direction: column;
-  background:#eee;
-  padding: 0;
-
-}
-.nav-bar{
+.nav-section{
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  justify-content:space-between;
-  width: 75rem;
-  font-size: 1rem;
-}
-
-.top-header, .center-header, .bottom-header{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 0.5rem;
-  li{
-    margin-right: 1rem;
-  }
-  li:last-child{
-    margin-right: 0;
-  }
-}
-
-.top-header{justify-content: space-around;}
-
-.center-header{justify-content: space-between;}
-
-.bottom-header{
-  justify-content: space-between;
 }
 
 ul{
@@ -64,23 +42,38 @@ ul{
 
 .nav-search{
   background: #222;
-  display: flex;
-  flex-wrap: wrap;
-  flex-grow: 0.5;
-  justify-content: space-between;
+  height: 2.5rem;
   padding: 0 1rem;
+}
+
+.search-bar{
+  padding-top: 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .category{
   width: 25%;
+  height: 2.5rem;
   color: #fff;
+  background: #f8ab16;
+  cursor: pointer;
 }
 
-.category-menu{
-  display: flex;
-  background: #f8ab16;
-  justify-content: space-between;
-  width: 100%;
+// .category-menu{
+//   width: 18.5rem;
+//   min-width: 5rem;
+//   border: outset;
+//   background-color: transparent;
+//   border-radius: 5px;
+//   height: 2.2rem;
+// }
+
+option{
+  background: #222;
+  color: white;
+  width: 18.75rem;
 }
 
 .category-list{
@@ -94,8 +87,12 @@ ul{
   }
 }
 
-.nav-search{
-
+.select-category{
+  width: 18.7rem;
+  background: #f8ab16;
+  height: 2.5rem;
+  border: transparent;
+  cursor: pointer;
 }
 
 .nav-btn{
@@ -112,8 +109,16 @@ font-size: 1rem;
   font-size: 0.9rem;
   text-transform: uppercase;
   color: white;
+  display: flex;
+  cursor: pointer;
   a{
     text-transform: none;
+    font-size: 1.3rem;
+  }
+
+  .icon-name{
+    margin: 0 0.2rem;
+    padding-top: 0.1rem;
   }
 }
 
@@ -168,10 +173,6 @@ font-size: 1rem;
 
 //=================================================================
 
-.main-content{
-  // background-color: #8888881a;
-  margin: 0;
-}
 
 p{
   color: #f8f9fae0;
@@ -299,7 +300,8 @@ body {
 }
 
 input{
-  max-height: 1.5rem;
+  max-height: 1.1rem;
+  flex-grow: 0.8;
 }
 
 .product{
