@@ -1,11 +1,80 @@
-<mat-toolbar class="nav-bar">
-    <span class="mr-5" ><a [routerLink]="['']" class="logo">MiшBud</a></span>
-    <div class="contacts">
+<mat-toolbar >
+  <div class="nav-bar">
+    <div class="top-header">
+      <ul class="phone-number">
+        <li>тел:</li>
+        <li>097-565-8218</li>
+        <li>097-565-8218</li>
+      </ul>
+      <ul class="works-hour">
+        <li>пн-пт:</li>
+        <li>9.00 - 18.00</li>
+      </ul>
+    </div>
+    <div class="center-header">
+      <span class="mr-5" ><a [routerLink]="['']" class="logo">MiшBud</a></span>
+      <div class="nav-menu">
+        <ul>
+          <li><a href="">Головна</a></li>
+          <li><a href=""></a>Шпаклівка</li>
+          <li><a href=""></a>Штукатурка</li>
+          <li><a href=""></a>Цемент</li>
+          <li><a href=""></a>Фарби</li>
+          <li><a href=""></a>Лаки</li>
+          <li><a href=""></a>Ремонтні суміші</li>
+        </ul>
+      </div>
+    </div>
+    <!-- <div class="bottom-header">
+      <div class="category">
+        <div class="category-menu">
+          <div class="category-title"> Категорії</div>
+          <span class="material-icons">
+            keyboard_arrow_down
+          </span>
+        </div>
+        <div class="category-list">
+          <ul>
+            <li><a href="">Головна</a></li>
+            <li><a href=""></a>Шпаклівка</li>
+            <li><a href=""></a>Штукатурка</li>
+            <li><a href=""></a>Цемент</li>
+            <li><a href=""></a>Фарби</li>
+            <li><a href=""></a>Лаки</li>
+            <li><a href=""></a>Ремонтні суміші</li>
+          </ul>
+        </div>
+      </div>
+      <div class="nav-search-section">
+        <div class="nav-search">
+          <div class="search-bar">
+            <input class="search-input" type="text" value="" size="50" autocomplete="off" placeholder="Пошук за назвою..." name="s">
+          </div>
+          <div class="user-bar">
+            <span  class="material-icons cart-section" [routerLink]="['/cart']"  routerLinkActive="active">
+              <a class="link icon">shopping_cart</a>
+              <span>Корзина</span>
+              <span class="material-icons icon">
+                keyboard_arrow_down
+              </span>
+            </span>
+            <span class="material-icons user-section" [routerLink]="['/login']" routerLinkActive="active">
+              <a class="link icon">face</a>
+              <span>Login</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+  </div>
+
+    <!-- <div class="contacts">
       <p>097-565-8218 <br>097-565-8218<br>097-565-8218 </p>
     </div>
     <div class="working-hour">
-      <p>понеділок-неділя:<br>
-      8.00 - 21.00<br>
+      <p>понеділок-п'ятниця:<br>
+      9.00 - 18.00<br>
       (без визідних)</p>
     </div>
     <nav class="nav-btn">
@@ -14,7 +83,8 @@
         </span>
         <span class="material-icons" [routerLink]="['/login']" routerLinkActive="active">
         <a class="link">face</a>
-        </span>
+      </span> -->
       <!-- <a [routerLink]="['/signup']" routerLinkActive="active"  class="link">signup</a> -->
-    </nav>
+    <!-- </nav> -->
 </mat-toolbar>
+

@@ -1,10 +1,26 @@
 <div class="container-fluid none-padding">
-  <!-- <app-header></app-header> -->
-  <app-navbar class="global-navbar"></app-navbar>
-  <!-- <div class="filter-bar"> -->
-    <!-- <app-filter-bar></app-filter-bar>
-    <app-search></app-search> -->
-  <!-- </div> -->
+  <div class="content">
+    <header id="pageHeader">
+      <div class="global-header">
+        <div class="header-component">
+          <app-navbar class="global-navbar"></app-navbar>
+        </div>
+        <div class="carousel">
+          <div class="carosel-bg">
+            <p>Сухі суміші</p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <article id="mainArticle"><router-outlet class="main-content"></router-outlet></article>
+    <footer id="pageFooter"><app-footer class="global-footer"></app-footer></footer>
+  </div>
+      <!-- <app-header></app-header> -->
+      <!-- <div class="filter-bar"> -->
+        <!-- <app-filter-bar></app-filter-bar>
+        <app-search></app-search> -->
+      <!-- </div> -->
+  <!-- <app-navbar class="global-navbar"></app-navbar>
   <router-outlet class="main-content"></router-outlet>
-  <app-footer class="global-footer"></app-footer>
+  <app-footer class="global-footer"></app-footer> -->
 </div>

@@ -1,29 +1,79 @@
-
-<div class="main-content">
-  <div class="carousel">
-    <p>Сухі суміші</p>
-  </div>
-  <div class="container">
-    <app-product-form class="add-form" (onAddProduct)="addProduct($event)" *ngIf="isAdmin" ></app-product-form>
-    <div class="filter">
-      <div class="filter-category">
-        <label for="cars" class="category_lable">Категорія:</label>
-        <select [(ngModel)]="searchCategory" name="searchCategory" class="category-menu">
-          <option value="" selected>Всі</option>
-          <option value="1" >К-1</option>
-          <option value="2" >К-2</option>
-          <option value="3">К-3</option>
-        </select>
-      </div>
-      <div class="form__group field">
-        <input [(ngModel)]="searchTitle" type="input" class="form__field" placeholder="Назва продукта" name="searchTitle" id='name' required />
-        <label for="name" class="form__label">Назва продукта</label>
+<div class="main-container">
+  <div class="32">
+    <div class="nav-container">
+      <div class="bottom-header">
+        <div class="category">
+          <div class="category-menu">
+            <select [(ngModel)]="searchCategory" name="searchCategory" >
+              <option value="" selected>Всі</option>
+              <option value="1" >К-1</option>
+              <option value="2" >К-2</option>
+              <option value="3">К-3</option>
+            </select>
+            <!-- <div class="category-title"> Категорії</div>
+            <span class="material-icons">
+              keyboard_arrow_down
+            </span> -->
+          </div>
+          <!-- <div class="category-list">
+            <ul>
+              <li><a href="">Головна</a></li>
+              <li><a href=""></a>Шпаклівка</li>
+              <li><a href=""></a>Штукатурка</li>
+              <li><a href=""></a>Цемент</li>
+              <li><a href=""></a>Фарби</li>
+              <li><a href=""></a>Лаки</li>
+              <li><a href=""></a>Ремонтні суміші</li>
+            </ul>
+          </div> -->
+        </div>
+        <div class="nav-search-section">
+          <div class="nav-search">
+            <div class="search-bar">
+              <input [(ngModel)]="searchTitle" type="input"  placeholder="Назва продукта" name="searchTitle" id='name' required />
+              <!-- <input class="search-input" type="text" value="" size="50" autocomplete="off" placeholder="Пошук за назвою..." name="s"> -->
+            </div>
+            <div class="user-bar">
+              <span  class="material-icons cart-section" [routerLink]="['/cart']"  routerLinkActive="active">
+                <a class="link icon">shopping_cart</a>
+                <span>Корзина</span>
+                <span class="material-icons icon">
+                  keyboard_arrow_down
+                </span>
+              </span>
+              <span class="material-icons user-section" [routerLink]="['/login']" routerLinkActive="active">
+                <a class="link icon">face</a>
+                <span>Login</span>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="main-content">
+      <div class="container">
+        <app-product-form class="add-form" (onAddProduct)="addProduct($event)" *ngIf="isAdmin" ></app-product-form>
+        <!-- <div class="filter">
+          <div class="filter-category">
+            <label for="cars" class="category_lable">Категорія:</label>
+            <select [(ngModel)]="searchCategory" name="searchCategory" class="category-menu">
+              <option value="" selected>Всі</option>
+              <option value="1" >К-1</option>
+              <option value="2" >К-2</option>
+              <option value="3">К-3</option>
+            </select>
+          </div>
+          <div class="form__group field">
+            <input [(ngModel)]="searchTitle" type="input" class="form__field" placeholder="Назва продукта" name="searchTitle" id='name' required />
+            <label for="name" class="form__label">Назва продукта</label>
+          </div>
+        </div> -->
 
-    <div class="product-list" >
-      <app-product class="col col-6 mb-2" *ngFor="let product of products | filter: 'price': searchPrice  | filter: 'category': searchCategory | filter: 'body': searchBody | filter: 'title': searchTitle" [product]="product" (deleteProduct)="onDelete($event)" (editProduct)="onEdit($event)" (onAddToCart)="onAddToCart($event)"></app-product>
+        <div class="product-list" >
+          <app-product class="product" *ngFor="let product of products | filter: 'price': searchPrice  | filter: 'category': searchCategory | filter: 'body': searchBody | filter: 'title': searchTitle" [product]="product" (deleteProduct)="onDelete($event)" (editProduct)="onEdit($event)" (onAddToCart)="onAddToCart($event)"></app-product>
+        </div>
+      </div>
     </div>
   </div>
+
 </div>
-
