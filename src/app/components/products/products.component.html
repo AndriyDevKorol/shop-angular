@@ -42,7 +42,7 @@
                     keyboard_arrow_down
                   </span>
                 </span>
-                <span class="material-icons user-section" [routerLink]="['/login']" routerLinkActive="active" >
+                <span class="material-icons user-section" [routerLink]="['/login']" routerLinkActive="active" *ngIf="isAdmin">
                   <a class="link icon">face</a>
                   <span class="icon-name">Login</span>
                 </span>

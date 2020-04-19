@@ -10,12 +10,13 @@
 
 }
 .content{
+  min-height: 100%;
   display: grid;
   grid-template-areas:
       "header"
       "article"
       "footer";
-  grid-template-rows: 8.5rem 1fr 5rem;
+  grid-template-rows: 8.5rem 1fr auto;
   grid-auto-flow: column;
   grid-gap: 0;
   margin: 0;
@@ -24,6 +25,7 @@
 #pageHeader {
   grid-area: header;
   background: #eee;
+  top: 0;
 }
 #pageFooter {
   grid-area: footer;
@@ -72,5 +74,3 @@ header{
     color: white;
   }
 }
-
-
