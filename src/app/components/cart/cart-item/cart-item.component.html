@@ -1,10 +1,9 @@
-
 <div class="productCard" *ngIf="product">
+  <div class="cardHeader">
+    <p class="card-text">Product: {{product.title}}</p>
+  </div>
   <div class="card-body" (onAddNewProduct)="onAddNewPost($event)" >
-    <div class="section">
-      <div class="cardHeader">
-        <p class="card-text">Product: {{product.title}}</p>
-      </div>
+    <div class="img-section flex-column">
       <div class="flex-content">
         <div class="image">
           <a class="imgages-view" href="">
@@ -13,43 +12,56 @@
         </div>
       </div>
     </div>
-    <div class="section wider">
-      <div class="cardHeader">
-        <label >Категорія: {{product.category}}</label>
-      </div>
-      <div class="flex-content">
-        <div class="product-details" >
-          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link" (click)="onDetailsProduct(product)">
-            <p class="card-text">Деталі продукта:</p>
-            <ul class="attribute-list">
-              <li><p class="card-text">Категорія: {{product.category}}</p></li>
-              <li><p class="card-text">Короткий опис: {{product.shortDescription}}</p></li>
-              <li><p class="card-text">Опис: {{product.body}}</p></li>
-            </ul>
-          </a>
+    <div class="product-section flex-column">
+      <a [routerLink]="['/product-details']" routerLinkActive="active" class="link" (click)="onDetailsProduct(product)">
+        <div class="details">
+          <div class="details-header">
+            <label >Категорія: {{product.category}}</label>
+          </div>
+          <div class="flex-content">
+            <div class="product-details">
+              <p >Деталі продукта:<br>
+              <p>Категорія: {{product.category}}<br>
+              <p>Короткий опис: {{product.shortDescription}}<br>
+              <!-- <p >Опис: {{product.body}}</p> -->
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="price-section border-left flex-column">
+      <div class="price-container">
+        <div class="price-content">
+          <div class="price">
+            <div class="cina-section">
+              <span class="cina">{{product.price }}</span>
+              <span>грн/шт</span>
+            </div>
+            <span class="q-field">
+              <i class="material-icons" (click)="onCount(-1)">arrow_left</i>
+              <span>{{product.count}}</span>
+              <i class="material-icons" (click)="onCount(1)">arrow_right</i>
+            </span>
+            <button class="button danger" (click)="deleteItem(product.$key)" >Видалити</button>
+          </div>
         </div>
       </div>
     </div>
-    <div class="section">
-      <div class="cardHeader">
-        <div class="buttons-section" >
-          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link">
-            <button class="button primary" (click)="onDetailsProduct(product)">Деталі</button>
-          </a>
-          <button class="button danger" (click)="deleteItem(product.$key)">Видалити</button>
-        </div>
-      </div>
+
+    <!-- <div class="price-section border-left flex-column">
       <div class="flex-content">
-        <div class="price">
-          <div class="cena text-center-xs">{{product.price}} грн/шт </div>
+        <div class="price-section">
+          <div class="cina-section">
+            <span class="cina">{{product.price }}</span>
+            <span>грн/шт</span>
+          </div>
           <span class="q-field">
             <i class="material-icons" (click)="onCount(-1)">arrow_left</i>
             <span>{{product.count}}</span>
             <i class="material-icons" (click)="onCount(1)">arrow_right</i>
           </span>
-          <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
-      </div>
-    </div>
+          <button class="button danger" (click)="deleteItem(product.$key)" >Видалити</button>
+    </div> -->
+
   </div>
 </div>
-

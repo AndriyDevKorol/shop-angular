@@ -1,15 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
-@import '~bootstrap/dist/css/bootstrap.min.css';
-
 html, body { height: 100%; }
 body {
   display: block;
   padding: o;
   margin: 0;
-   font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+}
+
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media all and (max-width: 575px) {
+  div{
+    flex-direction: column;
   }
-
-
-.active {
-  color: #039be5;
 }

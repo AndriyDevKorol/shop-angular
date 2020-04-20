@@ -19,7 +19,9 @@
       </form>
     </div>
     <div class="product-list">
-      <app-cart-item class="cart-item" *ngFor="let product of products" [product]="product"></app-cart-item>
+      <div class="products-section">
+        <app-cart-item class="cart-item" *ngFor="let product of products" [product]="product"></app-cart-item>
+      </div>
     </div>
 
     <div class="hidde modal-bg" [ngStyle]="{'display' : isShow ? 'flex' : 'none'}"  >

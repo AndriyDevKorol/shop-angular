@@ -1,57 +1,51 @@
-<!-- <app-cart-item class="cart-item" *ngFor="let product of products" [product]="product"  ></app-cart-item> -->
-
-
+<div class="cart">
+  <span  class="material-icons cart-section" [routerLink]="['/cart']"  routerLinkActive="active">
+    <a class="link icon">shopping_cart</a>
+  </span>
+</div>
 <div class="productCard" *ngFor="let product of products" >
   <div class="card-body" (onAddNewProduct)="onAddNewPost($event)" >
-    <div class="section">
-      <div class="cardHeader">
-        <p class="card-text">Product: {{product.title}}</p>
-      </div>
-      <div class="flex-content">
+    <div class="top-section">
+      <div class="img-section">
         <div class="image">
-          <a class="imgages-view" href="">
-           <img src={{product.imgUrl}} alt="product" class="card-img" />
-          </a>
+          <img src={{product.imgUrl}} alt="product" class="product-img" />
+        </div>
+      </div>
+      <div class="short-details-section">
+        <div class="content">
+          <h1 class="product-title">Product: {{product.title}}</h1>
+          <div class="short-details">
+            <div class="product-category">
+              <span>Категорія: {{product.category}}</span>
+              <p class="card-text">Деталі продукта:</p>
+              <ul class="attribute-list">
+                <li><p class="card-text">Короткий опис: {{product.shortDescription}}</p></li>
+              </ul>
+            </div>
+            <div class="price-section">
+              <div class="cina-section">
+                <span class="cina">{{product.price }}</span>
+                <span>грн/шт</span>
+              </div>
+              <span class="q-field">
+                <i class="material-icons" (click)="onCount(-1)">arrow_left</i>
+                <span>{{countVal}}</span>
+                <i class="material-icons" (click)="onCount(1)">arrow_right</i>
+              </span>
+              <button class="buy-btn"  color="accent" (click)="addToCart(product)">Купити</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="section wider">
-      <div class="cardHeader">
-        <label >Категорія: {{product.category}}</label>
-      </div>
-      <div class="flex-content">
-        <div class="product-details">
-          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link">
-            <p class="card-text">Деталі продукта:</p>
-            <ul class="attribute-list">
-              <li><p class="card-text">Категорія: {{product.category}}</p></li>
-              <li><p class="card-text">Короткий опис: {{product.shortDescription}}</p></li>
-              <li><p class="card-text">Опис: {{product.body}}</p></li>
-            </ul>
-          </a>
+    <div class="bottom-section">
+      <div class="full-details-section">
+        <div class="section-title">Характеристики</div>
+        <div class="full-details">
+          <p class="title">Деталі продукта:</p>
+          <p class="text">Опис: {{product.body}}</p>
         </div>
       </div>
     </div>
-    <div class="section">
-      <div class="cardHeader">
-        <!-- <div class="buttons-section" >
-          <button class="button danger" *ngIf="isAdmin" (click)="onDelete(product.$key)">Delete</button>
-          <button class="button secondary" *ngIf="!editProductKey" (click)="onEdit(product)" >Edit</button>
-          <button class="button secondary" (click)="onReset()" *ngIf="editProductKey">Cancel</button>
-          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link"><button class="button primary">Details</button></a>
-        </div> -->
-      </div>
-      <div class="flex-content">
-        <div class="price">
-          <div class="cena text-center-xs">{{product.price}} грн/шт </div>
-          <span class="q-field">
-            <span  class="down-quantity icon icon-angle-left"></span>
-            <input name="quantity" type="text" value="1" class="">
-            <span class="up-quantity icon icon-angle-right"></span>
-          </span>
-          <button [routerLink]="['']" class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
-      </div>
-    </div>
-  </div>
 </div>
 

@@ -1,20 +1,45 @@
-<mat-toolbar class="nav-bar">
-    <span class="mr-5" ><a [routerLink]="['']" class="logo">MiшBud</a></span>
-    <div class="contacts">
-      <p>097-565-8218 <br>097-565-8218<br>097-565-8218 </p>
+<mat-toolbar >
+  <div class="nav-bar">
+    <div class="top-header">
+      <ul class="phone-number">
+        <li>тел:</li>
+        <li>097-565-8218</li>
+        <li>097-565-8218</li>
+      </ul>
+      <ul class="works-hour">
+        <li>пн-пт:</li>
+        <li>9.00 - 18.00</li>
+      </ul>
     </div>
-    <div class="working-hour">
-      <p>понеділок-неділя:<br>
-      8.00 - 21.00<br>
-      (без визідних)</p>
+    <div class="center-header">
+      <span class="mr-5" ><a [routerLink]="['']" class="logo">MiшBud</a></span>
+      <div class="gamburger-menu">
+        <input id="menu__toggle" type="checkbox" hidden/>
+        <label class="menu__btn" for="menu__toggle">
+          <!-- <span></span> --> Menu
+        </label>
+        <ul class="menu__box">
+          <li><a class="menu__item" href="">Головна</a></li>
+          <li><a class="menu__item" href="">Шпаклівка</a></li>
+          <li><a class="menu__item" href="">Штукатурка</a></li>
+          <li><a class="menu__item" href="">Цемент</a></li>
+          <li><a class="menu__item" href="">Фарби</a></li>
+          <li><a class="menu__item" href="">Лаки</a></li>
+          <li><a class="menu__item" href="">Ремонтні суміші</a></li>
+        </ul>
+      </div>
+      <div class="nav-menu">
+        <ul class="nav-menu-list">
+          <li><a href="">Головна</a></li>
+          <li><a  href="">Шпаклівка</a></li>
+          <li><a  href="">Штукатурка</a></li>
+          <li><a  href="">Цемент</a></li>
+          <li><a  href="">Фарби</a></li>
+          <li><a  href="">Лаки</a></li>
+          <li><a  href="">Ремонтні суміші</a></li>
+        </ul>
+      </div>
     </div>
-    <nav class="nav-btn">
-      <span class="material-icons" [routerLink]="['/cart']"  routerLinkActive="active">
-        <a class="link">shopping_cart</a>
-        </span>
-        <span class="material-icons" [routerLink]="['/login']" routerLinkActive="active">
-        <a class="link">face</a>
-        </span>
-      <!-- <a [routerLink]="['/signup']" routerLinkActive="active"  class="link">signup</a> -->
-    </nav>
+  </div>
 </mat-toolbar>
+

@@ -43,7 +43,7 @@ import { CartItemComponent } from './components/cart/cart-item/cart-item.compone
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { RecipeComponent } from './components/cart/recipe/recipe.component';
 import { FirebaseStoreService } from './shared/services/firebaseStore/firebase-store.service';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -67,6 +67,7 @@ import { FirebaseStoreService } from './shared/services/firebaseStore/firebase-s
     RecipeComponent,
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
