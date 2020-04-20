@@ -8,36 +8,85 @@
   box-shadow: 10px 5px 10px #88888845;
   border-radius: 10px;
   border: 0.5px solid #88888838;
-  width: 54.5rem;
-  height: 13.5rem;
-  margin-bottom: 2rem;
-}
+  width: 73%;
+  margin-bottom: 2em;
+  .cardHeader{
+    display: flex;
+    justify-content: space-between;
+    max-height: 3em;
+    background: @color-gray-line-gradient;
+    border-bottom:none;
+    padding: 0 2em;
+    p{ margin: 1em 0;}
+  }
+  .card-body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .flex-column{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    .img-section{
+      .img-content{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 0 1em;
+      }
+    }
+    .product-section{
+      min-height: 10em;
+      max-width: 55%;
+      .details{
+        padding: 0 1em;
+      }
+    }
+    .price-section{
+      min-width: 20%;
+      .price-container{
+        margin: 0 1em;
+        .price-header{
+          display: flex;
+          margin: 0 1em;
+        }
+        .price-content{
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+          margin: 0 1em;
 
-.cardHeader{
-  display: flex;
-  justify-content: space-between;
-  max-height: 3rem;
-  background: @color-gray-line-gradient;
-  border-bottom:none;
-  padding: 0 2rem;
-  p{ margin: 1rem 0;}
-}
+          .price{
+            margin-top: 1em;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
 
-.card-body{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
+            .cina-section{
+              display: flex;
+              justify-content: center;
+              .cina{
+                color: red;
+                font-weight: bold;
+                margin-right: 0.3em;
+              }
+            }
 
-.section{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 25%;
-}
-
-.wider{
-  flex-grow: 2;
+            .q-field{
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: 1em 0;
+            }
+          }
+        }
+      }
+    }
+    .border-left{
+      border-left: 1px solid #eee;
+    }
+  }
 }
 
 .details{
@@ -52,11 +101,11 @@
   justify-content: space-around;
 
   .card-img{
-    width: 150px;
-    height: 150px;
+    width: 9em;
+    height: 9em;
+    margin: 0.5em;
   }
 }
-
 
 
 .danger{
@@ -89,43 +138,8 @@
 }
 
 .button{
-  border-radius: 0.75rem;
+  border-radius: 0.75em;
   color: #556b2ffa;
-}
-
-.price-header{
-  display: flex;
-  margin: 0 1rem;
-}
-.flex-content{
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin: 0 1rem;
-
-  .price-section{
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-    .cina-section{
-      display: flex;
-      justify-content: center;
-      .cina{
-        color: red;
-        font-weight: bold;
-        margin-right: 0.3rem;
-      }
-    }
-
-    .q-field{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 1rem 0;
-    }
-  }
 }
 
 .material-icons{
@@ -136,8 +150,34 @@ p{
   margin: 0;
 }
 
-.border-left{
-  border-left: 1px solid #eee;
+
+
+@media all and (max-width: 575px) {
+  div{
+    flex-direction: column;
+  }
+  .img-section,.product-section,.price-section{
+    width: 100%;
+  }
+  .card-body{
+    justify-content: space-around;
+  }
+}
+
+@media only screen and (min-width : 575px) and (max-width : 1280px) {
+  .card-body{
+    justify-content: space-around;
+  }
+
+  .img-section{
+    order: 0;
+  }
+  .product-section{
+    order: 2;
+  }
+  .price-section{
+    order: 1;
+  }
 }
 
 

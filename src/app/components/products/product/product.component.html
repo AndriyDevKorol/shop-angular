@@ -4,8 +4,8 @@
     <p class="card-text">Product: {{product.title}}</p>
   </div>
   <div class="card-body" (onAddNewProduct)="onAddNewPost($event)" >
-    <div class="section">
-      <div class="flex-content">
+    <div class="img-section flex-column">
+      <div class="img-content">
         <div class="image">
           <a class="imgages-view" href="">
             <img src={{product.imgUrl}} alt="product" class="card-img" />
@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-    <div class="section wider">
+    <div class="product-section flex-column">
       <a [routerLink]="['/product-details']" routerLinkActive="active" class="link" (click)="onDetailsProduct(product)">
         <div class="details">
           <div class="details-header">
@@ -29,27 +29,29 @@
         </div>
       </a>
     </div>
-    <div class="section border-left">
-      <div class="price-header">
-        <div class="buttons-section" >
-          <button class="button danger" *ngIf="isAdmin" (click)="onDelete(product.$key)">Видалити</button>
-          <button class="button secondary" *ngIf="isAdmin" (click)="onEdit(product)"  >Редагувати</button>
-          <button class="button editbtn" (click)="onReset()" *ngIf="editProductKey">Відмінити</button>
-          <!-- <a [routerLink]="['/product-details']" routerLinkActive="active" class="link"><button class="button primary" (click)="onDetailsProduct(product)">Деталі</button></a> -->
-        </div>
-      </div>
-      <div class="flex-content">
-        <div class="price-section">
-          <div class="cina-section">
-            <span class="cina">{{product.price }}</span>
-            <span>грн/шт</span>
+    <div class="price-section border-left flex-column">
+      <div class="price-container">
+        <div class="price-header">
+          <div class="buttons-section" >
+            <button class="button danger" *ngIf="isAdmin" (click)="onDelete(product.$key)">Видалити</button>
+            <button class="button secondary" *ngIf="isAdmin" (click)="onEdit(product)"  >Редагувати</button>
+            <button class="button editbtn" (click)="onReset()" *ngIf="editProductKey">Відмінити</button>
+            <!-- <a [routerLink]="['/product-details']" routerLinkActive="active" class="link"><button class="button primary" (click)="onDetailsProduct(product)">Деталі</button></a> -->
           </div>
-          <span class="q-field">
-            <i class="material-icons" (click)="onCount(-1)">arrow_left</i>
-            <span>{{countVal}}</span>
-            <i class="material-icons" (click)="onCount(1)">arrow_right</i>
-          </span>
-          <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
+        </div>
+        <div class="price-content">
+          <div class="price">
+            <div class="cina-section">
+              <span class="cina">{{product.price }}</span>
+              <span>грн/шт</span>
+            </div>
+            <span class="q-field">
+              <i class="material-icons" (click)="onCount(-1)">arrow_left</i>
+              <span>{{countVal}}</span>
+              <i class="material-icons" (click)="onCount(1)">arrow_right</i>
+            </span>
+            <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
+          </div>
         </div>
       </div>
   </div>

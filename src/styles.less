@@ -1,11 +1,10 @@
-
-
 html, body { height: 100%; }
 body {
   display: block;
   padding: o;
   margin: 0;
-   font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
 }
 
 ul{
@@ -15,4 +14,10 @@ ul{
 a{
   text-decoration: none;
   cursor: pointer;
+}
+
+@media all and (max-width: 575px) {
+  div{
+    flex-direction: column;
+  }
 }
