@@ -88,7 +88,7 @@ option{
 }
 
 .select-category{
-  width: 18.7rem;
+  width: 100%;
   background: #f8ab16;
   height: 2.5rem;
   border: transparent;
@@ -307,4 +307,30 @@ input{
 .product{
   display: flex;
   justify-content: flex-end;
+}
+
+
+@media all and (max-width: 575px) {
+  .category, .select-category, .nav-search-section{
+    width: 100% !important;
+  }
+
+  .search-bar{
+    flex-direction: row !important;
+  }
+
+  .product{
+    justify-content: space-around !important;
+  }
+
+  .productCard{
+    width: 100% !important;
+  }
+}
+
+@media only screen and (min-width : 575px) and (max-width : 1290px) {
+  .productCard{
+    width: 100% !important;
+  }
+
 }

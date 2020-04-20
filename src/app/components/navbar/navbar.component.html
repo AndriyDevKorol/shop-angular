@@ -13,60 +13,33 @@
     </div>
     <div class="center-header">
       <span class="mr-5" ><a [routerLink]="['']" class="logo">MiшBud</a></span>
+      <div class="gamburger-menu">
+        <input id="menu__toggle" type="checkbox" hidden/>
+        <label class="menu__btn" for="menu__toggle">
+          <!-- <span></span> --> Menu
+        </label>
+        <ul class="menu__box">
+          <li><a class="menu__item" href="">Головна</a></li>
+          <li><a class="menu__item" href="">Шпаклівка</a></li>
+          <li><a class="menu__item" href="">Штукатурка</a></li>
+          <li><a class="menu__item" href="">Цемент</a></li>
+          <li><a class="menu__item" href="">Фарби</a></li>
+          <li><a class="menu__item" href="">Лаки</a></li>
+          <li><a class="menu__item" href="">Ремонтні суміші</a></li>
+        </ul>
+      </div>
       <div class="nav-menu">
-        <ul>
+        <ul class="nav-menu-list">
           <li><a href="">Головна</a></li>
-          <li><a href=""></a>Шпаклівка</li>
-          <li><a href=""></a>Штукатурка</li>
-          <li><a href=""></a>Цемент</li>
-          <li><a href=""></a>Фарби</li>
-          <li><a href=""></a>Лаки</li>
-          <li><a href=""></a>Ремонтні суміші</li>
+          <li><a  href="">Шпаклівка</a></li>
+          <li><a  href="">Штукатурка</a></li>
+          <li><a  href="">Цемент</a></li>
+          <li><a  href="">Фарби</a></li>
+          <li><a  href="">Лаки</a></li>
+          <li><a  href="">Ремонтні суміші</a></li>
         </ul>
       </div>
     </div>
-    <!-- <div class="bottom-header">
-      <div class="category">
-        <div class="category-menu">
-          <div class="category-title"> Категорії</div>
-          <span class="material-icons">
-            keyboard_arrow_down
-          </span>
-        </div>
-        <div class="category-list">
-          <ul>
-            <li><a href="">Головна</a></li>
-            <li><a href=""></a>Шпаклівка</li>
-            <li><a href=""></a>Штукатурка</li>
-            <li><a href=""></a>Цемент</li>
-            <li><a href=""></a>Фарби</li>
-            <li><a href=""></a>Лаки</li>
-            <li><a href=""></a>Ремонтні суміші</li>
-          </ul>
-        </div>
-      </div>
-      <div class="nav-search-section">
-        <div class="nav-search">
-          <div class="search-bar">
-            <input class="search-input" type="text" value="" size="50" autocomplete="off" placeholder="Пошук за назвою..." name="s">
-          </div>
-          <div class="user-bar">
-            <span  class="material-icons cart-section" [routerLink]="['/cart']"  routerLinkActive="active">
-              <a class="link icon">shopping_cart</a>
-              <span>Корзина</span>
-              <span class="material-icons icon">
-                keyboard_arrow_down
-              </span>
-            </span>
-            <span class="material-icons user-section" [routerLink]="['/login']" routerLinkActive="active">
-              <a class="link icon">face</a>
-              <span>Login</span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
   </div>
 </mat-toolbar>
 
