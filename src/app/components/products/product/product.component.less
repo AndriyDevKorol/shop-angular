@@ -41,6 +41,10 @@
       max-width: 55%;
       .details{
         padding: 0 1em;
+        .link{
+          display: flex;
+          flex-wrap: wrap;
+        }
       }
     }
     .price-section{
@@ -142,6 +146,15 @@
   color: #556b2ffa;
 }
 
+.flex-content{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 0 1rem;
+}
+
+
+
 .material-icons{
   cursor: pointer;
 }
@@ -164,7 +177,7 @@ p{
   }
 }
 
-@media only screen and (min-width : 575px) and (max-width : 1280px) {
+@media only screen and (min-width : 575px) and (max-width : 1290px) {
   .card-body{
     justify-content: space-around;
   }
@@ -174,6 +187,7 @@ p{
   }
   .product-section{
     order: 2;
+    max-width: 90% !important;
   }
   .price-section{
     order: 1;
