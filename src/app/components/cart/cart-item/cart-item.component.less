@@ -23,13 +23,15 @@
   .card-body{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin-bottom: 1em;
     .flex-column{
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
     }
     .img-section{
+      margin-bottom: 1em;
       .img-content{
         display: flex;
         justify-content: space-around;
@@ -38,8 +40,9 @@
       }
     }
     .product-section{
-      min-height: 10em;
+      min-height: 7em;
       max-width: 55%;
+      margin-bottom: 1em;
       .details{
         padding: 0 1em;
         .link{
@@ -50,6 +53,7 @@
     }
     .price-section{
       min-width: 20%;
+      margin-bottom: 1em;
       .price-container{
         margin: 0 1em;
         .price-content{
@@ -175,7 +179,7 @@ p{
   }
 }
 
-@media only screen and (min-width : 575px) and (max-width : 1290px) {
+@media only screen and (min-width : 575px) and (max-width : 1300px) {
   .card-body{
     justify-content: space-around;
   }

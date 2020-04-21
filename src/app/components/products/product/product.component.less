@@ -23,12 +23,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 1em;
     .flex-column{
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
     }
     .img-section{
+      margin-bottom: 1em;
       .img-content{
         display: flex;
         justify-content: space-around;
@@ -37,10 +39,10 @@
       }
     }
     .product-section{
-      min-height: 10em;
+      margin-bottom: 1em;
+      min-height: 7em;
       max-width: 50%;
       .details{
-        padding: 0 1em;
         .link{
           display: flex;
           flex-wrap: wrap;
@@ -49,17 +51,17 @@
     }
     .price-section{
       min-width: 20%;
+      margin-bottom: 1em;
       .price-container{
-        margin: 0 1em;
+        margin: 0 0.5em;
         .price-header{
           display: flex;
-          margin: 0 1em;
         }
         .price-content{
           display: flex;
           justify-content: space-around;
           flex-wrap: wrap;
-          margin: 1em;
+          margin: 1em 0;
 
           .price{
             margin-top: 1em;
@@ -190,7 +192,7 @@ p{
   }
 }
 
-@media only screen and (min-width : 575px) and (max-width : 1150px) {
+@media only screen and (min-width : 575px) and (max-width : 1300px) {
   .productCard{
     width: 100% !important;
   }
@@ -211,25 +213,6 @@ p{
   }
 }
 
-@media only screen and (min-width : 1150px) and (max-width : 1300px) {
-  .productCard{
-    width: 100% !important;
-  }
 
-  .card-body{
-    justify-content: space-around !important;
-  }
-
-  .img-section{
-    order: 0;
-  }
-  .product-section{
-    order: 1;
-    max-width: 90% !important;
-  }
-  .price-section{
-    order: 2;
-  }
-}
 
 
