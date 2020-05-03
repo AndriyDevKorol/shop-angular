@@ -57,5 +57,17 @@
     "tslint": "~5.15.0",
     "tslint-angular": "^3.0.2",
     "typescript": "~3.5.3"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndriyDevKorol/shop-angular.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndriyDevKorol/shop-angular/issues"
+  },
+  "homepage": "https://github.com/AndriyDevKorol/shop-angular#readme"
 }

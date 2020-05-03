@@ -33,6 +33,7 @@ export class ProductFormComponent implements OnInit {
     imgUrl: '',
     body: '',
     category: '',
+    subCategory: '',
     shortDescription: '',
   };
 
@@ -83,6 +84,7 @@ export class ProductFormComponent implements OnInit {
       imgUrl: this.url,
       body: this.formData.body,
       category: this.formData.category,
+      subCategory: this.formData.subCategory,
       shortDescription: this.formData.shortDescription
     };
 
@@ -108,6 +110,7 @@ export class ProductFormComponent implements OnInit {
       imgUrl: this.url,
       body: this.formData.body,
       category: this.formData.category,
+      subCategory: this.formData.subCategory,
       shortDescription: this.formData.shortDescription
     };
 

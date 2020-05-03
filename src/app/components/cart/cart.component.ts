@@ -16,7 +16,6 @@ import { EmailSenderService } from 'src/app/shared/services/emailSender/email-se
 export class CartComponent implements OnInit, OnDestroy {
 
 editProductKey: string;
-subscription: Subscription;
 cartEventSubscription: Subscription;
 products: Product[] = [];
 ourForm: FormGroup;
@@ -36,15 +35,10 @@ product: Product = {
   shortDescription: ''
 };
 
-
-
   name = new FormControl('', [Validators.required]);
 
   constructor(
     private productService: ProductService,
-    private fb: FormBuilder,
-    private firestore: AngularFirestore,
-    private http: HttpClient,
     private emailSender: EmailSenderService,
   ) {}
 

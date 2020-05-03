@@ -1,17 +1,21 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { Product } from '../../modules/Product';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { AngularFirestoreDocument } from 'angularfire2/firestore';
 import { BehaviorSubject } from 'rxjs';
+import * as firebase from "firebase/app";
+import { AngularFireAuth } from 'angularfire2/auth';
+import { ProductsUrl } from '../../productsUrl';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  products: AngularFireList<Product[]> = null;
+  private productsUrl = ProductsUrl.productsUrl;
+  products: AngularFireList<Product> = null;
   productDoc: AngularFirestoreDocument<Product>;
-  private dbPath = '/products';
   private editeProduct: BehaviorSubject<Product[]> = new BehaviorSubject([]);
   editProductEvent = this.editeProduct.asObservable();
   private addToCart: BehaviorSubject<Product[]> = new BehaviorSubject([]);
@@ -23,26 +27,52 @@ export class ProductService {
   count: number;
   cartProducts: Product[] = [];
   productDetails: any;
+  database = firebase.database();
 
 
   constructor(
-    public db: AngularFireDatabase
+    public db: AngularFireDatabase,
+    private afauth: AngularFireAuth,
   ) {
-        this.products = db.list(this.dbPath);
+        this.products = db.list(this.productsUrl);
     }
 
-  getProducts() {
-
-     return this.products;
+  loadData(){
+    let dat;
+    // var myUserId = firebase.auth().currentUser.uid;  -  verify if a user is logged
+    // var topUserPostsRef = firebase.database().ref(this.productsUrl).once("value", (snapshot) => {
+    //   snapshot.val();
+    // }, (errorObject) => {
+    //   console.log("The read failed: " + errorObject.message);
+    // }).then(el => console.log(el.val()));
+    // console.log(dat);
+    // console.log(topUserPostsRef);
   }
+
+  getProducts() {
+     return this.products
+    //  .snapshotChanges().subscribe(data => {
+    //   let productsList = data.map(e => {
+    //     return e.payload.val();
+    //   }).reverse();
+      // this.products = productsList;
+    // });
+  }
+
+  // getAllProducts(){
+  //   return this.db
+  //   .list<Product>('products')
+  //   .snapshotChanges()
+  //   .pipe(map(arr => arr.reverse()))
+  // }
 
   addProduct(product: Product): void {
-     this.db.list(this.dbPath).push(product);
-  }
+     this.db.list(this.productsUrl).push(product);
+  };
 
   onDelete(key: string ) {
     return this.products.remove(key);
-  }
+  };
 
   updateProduct(key: string, val) {
     return this.products.update(key, val);
