@@ -12,7 +12,6 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProductComponent implements OnInit {
 
-  // tslint:disable-next-line:no-input-rename
   @Input('product')product: Product;
   editProductKey: string;
   isAdmin = this.afauth.auth.currentUser;

@@ -51,12 +51,6 @@ export class ProductService {
 
   getProducts() {
      return this.products
-    //  .snapshotChanges().subscribe(data => {
-    //   let productsList = data.map(e => {
-    //     return e.payload.val();
-    //   }).reverse();
-      // this.products = productsList;
-    // });
   }
 
   // getAllProducts(){

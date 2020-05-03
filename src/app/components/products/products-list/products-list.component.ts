@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Product } from 'src/app/shared/modules/Product';
 import { ProductCategoryService } from 'src/app/shared/services/productCategory/product-category.service';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -14,29 +15,35 @@ import { ProductCategoryService } from 'src/app/shared/services/productCategory/
 export class ProductsListComponent implements OnInit {
   product: Product;
   products: Product[];
+  categories: any;
   searchFormControl: FormControl;
   editProductKey: string;
   isAdmin = this.afauth.auth.currentUser;
-  selectedCategory = 'мішок'
+  selectedCategory: string;
+  categoryList: string[];
 
   constructor(
     public productService: ProductService,
-    public categoryFilter: ProductCategoryService,
+    public categoryService: ProductCategoryService,
     private afauth: AngularFireAuth
     ) { }
 
   ngOnInit() {
-    this.getProductList();
+    this.categoryService.selectedCategoryEvent.subscribe(res =>  {this.getProductList(res)})
+    // console.log(this.selectedCategory)});
   }
 
-  getProductList() {
+  getProductList(selectedCategory: string) {
+    console.log(this.selectedCategory);
     this.productService
     .getProducts().snapshotChanges()
     .subscribe(data => {
       let productsList = data.map(e => {
         return e.payload.val();
       }).reverse();
-      this.products = this.categoryFilter.getCategory(productsList, this.selectedCategory);
+      this.products = this.categoryService.getCategory(productsList, selectedCategory);
+      this.categoryList = [...new Set(productsList.map(res => res.category))];
+      this.categoryService.getCategoryList(this.categoryList);
     });
   }
 }

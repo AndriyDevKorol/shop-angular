@@ -19,24 +19,12 @@
           <!-- <span></span> --> Menu
         </label>
         <ul class="menu__box">
-          <li><a class="menu__item" href="">Головна</a></li>
-          <li><a class="menu__item" href="">Шпаклівка</a></li>
-          <li><a class="menu__item" href="">Штукатурка</a></li>
-          <li><a class="menu__item" href="">Цемент</a></li>
-          <li><a class="menu__item" href="">Фарби</a></li>
-          <li><a class="menu__item" href="">Лаки</a></li>
-          <li><a class="menu__item" href="">Ремонтні суміші</a></li>
+          <li *ngFor="let category of categories" ><a class="menu__item" (click)="getCategory($event.target.text)" >{{category}}</a></li>
         </ul>
       </div>
       <div class="nav-menu">
         <ul class="nav-menu-list">
-          <li><a href="">Головна</a></li>
-          <li><a  href="">Шпаклівка</a></li>
-          <li><a  href="">Штукатурка</a></li>
-          <li><a  href="">Цемент</a></li>
-          <li><a  href="">Фарби</a></li>
-          <li><a  href="">Лаки</a></li>
-          <li><a  href="">Ремонтні суміші</a></li>
+          <li *ngFor="let category of categories"><a class="menu__item" href="">{{category}}</a></li>
         </ul>
       </div>
     </div>
