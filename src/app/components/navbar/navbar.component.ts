@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductCategoryService } from 'src/app/shared/services/productCategory/product-category.service';
+import { ProductFilterService } from 'src/app/shared/services/filter/product-filter.service';
 
 
 @Component({
@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   category: string;
 
   constructor(
-    private categoryService: ProductCategoryService,
+    private categoryService: ProductFilterService,
   ) { }
 
   ngOnInit() {
@@ -21,6 +21,6 @@ export class NavbarComponent implements OnInit {
   }
 
   getCategory(category: string) {
-    this.categoryService.getSelectedCategory(category);
+    this.categoryService.getSelectedCategoryListener(category);
   }
 }

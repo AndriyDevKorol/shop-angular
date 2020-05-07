@@ -37,7 +37,7 @@ export class ProductComponent implements OnInit {
 
   onDelete($key: string): void {
     this.productService.onDelete(this.product.$key);
-    alert('Продукт буде видалено');
+    alert('Продукт успішно видалено');
   }
 
   onEdit(product: Product[]): void {

@@ -72,8 +72,6 @@ export class ProductFormComponent implements OnInit {
   }
 
   deleteImg() {
-    console.log('imgurl', this.url);
-    console.log(this.storage.ref(this.url).delete());
     this.storage.ref(this.selectedImage).delete();
   }
 
@@ -89,9 +87,7 @@ export class ProductFormComponent implements OnInit {
     };
 
     if (this.isAdmin) {
-      console.log('fdf', this.url);
-      // this.saveImg();
-
+      this.saveImg();
       this.productService.addProduct(NewProduct);
       this.onReset();
     } else {

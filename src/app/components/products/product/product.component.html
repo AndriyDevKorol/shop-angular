@@ -36,7 +36,6 @@
             <button class="button danger" *ngIf="isAdmin" (click)="onDelete(product.$key)">Видалити</button>
             <button class="button secondary" *ngIf="isAdmin" (click)="onEdit(product)"  >Редагувати</button>
             <button class="button editbtn" (click)="onReset()" *ngIf="editProductKey">Відмінити</button>
-            <!-- <a [routerLink]="['/product-details']" routerLinkActive="active" class="link"><button class="button primary" (click)="onDetailsProduct(product)">Деталі</button></a> -->
           </div>
         </div>
         <div class="price-content">

@@ -6,7 +6,7 @@ import { ProductService } from '../product/product.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductCategoryService {
+export class ProductFilterService {
   private categoryList: BehaviorSubject<string[]> = new BehaviorSubject([]);
   categoryListEvent = this.categoryList.asObservable();
   private selectedCategory: BehaviorSubject<string> = new BehaviorSubject('');
@@ -22,13 +22,12 @@ export class ProductCategoryService {
     return products.filter(e => e.category == category);
   }
 
-  getCategoryList(categoryList: string[]) {
+  getCategoryListListener(categoryList: string[]) {
     this.categoryList.next(categoryList);
   }
 
-  getSelectedCategory(category: string) {
+  getSelectedCategoryListener(category: string) {
     this.selectedCategory.next(category);
-    console.log('nav-bar', category);
   }
 
 }

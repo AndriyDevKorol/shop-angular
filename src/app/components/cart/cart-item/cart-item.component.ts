@@ -22,7 +22,6 @@ export class CartItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('ngOnInit');
     this.getProducts();
   }
 

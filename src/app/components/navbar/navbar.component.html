@@ -12,7 +12,7 @@
       </ul>
     </div>
     <div class="center-header">
-      <span class="mr-5" ><a [routerLink]="['']" class="logo">MiшBud</a></span>
+      <span class="mr-5" ><a class="logo" href="">MiшBud</a></span>
       <div class="gamburger-menu">
         <input id="menu__toggle" type="checkbox" hidden/>
         <label class="menu__btn" for="menu__toggle">
@@ -24,7 +24,7 @@
       </div>
       <div class="nav-menu">
         <ul class="nav-menu-list">
-          <li *ngFor="let category of categories"><a class="menu__item" href="">{{category}}</a></li>
+          <li *ngFor="let category of categories"><a class="menu__item" (click)="getCategory($event.target.text)">{{category}}</a></li>
         </ul>
       </div>
     </div>
