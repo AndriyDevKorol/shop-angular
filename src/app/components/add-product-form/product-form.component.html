@@ -6,7 +6,7 @@
         <!-- <input type="text" placeholder="Save with Key" name="id" [(ngModel)]="id">
         <br><br> -->
         <div class="upload-form">
-          <input type="file" (change)="showPreview($event)" >
+          <input type="file" (change)="showPreview($event)" s>
           <button (click)="saveImg()" >Зберегти</button>
         </div>
         <button (click)="deleteImg()" hidden>Видалити (не працює)</button>
@@ -22,6 +22,10 @@
       <div class="form-group">
         <label for="category">Категорія</label>
         <input type="text" id="category" class="form-control"  [(ngModel)] = "formData.category" name="category" required>
+      </div>
+      <div class="form-group">
+        <label for="subCategory">Під-Категорія</label>
+        <input type="text" id="subCategory" class="form-control"  [(ngModel)] = "formData.subCategory" name="subCategory" required>
       </div>
       <div class="form-group">
         <label for="price">Ціна</label>

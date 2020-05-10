@@ -33,6 +33,7 @@ export class ProductFormComponent implements OnInit {
     imgUrl: '',
     body: '',
     category: '',
+    subCategory: '',
     shortDescription: '',
   };
 
@@ -71,25 +72,22 @@ export class ProductFormComponent implements OnInit {
   }
 
   deleteImg() {
-    console.log('imgurl', this.url);
-    console.log(this.storage.ref(this.url).delete());
     this.storage.ref(this.selectedImage).delete();
   }
 
-  onAddProduct(form: NgForm) {
+  onAddProduct() {
     const NewProduct: Product = {
       title: this.formData.title,
       price: this.formData.price,
       imgUrl: this.url,
       body: this.formData.body,
       category: this.formData.category,
+      subCategory: this.formData.subCategory,
       shortDescription: this.formData.shortDescription
     };
 
     if (this.isAdmin) {
-      console.log('fdf', this.url);
-      // this.saveImg();
-
+      this.saveImg();
       this.productService.addProduct(NewProduct);
       this.onReset();
     } else {
@@ -101,13 +99,14 @@ export class ProductFormComponent implements OnInit {
     // this.firestore.collection('products').add(NewProduct);
    }
 
-   updateProduct(form: NgForm) {
+   updateProduct() {
     const data = {
       title: this.formData.title,
       price: this.formData.price,
       imgUrl: this.url,
       body: this.formData.body,
       category: this.formData.category,
+      subCategory: this.formData.subCategory,
       shortDescription: this.formData.shortDescription
     };
 
@@ -116,7 +115,17 @@ export class ProductFormComponent implements OnInit {
    }
 
    onReset() {
-    this.productService.emitEditProduct([]);
+   const formData: Product = {
+      $key: '',
+      title: '',
+      price: 0,
+      imgUrl: '',
+      body: '',
+      category: '',
+      subCategory: '',
+      shortDescription: '',
+    };
+    this.productService.emitEditProduct(formData);
    }
 
   view() {

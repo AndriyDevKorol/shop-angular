@@ -12,13 +12,11 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProductComponent implements OnInit {
 
-  // tslint:disable-next-line:no-input-rename
   @Input('product')product: Product;
   editProductKey: string;
   isAdmin = this.afauth.auth.currentUser;
   products: Product[];
   countVal = 1;
-
 
 
   constructor(
@@ -38,10 +36,10 @@ export class ProductComponent implements OnInit {
 
   onDelete($key: string): void {
     this.productService.onDelete(this.product.$key);
-    alert('Продукт буде видалено');
+    alert('Продукт успішно видалено');
   }
 
-  onEdit(product: Product[]): void {
+  onEdit(product: Product): void {
      this.productService.emitEditProduct(product);
   }
 
@@ -53,7 +51,8 @@ export class ProductComponent implements OnInit {
   }
 
   onReset(): void {
-     this.productService.emitEditProduct([]);
+
+    //  this.productService.emitEditProduct([]);
   }
 
   editEventListener() {

@@ -20,7 +20,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ProductsComponent } from './components/products/products.component';
+import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { ProductComponent } from './components/products/product/product.component';
 import { ProductFormComponent } from './components/add-product-form/product-form.component';
@@ -40,7 +40,6 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
 import { CartService } from './shared/services/cart/cart.service';
 import { RangePipe } from './shared/pipes/range.pipe';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
-import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { RecipeComponent } from './components/cart/recipe/recipe.component';
 import { FirebaseStoreService } from './shared/services/firebaseStore/firebase-store.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -54,17 +53,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavbarComponent,
     LoaderComponent,
     ConfirmationButtonComponent,
-    ProductsComponent,
+    ProductsListComponent,
     AlertComponent,
     ProductComponent,
     ProductFormComponent,
     RestorPasswordComponent,
     SearchComponent,
-    FilterBarComponent,
     FilterPipe,
     RangePipe,
     CartItemComponent,
     RecipeComponent,
+
   ],
   imports: [
     NgbModule,
@@ -84,6 +83,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    // HttpClient,
     AngularFireLite.forRoot(environment.config),
     AngularFireModule.initializeApp(environment.config),
     AngularFirestoreModule.enablePersistence(),
