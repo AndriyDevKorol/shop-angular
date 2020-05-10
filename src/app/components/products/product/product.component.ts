@@ -19,7 +19,6 @@ export class ProductComponent implements OnInit {
   countVal = 1;
 
 
-
   constructor(
     private productService: ProductService,
     private afauth: AngularFireAuth,
@@ -40,7 +39,7 @@ export class ProductComponent implements OnInit {
     alert('Продукт успішно видалено');
   }
 
-  onEdit(product: Product[]): void {
+  onEdit(product: Product): void {
      this.productService.emitEditProduct(product);
   }
 
@@ -52,7 +51,8 @@ export class ProductComponent implements OnInit {
   }
 
   onReset(): void {
-     this.productService.emitEditProduct([]);
+
+    //  this.productService.emitEditProduct([]);
   }
 
   editEventListener() {

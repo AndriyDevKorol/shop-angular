@@ -35,9 +35,9 @@
     </div>
     <div class="main-content">
       <div class="container">
-        <app-product-form class="add-form" (onAddProduct)="addProduct($event)" *ngIf="isAdmin" ></app-product-form>
+        <app-product-form class="add-form" *ngIf="isAdmin" ></app-product-form>
         <div class="product-list" >
-          <app-product class="product" *ngFor="let product of products | filter: 'price': searchPrice  | filter: 'category': searchCategory | filter: 'body': searchBody | filter: 'title': searchTitle" [product]="product" (deleteProduct)="onDelete($event)" (editProduct)="onEdit($event)" (onAddToCart)="onAddToCart($event)"></app-product>
+          <app-product class="product" *ngFor="let product of products | filter: 'price': searchPrice  | filter: 'category': searchCategory | filter: 'body': searchBody | filter: 'title': searchTitle" [product]="product"  ></app-product>
         </div>
       </div>
     </div>

@@ -28,6 +28,7 @@ export class ProductService {
   cartProducts: Product[] = [];
   productDetails: any;
   database = firebase.database();
+  product: Product[] = [];
 
 
   constructor(
@@ -72,8 +73,9 @@ export class ProductService {
     return this.products.update(key, val);
   }
 
-  emitEditProduct(product: Product[]) {
-    this.editeProduct.next(product);
+  emitEditProduct(product: Product) {
+    this.product.push(product);
+    this.editeProduct.next(this.product);
   }
 
   emitDetailProduct(product: Product) {

@@ -23,6 +23,10 @@ export class ProductsListComponent implements OnInit {
   isAdmin = this.afauth.auth.currentUser;
   selectedCategory: string;
   categoryList: string[];
+  searchCategory;
+  searchTitle;
+  searchPrice;
+  searchBody;
 
   constructor(
     public productService: ProductService,

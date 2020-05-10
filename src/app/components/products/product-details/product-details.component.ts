@@ -43,4 +43,7 @@ export class ProductDetailsComponent implements OnInit {
   //   this.detailsEventSubscription.unsubscribe();
   // }
 
+  onCount(val: number){
+    console.log(val);
+  }
 }

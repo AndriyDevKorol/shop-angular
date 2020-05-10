@@ -10,9 +10,11 @@ import { Subscription } from 'rxjs';
 export class RecipeComponent implements OnInit {
 
   @Input()
-  product: Product[];
+  product: Product;
   subscription: Subscription;
   recipeEventSubscription: Subscription;
+  total: number;
+  count: number;
 
   constructor() { }
 

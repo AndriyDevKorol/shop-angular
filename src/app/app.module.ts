@@ -40,7 +40,6 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
 import { CartService } from './shared/services/cart/cart.service';
 import { RangePipe } from './shared/pipes/range.pipe';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
-import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { RecipeComponent } from './components/cart/recipe/recipe.component';
 import { FirebaseStoreService } from './shared/services/firebaseStore/firebase-store.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -60,7 +59,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProductFormComponent,
     RestorPasswordComponent,
     SearchComponent,
-    FilterBarComponent,
     FilterPipe,
     RangePipe,
     CartItemComponent,

@@ -75,7 +75,7 @@ export class ProductFormComponent implements OnInit {
     this.storage.ref(this.selectedImage).delete();
   }
 
-  onAddProduct(form: NgForm) {
+  onAddProduct() {
     const NewProduct: Product = {
       title: this.formData.title,
       price: this.formData.price,
@@ -99,7 +99,7 @@ export class ProductFormComponent implements OnInit {
     // this.firestore.collection('products').add(NewProduct);
    }
 
-   updateProduct(form: NgForm) {
+   updateProduct() {
     const data = {
       title: this.formData.title,
       price: this.formData.price,
@@ -115,7 +115,17 @@ export class ProductFormComponent implements OnInit {
    }
 
    onReset() {
-    this.productService.emitEditProduct([]);
+   const formData: Product = {
+      $key: '',
+      title: '',
+      price: 0,
+      imgUrl: '',
+      body: '',
+      category: '',
+      subCategory: '',
+      shortDescription: '',
+    };
+    this.productService.emitEditProduct(formData);
    }
 
   view() {
