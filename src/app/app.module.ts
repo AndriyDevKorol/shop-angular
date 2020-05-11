@@ -42,7 +42,6 @@ import { RangePipe } from './shared/pipes/range.pipe';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import { RecipeComponent } from './components/cart/recipe/recipe.component';
 import { FirebaseStoreService } from './shared/services/firebaseStore/firebase-store.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -66,7 +65,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
   ],
   imports: [
-    NgbModule,
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
