@@ -1,33 +1,20 @@
-<mat-toolbar >
-  <div class="nav-bar">
-    <div class="top-header">
-      <ul class="phone-number">
-        <li>тел:</li>
-        <li>097-565-8218</li>
-        <li>097-565-8218</li>
-      </ul>
-      <ul class="works-hour">
-        <li>пн-пт:</li>
-        <li>9.00 - 18.00</li>
+<div class="container-fluid bg-dark p-0">
+  <div class="container p-0 bg-dark navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active" *ngFor="let category of categories">
+          <a class="nav-link" href="#" (click)="getCategory($event.target.text)" [routerLink]="['/products']">{{category}}
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
       </ul>
     </div>
-    <div class="center-header">
-      <span class="mr-5" ><a class="logo" href="">MiшBud</a></span>
-      <div class="gamburger-menu">
-        <input id="menu__toggle" type="checkbox" hidden/>
-        <label class="menu__btn" for="menu__toggle">
-          <!-- <span></span> --> Menu
-        </label>
-        <ul class="menu__box">
-          <li *ngFor="let category of categories" ><a class="menu__item" (click)="getCategory($event.target.text)" >{{category}}</a></li>
-        </ul>
-      </div>
-      <div class="nav-menu">
-        <ul class="nav-menu-list">
-          <li *ngFor="let category of categories"><a class="menu__item" (click)="getCategory($event.target.text)">{{category}}</a></li>
-        </ul>
-      </div>
+    <div>
+      <a class="navbar-item mr-2 p-1" href="#" [routerLink]="['/cart']"  routerLinkActive="active" >Корзина</a>
+      <a class="navbar-item mr-1 p-1" href="#" [routerLink]="['/login']" routerLinkActive="active">Login</a>
     </div>
   </div>
-</mat-toolbar>
-
+</div>
