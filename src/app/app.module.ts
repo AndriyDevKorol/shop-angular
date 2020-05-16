@@ -43,6 +43,9 @@ import { CartItemComponent } from './components/cart/cart-item/cart-item.compone
 import { RecipeComponent } from './components/cart/recipe/recipe.component';
 import { FirebaseStoreService } from './shared/services/firebaseStore/firebase-store.service';
 import { HomeContentComponent } from './components/home/home-content/home-content.component';
+import { CarouselComponent } from './shared/components/carousel/carousel.component';
+import { ProductWidgetComponent } from './shared/components/widgets/product-widget/product-widget.component';
+import { AdsWidgetComponent } from './shared/components/widgets/ads-widget/ads-widget.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,10 @@ import { HomeContentComponent } from './components/home/home-content/home-conten
     RangePipe,
     CartItemComponent,
     RecipeComponent,
-    HomeContentComponent
+    HomeContentComponent,
+    CarouselComponent,
+    ProductWidgetComponent,
+    AdsWidgetComponent
   ],
   imports: [
     BrowserModule,
