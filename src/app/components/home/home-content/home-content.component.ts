@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
-import { from } from 'rxjs';
 import { ProductFilterService } from 'src/app/shared/services/filter/product-filter.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.less']
+  selector: 'app-home-content',
+  templateUrl: './home-content.component.html',
+  styleUrls: ['./home-content.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeContentComponent implements OnInit {
   categories: string[];
   category: string;
 

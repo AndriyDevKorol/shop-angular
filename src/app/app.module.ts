@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule, routingComponent } from './app-routing.module';
+import { AppRoutingModule, RoutingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
@@ -19,7 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { ProductComponent } from './components/products/product/product.component';
@@ -42,11 +42,12 @@ import { RangePipe } from './shared/pipes/range.pipe';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import { RecipeComponent } from './components/cart/recipe/recipe.component';
 import { FirebaseStoreService } from './shared/services/firebaseStore/firebase-store.service';
+import { HomeContentComponent } from './components/home/home-content/home-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponent,
+    RoutingComponent,
     HeaderComponent,
     FooterComponent,
     NavbarComponent,
@@ -62,7 +63,7 @@ import { FirebaseStoreService } from './shared/services/firebaseStore/firebase-s
     RangePipe,
     CartItemComponent,
     RecipeComponent,
-
+    HomeContentComponent
   ],
   imports: [
     BrowserModule,
@@ -81,12 +82,10 @@ import { FirebaseStoreService } from './shared/services/firebaseStore/firebase-s
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    // HttpClient,
     AngularFireLite.forRoot(environment.config),
     AngularFireModule.initializeApp(environment.config),
     AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,
-    // FileService,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     SharedModule,
