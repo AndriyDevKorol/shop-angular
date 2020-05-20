@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-
-import { from } from 'rxjs';
 import { ProductFilterService } from 'src/app/shared/services/filter/product-filter.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.less']
+  selector: 'app-left-section',
+  templateUrl: './left-section.component.html',
+  styleUrls: ['./left-section.component.less']
 })
-export class HomeComponent implements OnInit {
+export class LeftSectionComponent implements OnInit {
+
   categories: string[];
   category: string;
 
@@ -19,8 +18,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.categoryService.categoryListEvent.subscribe(res => {this.categories = res});
     this.categoryService.selectedCategoryEvent.subscribe(res => {this.category = res});
-    console.log('cat', this.categoryService.selectedCategoryEvent.subscribe(res => {this.category = res}))
-   }
+  console.log('home');
+  }
 
    getCategory(category: string) {
      this.categoryService.getSelectedCategoryListener(category);

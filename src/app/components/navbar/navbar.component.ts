@@ -17,8 +17,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
    this.categoryService.categoryListEvent.subscribe(res => {this.categories = res});
-   this.categoryService.selectedCategoryEvent.subscribe(res => {this.category = res});
-   console.log('cat2', this.categoryService.selectedCategoryEvent.subscribe(res => {this.category = res}))
+   this.categoryService.selectedCategoryEvent.subscribe(res => {this.category = res
+    console.log('2ss', res)
+  });
   }
 
   getCategory(category: string) {

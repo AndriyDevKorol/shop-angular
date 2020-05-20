@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/shared/modules/Product';
-import { ProductService } from 'src/app/shared/services/product/product.service';
+
+import { from } from 'rxjs';
 import { ProductFilterService } from 'src/app/shared/services/filter/product-filter.service';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Product } from 'src/app/shared/modules/Product';
 import { FormControl } from '@angular/forms';
+import { ProductService } from 'src/app/shared/services/product/product.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
-  selector: 'app-home-content',
-  templateUrl: './home-content.component.html',
-  styleUrls: ['./home-content.component.less']
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.less']
 })
-export class HomeContentComponent implements OnInit {
+export class MainComponent implements OnInit {
+
   product: Product;
   products: Product[];
   categories: any;
@@ -31,11 +34,13 @@ export class HomeContentComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    console.log('product-list');
     this.filterService.selectedCategoryEvent.subscribe(res =>  {this.getProductList(res)});
     // this.loadData();
   }
 
   getProductList(selectedCategory: string) {
+
     this.productService
     .getProducts().snapshotChanges()
     .subscribe(data => {
@@ -45,10 +50,20 @@ export class HomeContentComponent implements OnInit {
           ...e.payload.val()
         }
       }).reverse();
+
+      console.log('pr', productsList);
+      console.log('cat', selectedCategory);
       this.products = this.filterService.getCategory(productsList, selectedCategory);
       this.categoryList = [...new Set(productsList.map(res => res.category))];
       this.filterService.getCategoryListListener(this.categoryList);
     });
   }
 
+
+  loadData(){
+    this.productService.getProducts().valueChanges().subscribe(e => {
+      let rendomValue = Math.random();
+      this.products = e.slice(1,2)
+    });
+  }
 }

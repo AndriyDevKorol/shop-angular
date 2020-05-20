@@ -6,6 +6,7 @@ import { ProductService } from '../product/product.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductFilterService {
   private categoryList: BehaviorSubject<string[]> = new BehaviorSubject([]);
   categoryListEvent = this.categoryList.asObservable();

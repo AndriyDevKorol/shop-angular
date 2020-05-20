@@ -6,7 +6,6 @@ import { BehaviorSubject } from 'rxjs';
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ProductsUrl } from '../../productsUrl';
-import { map } from 'rxjs/operators';
 
 
 @Injectable({

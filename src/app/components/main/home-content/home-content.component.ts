@@ -1,32 +1,23 @@
-import { Component, OnInit} from '@angular/core';
-import { ProductService } from '../../../shared/services/product/product.service';
-import { FormControl } from '@angular/forms';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/modules/Product';
+import { ProductService } from 'src/app/shared/services/product/product.service';
 import { ProductFilterService } from 'src/app/shared/services/filter/product-filter.service';
-import { map } from 'rxjs/operators';
-import { keyframes } from '@angular/animations';
-
-
+import { AngularFireAuth } from 'angularfire2/auth';
+import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-products-list',
-  templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.less']
+  selector: 'app-home-content',
+  templateUrl: './home-content.component.html',
+  styleUrls: ['./home-content.component.less']
 })
-export class ProductsListComponent implements OnInit {
+export class HomeContentComponent implements OnInit {
   product: Product;
   products: Product[];
   categories: any;
-  searchFormControl: FormControl;
-  editProductKey: string;
   isAdmin = this.afauth.auth.currentUser;
   selectedCategory: string;
   categoryList: string[];
-  searchCategory;
-  searchTitle;
-  searchPrice;
-  searchBody;
+
 
   constructor(
     public productService: ProductService,
@@ -35,13 +26,10 @@ export class ProductsListComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    console.log('product-list');
     this.filterService.selectedCategoryEvent.subscribe(res =>  {this.getProductList(res)});
-    // this.loadData();
   }
 
   getProductList(selectedCategory: string) {
-
     this.productService
     .getProducts().snapshotChanges()
     .subscribe(data => {
@@ -51,22 +39,10 @@ export class ProductsListComponent implements OnInit {
           ...e.payload.val()
         }
       }).reverse();
-
-      console.log('pr', productsList);
-      console.log('cat', selectedCategory);
       this.products = this.filterService.getCategory(productsList, selectedCategory);
       this.categoryList = [...new Set(productsList.map(res => res.category))];
       this.filterService.getCategoryListListener(this.categoryList);
     });
   }
-
-
-  loadData(){
-    this.productService.getProducts().valueChanges().subscribe(e => {
-      let rendomValue = Math.random();
-      this.products = e.slice(1,2)
-    });
-  }
-
 
 }
