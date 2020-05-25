@@ -18,7 +18,6 @@ export class LeftSectionComponent implements OnInit {
   ngOnInit() {
     this.categoryService.categoryListEvent.subscribe(res => {this.categories = res});
     this.categoryService.selectedCategoryEvent.subscribe(res => {this.category = res});
-  console.log('home');
   }
 
    getCategory(category: string) {

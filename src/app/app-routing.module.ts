@@ -1,12 +1,12 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainComponent } from './components/main/main.component';
-import { CartComponent } from './components/cart/cart.component';
+import { MainComponent } from './features/main/main.component';
+import { CartComponent } from './features/cart/cart.component';
 import { LoginComponent } from './shared/components/login/login.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
-import { ProductsListComponent } from './components/products/products-list/products-list.component'
-import { HomeContentComponent } from './components/main/home-content/home-content.component';
+import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
+import { ProductDetailsComponent } from './features/products/product-details/product-details.component';
+import { ProductsListComponent } from './features/products/products-list/products-list.component'
+import { HomeContentComponent } from './features/main/home-content/home-content.component';
 
 const childRoutes: Routes = [
   {path: '', component: HomeContentComponent},

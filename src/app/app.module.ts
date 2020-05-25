@@ -3,9 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule, RoutingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { ConfirmationButtonComponent } from './shared/components/confirmation-button/confirmation-button.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -20,10 +17,10 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductsListComponent } from './components/products/products-list/products-list.component';
+import { ProductsListComponent } from './features/products/products-list/products-list.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
-import { ProductComponent } from './components/products/product/product.component';
-import { ProductFormComponent } from './components/add-product-form/product-form.component';
+import { ProductComponent } from './features/products/product/product.component';
+import { ProductFormComponent } from './features/add-product-form/product-form.component';
 import { ProductService } from './shared/services/product/product.service';
 import { RestorPasswordComponent } from './shared/components/restor-password/restor-password.component';
 import { environment } from '../environments/environment';
@@ -39,22 +36,20 @@ import { SearchComponent } from './shared/components/search/search.component';
 import { FilterPipe } from './shared/pipes/filter.pipe';
 import { CartService } from './shared/services/cart/cart.service';
 import { RangePipe } from './shared/pipes/range.pipe';
-import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
-import { RecipeComponent } from './components/cart/recipe/recipe.component';
+import { CartItemComponent } from './features/cart/cart-item/cart-item.component';
+import { RecipeComponent } from './features/cart/recipe/recipe.component';
 import { FirebaseStoreService } from './shared/services/firebaseStore/firebase-store.service';
-import { HomeContentComponent } from './components/main/home-content/home-content.component';
+import { HomeContentComponent } from './features/main/home-content/home-content.component';
 import { CarouselComponent } from './shared/components/carousel/carousel.component';
 import { ProductWidgetComponent } from './shared/components/widgets/product-widget/product-widget.component';
 import { AdsWidgetComponent } from './shared/components/widgets/ads-widget/ads-widget.component';
-import { LeftSectionComponent } from './components/main/left-section/left-section.component';
+import { LeftSectionComponent } from './features/main/left-section/left-section.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutingComponent,
-    HeaderComponent,
-    FooterComponent,
-    NavbarComponent,
     LoaderComponent,
     ConfirmationButtonComponent,
     ProductsListComponent,
@@ -74,7 +69,7 @@ import { LeftSectionComponent } from './components/main/left-section/left-sectio
     LeftSectionComponent
   ],
   imports: [
-    BrowserModule,
+    CoreModule,
     AppRoutingModule,
     NoopAnimationsModule,
     MatToolbarModule,

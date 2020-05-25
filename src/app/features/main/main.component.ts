@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-import { from } from 'rxjs';
 import { ProductFilterService } from 'src/app/shared/services/filter/product-filter.service';
 import { Product } from 'src/app/shared/modules/Product';
 import { FormControl } from '@angular/forms';
@@ -34,13 +32,14 @@ export class MainComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    console.log('product-list');
-    this.filterService.selectedCategoryEvent.subscribe(res =>  {this.getProductList(res)});
+    this.filterService.selectedCategoryEvent.subscribe(res =>  {
+      this.getProductList(res)
+    });
     // this.loadData();
+    console.log('load', this.productService.loadProducts());
   }
 
   getProductList(selectedCategory: string) {
-
     this.productService
     .getProducts().snapshotChanges()
     .subscribe(data => {
@@ -50,9 +49,8 @@ export class MainComponent implements OnInit {
           ...e.payload.val()
         }
       }).reverse();
-
-      console.log('pr', productsList);
-      console.log('cat', selectedCategory);
+      console.log('1', productsList);
+      console.log('2', selectedCategory);
       this.products = this.filterService.getCategory(productsList, selectedCategory);
       this.categoryList = [...new Set(productsList.map(res => res.category))];
       this.filterService.getCategoryListListener(this.categoryList);
@@ -60,10 +58,10 @@ export class MainComponent implements OnInit {
   }
 
 
-  loadData(){
-    this.productService.getProducts().valueChanges().subscribe(e => {
-      let rendomValue = Math.random();
-      this.products = e.slice(1,2)
-    });
-  }
+  // loadData(){
+  //   this.productService.getProducts().valueChanges().subscribe(e => {
+  //     let rendomValue = Math.random();
+  //     this.products = e.slice(1,2)
+  //   });
+  // }
 }

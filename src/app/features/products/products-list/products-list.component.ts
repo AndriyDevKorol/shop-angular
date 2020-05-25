@@ -35,38 +35,37 @@ export class ProductsListComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    console.log('product-list');
-    this.filterService.selectedCategoryEvent.subscribe(res =>  {this.getProductList(res)});
+    // this.filterService.selectedCategoryEvent.subscribe(res =>  {this.getProductList(res)});
     // this.loadData();
   }
 
-  getProductList(selectedCategory: string) {
+  // getProductList(selectedCategory: string) {
 
-    this.productService
-    .getProducts().snapshotChanges()
-    .subscribe(data => {
-      let productsList = data.map(e => {
-        return {
-          $key: e.key,
-          ...e.payload.val()
-        }
-      }).reverse();
+  //   this.productService
+  //   .getProducts().snapshotChanges()
+  //   .subscribe(data => {
+  //     let productsList = data.map(e => {
+  //       return {
+  //         $key: e.key,
+  //         ...e.payload.val()
+  //       }
+  //     }).reverse();
+  //     console.log('1', productsList);
+  //     console.log('2', selectedCategory);
+  //     this.products = this.filterService.getCategory(productsList, selectedCategory);
+  //     console.log('prtt', this.products);
+  //     this.categoryList = [...new Set(productsList.map(res => res.category))];
+  //     this.filterService.getCategoryListListener(this.categoryList);
+  //   });
+  // }
 
-      console.log('pr', productsList);
-      console.log('cat', selectedCategory);
-      this.products = this.filterService.getCategory(productsList, selectedCategory);
-      this.categoryList = [...new Set(productsList.map(res => res.category))];
-      this.filterService.getCategoryListListener(this.categoryList);
-    });
-  }
 
-
-  loadData(){
-    this.productService.getProducts().valueChanges().subscribe(e => {
-      let rendomValue = Math.random();
-      this.products = e.slice(1,2)
-    });
-  }
+  // loadData(){
+  //   this.productService.getProducts().valueChanges().subscribe(e => {
+  //     let rendomValue = Math.random();
+  //     this.products = e.slice(1,2)
+  //   });
+  // }
 
 
 }

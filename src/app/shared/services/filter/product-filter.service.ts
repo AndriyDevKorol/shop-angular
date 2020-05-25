@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Product } from '../../modules/Product';
 import { ProductService } from '../product/product.service';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +20,14 @@ export class ProductFilterService {
   ) { }
 
 
-  getCategory(products:Product[], category: string) {
-    if (!category) { return products;}
-    return products.filter(e => e.category == category);
+  getCategory(products:Product[], category: string): Product[] {
+    console.log('filt', category);
+    console.log('filt', products);
+    if (!category) { return products}
+    return products.filter(e => {
+      console.log('e', e.category);
+      e.category == category
+    });
   }
 
   getCategoryListListener(categoryList: string[]) {
