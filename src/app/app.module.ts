@@ -45,6 +45,7 @@ import { ProductWidgetComponent } from './shared/components/widgets/product-widg
 import { AdsWidgetComponent } from './shared/components/widgets/ads-widget/ads-widget.component';
 import { LeftSectionComponent } from './features/main/left-section/left-section.component';
 import { CoreModule } from './core/core.module';
+import { ClientModule } from './client/client.module';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { CoreModule } from './core/core.module';
     LeftSectionComponent
   ],
   imports: [
+    ClientModule,
     CoreModule,
     AppRoutingModule,
     NoopAnimationsModule,

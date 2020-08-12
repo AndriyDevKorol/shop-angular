@@ -1,0 +1,27 @@
+<div class="container-login">
+  <div class="wrap-login">
+    <div class="col">
+      <div class="card text-center border-0">
+        <form [formGroup]="signUpUserForm" (submit)="onSubmitSignUpForm()" class="form">
+          <span class="card-title pb-3">
+            Registration
+          </span>
+          <div class="card-body ">
+            <div class="form-group">
+              <input formControlName="email" class="form-control border-bottom" type="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <input formControlName="password" class="form-control border-bottom" type="password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Sign Up </button>
+            </div>
+            <div class="card-signup">
+              <a routerLink="/login">Sign In</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
