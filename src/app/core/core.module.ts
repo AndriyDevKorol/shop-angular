@@ -2,25 +2,30 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from '../footer/footer.component';
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from '../core/header/navbar/navbar.component';
+import { ToastrModule } from "ngx-toastr";
+import { ReactiveFormsModule } from '@angular/forms';
+import { GeneralInterceptor } from "./general.interceptor";
+import { UserService } from "./services/auth/user.service";
+// import {HttpService} from "./services/http.service";
+import { AlertService } from "./services/alert.service";
+
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    FooterComponent,
-    NavbarComponent,
+  declarations: [],
+  providers: [
+    GeneralInterceptor,
+    AlertService,
+    // HttpService,
+    UserService
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule,
-  ],
-  exports: [
-    HeaderComponent,
-    FooterComponent,
+    CommonModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ]
 })
 export class CoreModule { }

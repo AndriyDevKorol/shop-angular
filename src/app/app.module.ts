@@ -31,7 +31,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { SharedModule } from './shared/shared.module';
-import { AuthService } from './shared/services/auth/auth.service';
+import { UserService } from './core/services/auth/user.service';
 import { SearchComponent } from './shared/components/search/search.component';
 import { FilterPipe } from './shared/pipes/filter.pipe';
 import { CartService } from './shared/services/cart/cart.service';
@@ -100,7 +100,7 @@ import { AdminModule } from './admin/admin.module';
   providers: [
     ProductService,
     CartService,
-    AuthService,
+    UserService,
     FirebaseStoreService
   ],
   bootstrap: [AppComponent]

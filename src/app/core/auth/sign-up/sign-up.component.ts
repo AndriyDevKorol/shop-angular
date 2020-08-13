@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-// import {UserService} from "./../../../core/services/user.service";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
-// import {AlertService} from "./../../../core/services/alert.service";
+import { UserService } from '../../services/auth/user.service';
+import { AlertService } from '../../services/alert.service';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -15,8 +16,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
 
   constructor(
-    // private userService: UserService,
-    // private alertService: AlertService
+    private userService: UserService,
+    private alertService: AlertService
   ) {
 
   }
@@ -32,19 +33,19 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
 
-  // onSubmitSignUpForm() {
-  //   const {email, password} = this.signUpUserForm.getRawValue();
-  //   this.userService.signUpWithEmailAndPassword(email, password)
-  //     .pipe(takeUntil(this.destroy$))
-  //     .subscribe(userCredential => {
-  //       this.alertService.successMessage('Successfully registered', 'Register', {timeOut: 1000})
+  onSubmitSignUpForm() {
+    const {email, password} = this.signUpUserForm.getRawValue();
+    this.userService.singUpWithEmailAndPassword(email, password)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(userCredential => {
+        this.alertService.successMessage('Successfully registered', 'Register', {timeOut: 1000})
 
-  //     }, error => {
-  //       const errorMessage = this.userService.getErrorSignUpMessage(error.code);
-  //       this.alertService.errorMessage(errorMessage, 'Error', {timeOut: 1000})
+      }, error => {
+        const errorMessage = this.userService.getErrorSignUpMessage(error.code);
+        this.alertService.errorMessage(errorMessage, 'Error', {timeOut: 1000})
 
-  //     })
-  // }
+      })
+  }
 
   ngOnDestroy() {
     this.destroy$.next();

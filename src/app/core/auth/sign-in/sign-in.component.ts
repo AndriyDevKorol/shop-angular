@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {takeUntil} from "rxjs/operators";
-// import {UserService} from "./../../../core/services/user.service";
+import {UserService} from "../../services/auth/user.service";
 import {Subject} from "rxjs";
 import {Router} from "@angular/router";
-// import {AlertService} from "./../../../core/services/alert.service";
+import { AlertService } from '../../services/alert.service';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -17,9 +18,9 @@ export class SignInComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
 
   constructor(
-    // private userService: UserService,
+    private userService: UserService,
     private router: Router,
-    // private alertService: AlertService
+    private alertService: AlertService
   ) {
   }
 
@@ -30,19 +31,21 @@ export class SignInComponent implements OnInit, OnDestroy {
     });
   }
 
-  // onSubmitSignInForm() {
-  //   const {email, password} = this.signInUserForm.getRawValue();
-  //   this.userService.signInWithEmailAndPassword(email, password)
-  //     .pipe(takeUntil(this.destroy$))
-  //     .subscribe(_ => {
-  //       this.alertService.successMessage('Successfully ', 'Login Success', {timeOut: 1000})
-
-  //       return this.router.navigate(['/admin', 'main']);
-  //     }, error => {
-  //       const errorMessage = this.userService.getErrorSignInMessage(error.code);
-  //       this.alertService.errorMessage(errorMessage, 'User Not Found', {timeOut: 1000})
-  //     })
-  // }
+  onSubmitSignInForm() {
+    console.log('login');
+    const {email, password} = this.signInUserForm.getRawValue();
+    this.userService.signInWithEmailAndPassword(email, password)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(_ => {
+        this.alertService.successMessage('Successfully ', 'Login Success', {timeOut: 1000})
+        console.log('login-success');
+        return this.router.navigate(['/']);
+      }, error => {
+        console.log('login-error');
+        const errorMessage = this.userService.getErrorSignInMessage(error.code);
+        this.alertService.errorMessage(errorMessage, 'User Not Found', {timeOut: 1000})
+      })
+  }
 
   ngOnDestroy() {
     this.destroy$.next();
