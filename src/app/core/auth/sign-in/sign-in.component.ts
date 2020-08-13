@@ -32,16 +32,14 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
   onSubmitSignInForm() {
-    console.log('login');
+
     const {email, password} = this.signInUserForm.getRawValue();
     this.userService.signInWithEmailAndPassword(email, password)
       .pipe(takeUntil(this.destroy$))
       .subscribe(_ => {
         this.alertService.successMessage('Successfully ', 'Login Success', {timeOut: 1000})
-        console.log('login-success');
         return this.router.navigate(['/']);
       }, error => {
-        console.log('login-error');
         const errorMessage = this.userService.getErrorSignInMessage(error.code);
         this.alertService.errorMessage(errorMessage, 'User Not Found', {timeOut: 1000})
       })

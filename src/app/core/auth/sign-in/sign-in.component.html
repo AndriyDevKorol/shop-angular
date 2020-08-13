@@ -2,7 +2,7 @@
   <div class="wrap-login">
     <div class="col">
       <div class="card text-center border-0">
-        <form [formGroup]="signInUserForm"  class="form">
+        <form [formGroup]="signInUserForm"  (submit)="onSubmitSignInForm()" class="form">
           <span class="card-title pb-3">
             Welcome
           </span>
