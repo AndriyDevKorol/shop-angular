@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule, RoutingComponent } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoaderComponent } from './shared/components/loader/loader.component';
@@ -46,11 +46,11 @@ import { AdsWidgetComponent } from './shared/components/widgets/ads-widget/ads-w
 import { LeftSectionComponent } from './features/main/left-section/left-section.component';
 import { CoreModule } from './core/core.module';
 import { ClientModule } from './client/client.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RoutingComponent,
     LoaderComponent,
     ConfirmationButtonComponent,
     ProductsListComponent,
@@ -70,7 +70,9 @@ import { ClientModule } from './client/client.module';
     LeftSectionComponent
   ],
   imports: [
+    BrowserModule,
     ClientModule,
+    AdminModule,
     CoreModule,
     AppRoutingModule,
     NoopAnimationsModule,

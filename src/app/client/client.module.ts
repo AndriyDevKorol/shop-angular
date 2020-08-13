@@ -7,11 +7,14 @@ import {HomePageComponent} from './home-page/home-page.component';
 
 
 @NgModule({
-  declarations: [ClientPortalComponent],
+  declarations: [
+    ClientPortalComponent,
+    HomePageComponent
+  ],
   imports: [
     CommonModule,
     ClientRoutingModule,
-    HomePageComponent
+
   ]
 })
 export class ClientModule { }
