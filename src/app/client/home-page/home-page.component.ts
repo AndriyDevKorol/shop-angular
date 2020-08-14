@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../core/services/product.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home-page',
@@ -29,5 +30,22 @@ export class HomePageComponent implements OnInit {
     body: "string",
     }){
     this.productService.postProduct(data).subscribe(res => console.log(res));
+  }
+
+  getData(){
+    this.productService.getProducts()
+    .pipe(
+      map(res => {
+        const postsArray = [];
+        for (const key in res) {
+          if (res.hasOwnProperty(key)){
+            postsArray.push({...postsArray[key], id: key});
+          }
+        }
+        return postsArray;
+      })
+    )
+    .subscribe(res => console.log(res));
+
   }
 }
