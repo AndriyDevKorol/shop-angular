@@ -7,7 +7,7 @@ import { ToastrModule } from "ngx-toastr";
 import { ReactiveFormsModule } from '@angular/forms';
 import { GeneralInterceptor } from "./general.interceptor";
 import { UserService } from "./services/auth/user.service";
-// import {HttpService} from "./services/http.service";
+import { HttpService } from "./services/http.service";
 import { AlertService } from "./services/alert.service";
 
 
@@ -16,7 +16,7 @@ import { AlertService } from "./services/alert.service";
   providers: [
     GeneralInterceptor,
     AlertService,
-    // HttpService,
+    HttpService,
     UserService
   ],
   imports: [
