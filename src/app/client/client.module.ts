@@ -4,12 +4,18 @@ import {CommonModule} from '@angular/common';
 import {ClientRoutingModule} from './client-routing.module';
 import {ClientPortalComponent} from './client-portal/client-portal.component';
 import {HomePageComponent} from './home-page/home-page.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
   declarations: [
     ClientPortalComponent,
-    HomePageComponent
+    HomePageComponent,
+    FooterComponent,
+    HeaderComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
