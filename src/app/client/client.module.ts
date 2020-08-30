@@ -7,6 +7,7 @@ import {HomePageComponent} from './home-page/home-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AdminRoutingModule } from '../admin/admin-routing.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   imports: [
     CommonModule,
+    AdminRoutingModule,
     ClientRoutingModule,
 
   ]

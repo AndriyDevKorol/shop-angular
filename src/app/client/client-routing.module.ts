@@ -7,10 +7,12 @@ import { HomeContentComponent } from '../features/main/home-content/home-content
 const routes: Routes = [
 {
   path: '',
+  redirectTo: 'home',
   pathMatch: 'full'
 },
 {
-  path: '',
+  path: 'home',
+  pathMatch: 'full',
   component: ClientPortalComponent,
   children: [
     {
