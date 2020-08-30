@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { ProductService } from '../../../shared/services/product/product.service';
+import { ProductService } from '../../shared/services/product/product.service';
 import { FormControl } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Product } from 'src/app/shared/modules/Product';

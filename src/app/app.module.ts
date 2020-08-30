@@ -17,9 +17,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductsListComponent } from './features/products/products-list/products-list.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
-import { ProductComponent } from './features/products/product/product.component';
 import { ProductFormComponent } from './features/add-product-form/product-form.component';
 import { ProductService } from './shared/services/product/product.service';
 import { RestorPasswordComponent } from './shared/components/restor-password/restor-password.component';
@@ -53,9 +51,7 @@ import { AdminModule } from './admin/admin.module';
     AppComponent,
     LoaderComponent,
     ConfirmationButtonComponent,
-    ProductsListComponent,
     AlertComponent,
-    ProductComponent,
     ProductFormComponent,
     RestorPasswordComponent,
     SearchComponent,
