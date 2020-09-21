@@ -22,6 +22,7 @@ export class AuthGuardService implements CanActivate{
     return this.userService.getUser().pipe(map(permission => {
 
       if(!permission) {
+        this.router.navigate(['']);
          return true;
       }
       this.router.navigate(['admin']);

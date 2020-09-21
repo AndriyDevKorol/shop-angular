@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AngularFireAuthGuard} from "@angular/fire/auth-guard";
 import {AdminPortalComponent} from "./admin-portal/admin-portal.component";
+import { AuthGuardService } from '../core/services/guards/auth-guard.service';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminPortalComponent,
-    canActivate: [AngularFireAuthGuard],
+    // canActivate: [AngularFireAuthGuard],
+    canActivate: [AuthGuardService]
   }
 ];
 
