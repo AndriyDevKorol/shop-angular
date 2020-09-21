@@ -5,10 +5,16 @@ import {AdminPortalComponent} from "./admin-portal/admin-portal.component";
 
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: 'admin',
+  //   pathMatch: 'full',
+  //   // canActivate: [AngularFireAuthGuard],
+  // },
   {
     path: 'admin',
     component: AdminPortalComponent,
-    canActivate: [AngularFireAuthGuard],
+    // canActivate: [AngularFireAuthGuard],
   }
 ];
 

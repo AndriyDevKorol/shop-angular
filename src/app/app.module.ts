@@ -45,6 +45,7 @@ import { LeftSectionComponent } from './features/main/left-section/left-section.
 import { CoreModule } from './core/core.module';
 import { ClientModule } from './client/client.module';
 import { AdminModule } from './admin/admin.module';
+import { AuthModule } from './core/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { AdminModule } from './admin/admin.module';
     ClientModule,
     AdminModule,
     CoreModule,
+    AuthModule,
     AppRoutingModule,
     NoopAnimationsModule,
     MatToolbarModule,
