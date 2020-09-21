@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuardService } from './core/services/guards/auth-guard.service';
 import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
 
 
@@ -11,7 +12,7 @@ const routes: Routes = [
     {
       path: 'auth',
       loadChildren: () => import('./core/auth/auth.module').then(login => login.AuthModule),
-      // canActivate: [AuthGuardService]
+      canActivate: [AuthGuardService]
     },
     {
       path: 'admin',

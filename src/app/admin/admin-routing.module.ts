@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminPortalComponent,
-    // canActivate: [AngularFireAuthGuard],
+    canActivate: [AngularFireAuthGuard],
   }
 ];
 

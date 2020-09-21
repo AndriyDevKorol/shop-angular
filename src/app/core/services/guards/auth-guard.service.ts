@@ -15,19 +15,17 @@ import { UserService } from '../auth/user.service';
 export class AuthGuardService implements CanActivate{
 
   constructor(
-    // private auth: AuthService,
     private router: Router,
     private userService: UserService
     ) {}
   canActivate() : Observable<boolean> | boolean{
-     return this.userService.getUser().pipe(map(permission => {
-      debugger;
-      console.log(permission.uid);
-      if(permission.email) {
-        this.router.navigate(['/admin']);
-        return false;
+    return this.userService.getUser().pipe(map(permission => {
+
+      if(!permission) {
+         return true;
       }
-      return true;
+      this.router.navigate(['admin']);
+      return false;
      }));
 
 
