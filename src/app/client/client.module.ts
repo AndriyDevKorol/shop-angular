@@ -7,7 +7,6 @@ import {HomePageComponent} from './home-page/home-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AdminRoutingModule } from '../admin/admin-routing.module';
 import { ProductComponent } from './product/product/product.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 @NgModule({
@@ -22,7 +21,6 @@ import { ProductsListComponent } from './products-list/products-list.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule,
     ClientRoutingModule,
   ]
 })

@@ -16,7 +16,6 @@ export class UserService {
 
   constructor(
     private afauth: AngularFireAuth,
-    private  http: HttpClient
   ) { }
 
   getErrorSignInMessage(code: string): string {

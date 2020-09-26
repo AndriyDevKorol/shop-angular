@@ -38,7 +38,7 @@ export class SignInComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(_ => {
         this.alertService.successMessage('Successfully ', 'Login Success', {timeOut: 1000})
-        return this.router.navigate(['/']);
+        return this.router.navigate(['admin']);
       }, error => {
         const errorMessage = this.userService.getErrorSignInMessage(error.code);
         this.alertService.errorMessage(errorMessage, 'User Not Found', {timeOut: 1000})

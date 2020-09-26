@@ -46,6 +46,7 @@ import { CoreModule } from './core/core.module';
 import { ClientModule } from './client/client.module';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './core/auth/auth.module';
+import { AuthGuardService } from './core/services/guards/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -96,10 +97,11 @@ import { AuthModule } from './core/auth/auth.module';
     SharedModule,
   ],
   providers: [
-    ProductService,
+    // ProductService,
     CartService,
     UserService,
-    FirebaseStoreService
+    FirebaseStoreService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
