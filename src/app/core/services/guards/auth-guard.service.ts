@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { AuthService } from '../services/auth.service';
 import { Router, CanActivate } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -19,14 +18,11 @@ export class AuthGuardService implements CanActivate{
     ) {}
   canActivate() : Observable<boolean> | boolean{
     return this.userService.getUser().pipe(map(permission => {
-
-      if(!permission) {
-         return true;
+      if(permission) {
+       return true;
       }
-      this.router.navigate(['admin']);
+      this.router.navigate(['login']);
       return false;
      }));
-
-
   }
 }

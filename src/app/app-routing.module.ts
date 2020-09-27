@@ -11,22 +11,20 @@ const routes: Routes = [
     },
     {
       path: 'auth',
-      loadChildren: () => import('./core/auth/auth.module').then(login => login.AuthModule),
-      canActivate: [AuthGuardService]
+      loadChildren: () => import('./core/auth/auth.module').then(login => login.AuthModule)
     },
     {
       path: 'admin',
       loadChildren: () => import('./admin/admin.module').then(admin => admin.AdminModule),
-      canActivate: [AuthGuardService]
     },
-    {path: '**', component: PageNotFoundComponent}
+    { path: '**', component: PageNotFoundComponent }
 ]
 
 
 @NgModule({
   imports: [BrowserModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuardService]
 })
+
 export class AppRoutingModule{ }
 

@@ -6,27 +6,22 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 
 const routes: Routes = [
-// {
-//   path: '',
-//   redirectTo: '',
-//   pathMatch: 'full',
-// },
-{
-  path: '',
-  component: ClientPortalComponent,
-
-  children: [
-    {
-      path: '',
-      component: HomePageComponent
-    },
-    {
-      path: 'products',
-      component: ProductsListComponent
-    }
-  ]
-}
-
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full',
+    component: ClientPortalComponent,
+    children: [
+      {
+        path: '',
+        component: HomePageComponent
+      },
+      {
+        path: 'products',
+        component: ProductsListComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
