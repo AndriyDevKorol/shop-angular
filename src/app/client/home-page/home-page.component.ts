@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../core/services/product.service';
 import { map } from 'rxjs/operators';
+import { AngularFireList } from '@angular/fire/database';
+import { Product } from 'src/app/shared/modules/Product';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { ProductModel } from '../product/models/product.model';
 
 @Component({
   selector: 'app-home-page',
@@ -8,44 +13,18 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./home-page.component.less']
 })
 export class HomePageComponent implements OnInit {
+  products$: Observable<ProductModel[]>;
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    ) { }
 
-  data = {
-  title: "string",
-  price: "number",
-  category: "string",
-  shortDescription: "string",
-  body: "string",
-  }
+
 
   ngOnInit() {
+   this.productService.getProducts().subscribe(res => console.log(res));
   }
 
-  postData(data = {
-    title: "string",
-    price: "number",
-    category: "string",
-    shortDescription: "string",
-    body: "string",
-    }){
-    this.productService.postProduct(data).subscribe(res => console.log(res));
-  }
 
-  getData(){
-    this.productService.getProducts()
-    .pipe(
-      map(res => {
-        const postsArray = [];
-        for (const key in res) {
-          if (res.hasOwnProperty(key)){
-            postsArray.push({...postsArray[key], id: key});
-          }
-        }
-        return postsArray;
-      })
-    )
-    .subscribe(res => console.log(res));
-
-  }
 }

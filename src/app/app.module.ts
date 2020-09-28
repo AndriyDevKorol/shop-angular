@@ -98,9 +98,9 @@ import { AuthGuardService } from './core/services/guards/auth-guard.service';
   ],
   providers: [
     // ProductService,
-    CartService,
-    UserService,
-    FirebaseStoreService,
+    // CartService,
+    // UserService,
+    // FirebaseStoreService,
     AuthGuardService
   ],
   bootstrap: [AppComponent]

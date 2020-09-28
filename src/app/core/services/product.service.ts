@@ -3,13 +3,15 @@ import {HttpService} from "./http.service";
 import {ProductModel} from "../../client/product/models/product.model";
 import {Observable} from "rxjs";
 import { HttpEvent } from '@angular/common/http';
+import { ProductsUrl } from 'src/app/core/productsUrl';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  BASE_URL = 'https://web-shop-fc3e0.firebaseio.com';
-  API_PRODUCTS = `${this.BASE_URL}/products`;
+  BASE_URL = environment.config.databaseURL;
+  API_PRODUCTS = `${this.BASE_URL}`+ ProductsUrl.productsUrl +".json";
 
   constructor(
     private httpService: HttpService
@@ -17,11 +19,11 @@ export class ProductService {
   }
 
 
-  getProducts(): Observable<ProductModel> {
-    return this.httpService.get<ProductModel>(this.API_PRODUCTS)
+  getProducts(): Observable<ProductModel[]> {
+    return this.httpService.get<ProductModel[]>(this.API_PRODUCTS);
   }
 
-  postProduct(body: any): Observable<any> {
+  postProduct(body: any): Observable<any[]> {
     return this.httpService.post<Observable<HttpEvent<any>>>(this.API_PRODUCTS, body);
   }
 }

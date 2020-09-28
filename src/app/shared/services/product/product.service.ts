@@ -5,7 +5,7 @@ import { AngularFirestoreDocument } from 'angularfire2/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from 'angularfire2/auth';
-import { ProductsUrl } from '../../productsUrl';
+import { ProductsUrl } from '../../../core/productsUrl';
 import { map, catchError } from 'rxjs/operators';
 
 
