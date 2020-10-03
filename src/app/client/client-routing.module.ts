@@ -8,8 +8,6 @@ import { HomePageComponent } from './home-page/home-page.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '',
-    pathMatch: 'full',
     component: ClientPortalComponent,
     children: [
       {
@@ -17,8 +15,8 @@ const routes: Routes = [
         component: HomePageComponent
       },
       {
-        path: 'product',
-        component: ProductsListComponent
+        path: 'products',
+        component: HomePageComponent
       }
     ]
   }

@@ -6,7 +6,8 @@ import { PageNotFoundComponent } from './features/page-not-found/page-not-found.
 
 const routes: Routes = [
     { path: '',
-      loadChildren: () => import('./client/client.module').then(client => client.ClientModule),
+      pathMatch: 'full',
+      loadChildren: () => import('./client/client.module').then(client => client.ClientModule)
     },
     {
       path: 'auth',
@@ -16,7 +17,7 @@ const routes: Routes = [
       path: 'admin',
       loadChildren: () => import('./admin/admin.module').then(admin => admin.AdminModule),
     },
-    { path: '**', component: PageNotFoundComponent }
+    { path: '**', component: PageNotFoundComponent}
 ]
 
 
