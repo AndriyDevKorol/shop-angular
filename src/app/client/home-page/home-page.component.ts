@@ -5,7 +5,7 @@ import { AngularFireList } from '@angular/fire/database';
 import { Product } from 'src/app/shared/modules/Product';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { ProductModel } from '../product/models/product.model';
+import { ProductModel } from '../models/product.model';
 
 @Component({
   selector: 'app-home-page',
