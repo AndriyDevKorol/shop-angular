@@ -16,11 +16,11 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   this.categoryService.categoryListEvent.subscribe(res => {this.categories = res});
-   this.categoryService.selectedCategoryEvent.subscribe(res => {this.category = res});
+  //  this.categoryService.categoryListEvent.subscribe(res => {this.categories = res});
+  //  this.categoryService.selectedCategoryEvent.subscribe(res => {this.category = res});
   }
 
-  getCategory(category: string) {
-    this.categoryService.getSelectedCategoryListener(category);
-  }
+  // getCategory(category: string) {
+  //   this.categoryService.getSelectedCategoryListener(category);
+  // }
 }
