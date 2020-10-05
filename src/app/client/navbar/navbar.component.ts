@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   category: string;
 
   constructor(
-    private categoryService: ProductFilterService,
+    // private categoryService: ProductFilterService,
   ) { }
 
   ngOnInit() {
