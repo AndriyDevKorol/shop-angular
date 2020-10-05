@@ -15,23 +15,23 @@ import { keyframes } from '@angular/animations';
   styleUrls: ['./products-list.component.less']
 })
 export class ProductsListComponent implements OnInit {
-  product: Product;
-  products: Product[];
-  categories: any;
-  searchFormControl: FormControl;
-  editProductKey: string;
-  isAdmin = this.afauth.auth.currentUser;
-  selectedCategory: string;
-  categoryList: string[];
-  searchCategory;
-  searchTitle;
-  searchPrice;
-  searchBody;
+  // product: Product;
+  // products: Product[];
+  // categories: any;
+  // searchFormControl: FormControl;
+  // editProductKey: string;
+  // isAdmin = this.afauth.auth.currentUser;
+  // selectedCategory: string;
+  // categoryList: string[];
+  // searchCategory;
+  // searchTitle;
+  // searchPrice;
+  // searchBody;
 
   constructor(
-    public productService: ProductService,
-    public filterService: ProductFilterService,
-    private afauth: AngularFireAuth
+    // public productService: ProductService,
+    // public filterService: ProductFilterService,
+    // private afauth: AngularFireAuth
     ) { }
 
   ngOnInit() {
