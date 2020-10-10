@@ -1,9 +1,20 @@
-<div class="content">
-  <div class="right-section">
-    advanced navbar
-  </div>
-  <div class="content">
-    Several products of every category
+<div class="container">
+  <div class="content d-flex jusfy-content">
+    <div class="right-section col">
+      <div class="btn-group dropright">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropright - 1
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <app-product></app-product>
+    </div>
   </div>
   <!-- <article id="mainArticle"><router-outlet class="main-content"></router-outlet></article> -->
 </div>
