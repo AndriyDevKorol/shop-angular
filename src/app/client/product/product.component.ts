@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { ProductService } from 'src/app/core/services/product.service';
@@ -23,19 +23,8 @@ export class ProductComponent implements OnInit {
 
   private getProducts(){
     this.productService.getProducts()
-    .pipe(map((res: ProductModel[]) => {
-      const productArray: ProductModel[] = [];
-      for(const key in res){
-        if(res.hasOwnProperty(key)){
-          productArray.push({ ...res[key], $key: key });
-        }
-      }
-      return productArray;
-    }))
     .subscribe(res => {
-        this.products$ = res
-      }
-    );
+      this.products$ = res
+    });
   }
-
 }

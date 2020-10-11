@@ -13,7 +13,8 @@ import { ProductModel } from '../models/product.model';
   styleUrls: ['./home-page.component.less']
 })
 export class HomePageComponent implements OnInit {
-  products$: Observable<ProductModel[]>;
+  products$: ProductModel[];
+  productCategories$ = [];
 
   constructor(
     private productService: ProductService,
@@ -21,10 +22,10 @@ export class HomePageComponent implements OnInit {
     ) { }
 
 
-
   ngOnInit() {
-  //  this.productService.getProducts().subscribe(res => console.log(res));
+    this.productService.getProducts()
+    .subscribe(res => {
+      this.products$ = res
+    });
   }
-
-
 }

@@ -1,11 +1,12 @@
 import { Component, OnInit} from '@angular/core';
-import { ProductService } from '../../shared/services/product/product.service';
+import { ProductService } from '../../core/services/product.service';
 import { FormControl } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Product } from 'src/app/shared/modules/Product';
 import { ProductFilterService } from 'src/app/shared/services/filter/product-filter.service';
 import { map } from 'rxjs/operators';
 import { keyframes } from '@angular/animations';
+import { ProductModel } from '../models/product.model';
 
 
 
@@ -15,6 +16,8 @@ import { keyframes } from '@angular/animations';
   styleUrls: ['./products-list.component.less']
 })
 export class ProductsListComponent implements OnInit {
+  products$: ProductModel[];
+  productCategories$ = [];
   // product: Product;
   // products: Product[];
   // categories: any;
@@ -29,7 +32,7 @@ export class ProductsListComponent implements OnInit {
   // searchBody;
 
   constructor(
-    // public productService: ProductService,
+    private productService: ProductService,
     // public filterService: ProductFilterService,
     // private afauth: AngularFireAuth
     ) { }
@@ -37,6 +40,10 @@ export class ProductsListComponent implements OnInit {
   ngOnInit() {
     // this.filterService.selectedCategoryEvent.subscribe(res =>  {this.getProductList(res)});
     // this.loadData();
+    this.productService.getProducts()
+    .subscribe(res => {
+      this.products$ = res
+    });
   }
 
   // getProductList(selectedCategory: string) {
