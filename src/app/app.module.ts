@@ -19,7 +19,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { ProductFormComponent } from './features/add-product-form/product-form.component';
-import { ProductService } from './shared/services/product/product.service';
 import { RestorPasswordComponent } from './shared/components/restor-password/restor-password.component';
 import { environment } from '../environments/environment';
 import { AngularFireLite } from 'angularfire-lite';
@@ -29,14 +28,10 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { SharedModule } from './shared/shared.module';
-import { UserService } from './core/services/auth/user.service';
 import { SearchComponent } from './shared/components/search/search.component';
-import { FilterPipe } from './shared/pipes/filter.pipe';
-import { CartService } from './shared/services/cart/cart.service';
 import { RangePipe } from './shared/pipes/range.pipe';
 import { CartItemComponent } from './features/cart/cart-item/cart-item.component';
 import { RecipeComponent } from './features/cart/recipe/recipe.component';
-import { FirebaseStoreService } from './shared/services/firebaseStore/firebase-store.service';
 import { HomeContentComponent } from './features/main/home-content/home-content.component';
 import { CarouselComponent } from './shared/components/carousel/carousel.component';
 import { ProductWidgetComponent } from './shared/components/widgets/product-widget/product-widget.component';
@@ -47,6 +42,7 @@ import { ClientModule } from './client/client.module';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './core/auth/auth.module';
 import { AuthGuardService } from './core/services/guards/auth-guard.service';
+import { PipesModule } from './shared/pipes/pipe.module';
 
 @NgModule({
   declarations: [
@@ -57,7 +53,6 @@ import { AuthGuardService } from './core/services/guards/auth-guard.service';
     ProductFormComponent,
     RestorPasswordComponent,
     SearchComponent,
-    FilterPipe,
     RangePipe,
     CartItemComponent,
     RecipeComponent,
@@ -95,6 +90,7 @@ import { AuthGuardService } from './core/services/guards/auth-guard.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     SharedModule,
+    PipesModule
   ],
   providers: [
     // ProductService,

@@ -9,6 +9,9 @@ import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductComponent } from './product/product.component';
 import { ProductsListComponent } from './products-list/products-list.component';
+import { FormsModule } from '@angular/forms';
+import { PipesModule } from '../shared/pipes/pipe.module';
+
 @NgModule({
   declarations: [
     ClientPortalComponent,
@@ -22,6 +25,8 @@ import { ProductsListComponent } from './products-list/products-list.component';
   imports: [
     CommonModule,
     ClientRoutingModule,
+    FormsModule,
+    PipesModule
   ]
 })
 export class ClientModule { }

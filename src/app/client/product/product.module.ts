@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ProductComponent } from './product.component';
 import { ProductService } from 'src/app/core/services/product.service';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PipesModule } from 'src/app/shared/pipes/pipe.module';
 
 
 
@@ -15,7 +17,9 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    PipesModule
   ],
   exports: [ProductComponent]
 })

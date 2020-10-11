@@ -11,6 +11,7 @@ import { ProductModel } from '../models/product.model';
 })
 export class ProductComponent implements OnInit {
   products$: ProductModel[] = [];
+  searchTerm: string;
 
   constructor(
     private router: Router,
