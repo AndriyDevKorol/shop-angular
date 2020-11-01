@@ -7,10 +7,8 @@ import {HomePageComponent} from './home-page/home-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ProductComponent } from './product/product.component';
-import { ProductsListComponent } from './products-list/products-list.component';
-import { FormsModule } from '@angular/forms';
-import { PipesModule } from '../shared/pipes/pipe.module';
+import { LeftMenuComponent } from './left-menu/left-menu.component';
+import { ProductTileComponent } from '../core/products/product-tile/product-tile.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +17,12 @@ import { PipesModule } from '../shared/pipes/pipe.module';
     FooterComponent,
     HeaderComponent,
     NavbarComponent,
-    ProductComponent,
-    ProductsListComponent
+    LeftMenuComponent,
+    ProductTileComponent
   ],
   imports: [
     CommonModule,
-    ClientRoutingModule,
-    FormsModule,
-    PipesModule
+    ClientRoutingModule
   ]
 })
 export class ClientModule { }

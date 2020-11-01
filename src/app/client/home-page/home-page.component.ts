@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../core/services/product.service';
-import { map } from 'rxjs/operators';
-import { AngularFireList } from '@angular/fire/database';
-import { Product } from 'src/app/shared/modules/Product';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { ProductModel } from '../models/product.model';
+import { ProductModel } from '../../models/product.model';
 
 @Component({
   selector: 'app-home-page',
@@ -23,6 +19,10 @@ export class HomePageComponent implements OnInit {
 
 
   ngOnInit() {
+    this.getProducts();
+  }
+
+  private getProducts(){
     this.productService.getProducts()
     .subscribe(res => {
       this.products$ = res

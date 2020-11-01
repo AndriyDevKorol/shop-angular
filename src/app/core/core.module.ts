@@ -8,6 +8,7 @@ import { GeneralInterceptor } from "./general.interceptor";
 import { UserService } from "./services/auth/user.service";
 import { HttpService } from "./services/http.service";
 import { AlertService } from "./services/alert.service";
+import { ProductsModule } from './products/products.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AlertService } from "./services/alert.service";
     BrowserAnimationsModule,
     RouterModule,
     CommonModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ProductsModule
   ]
 })
 export class CoreModule { }

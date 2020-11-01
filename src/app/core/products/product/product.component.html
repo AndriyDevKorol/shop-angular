@@ -1,10 +1,7 @@
 
 <div class="container">
-  <div class="form-group">
-    <input type="text" class="form-control" [(ngModel)]="searchTerm" name="searchTerm"/>
-  </div>
   <div class="list mt-5 mb-5" *ngIf="products$.length">
-    <div class="card" style="width: 18rem" *ngFor=" let product of products$ | productFilter:searchTerm" >
+    <div class="card" style="width: 18rem" *ngFor=" let product of products$" >
       <img class="card-img-top" src="..." alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{product.title}}</h5>

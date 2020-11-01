@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from "./http.service";
-import {ProductModel} from "../../client/models/product.model";
+import {ProductModel} from "../../models/product.model";
 import {Observable} from "rxjs";
 import { HttpEvent } from '@angular/common/http';
 import { ProductsUrl } from 'src/app/core/productsUrl';
@@ -18,6 +18,8 @@ export class ProductService {
     private httpService: HttpService
   ) {
   }
+
+
 
 
   getProducts(): Observable<ProductModel[]> {

@@ -1,8 +1,8 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
 import { ProductService } from 'src/app/core/services/product.service';
-import { ProductModel } from '../models/product.model';
+import { ProductModel } from '../../../models/product.model';
+
 
 @Component({
   selector: 'app-product',
@@ -11,11 +11,11 @@ import { ProductModel } from '../models/product.model';
 })
 export class ProductComponent implements OnInit {
   products$: ProductModel[] = [];
-  searchTerm: string;
+  public searchTerm: string;
 
   constructor(
     private router: Router,
-    private productService: ProductService
+    private productService: ProductService,
   ) { }
 
   ngOnInit() {
