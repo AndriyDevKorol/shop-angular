@@ -9,6 +9,8 @@ import { ProductModel } from 'src/app/models/product.model';
 export class ProductTileComponent implements OnInit {
   @Input() products: ProductModel[];
 
+  countVal = 1;
+
   constructor() { }
 
   ngOnInit() {
@@ -16,5 +18,12 @@ export class ProductTileComponent implements OnInit {
 
   public addToCart(product){
     console.log(product);
+  }
+
+  onCount(counter: number) {
+    this.countVal = this.countVal + counter;
+    if (this.countVal < 1) {
+      this.countVal = 1;
+    }
   }
 }

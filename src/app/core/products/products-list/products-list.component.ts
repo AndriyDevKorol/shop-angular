@@ -1,11 +1,11 @@
 import { Component, OnInit} from '@angular/core';
-import { ProductService } from '../../shared/services/product/product.service';
 import { FormControl } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Product } from 'src/app/shared/modules/Product';
 import { ProductFilterService } from 'src/app/shared/services/filter/product-filter.service';
 import { map } from 'rxjs/operators';
 import { keyframes } from '@angular/animations';
+import { ProductService } from '../../services/product.service';
 
 
 

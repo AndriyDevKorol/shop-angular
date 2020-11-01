@@ -18,7 +18,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertComponent } from './shared/components/alert/alert.component';
-import { ProductFormComponent } from './features/add-product-form/product-form.component';
 import { RestorPasswordComponent } from './shared/components/restor-password/restor-password.component';
 import { environment } from '../environments/environment';
 import { AngularFireLite } from 'angularfire-lite';
@@ -27,10 +26,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { SharedModule } from './shared/shared.module';
 import { SearchComponent } from './shared/components/search/search.component';
 import { RangePipe } from './shared/pipes/range.pipe';
-import { CartItemComponent } from './features/cart/cart-item/cart-item.component';
 import { RecipeComponent } from './features/cart/recipe/recipe.component';
 import { HomeContentComponent } from './features/main/home-content/home-content.component';
 import { CarouselComponent } from './shared/components/carousel/carousel.component';
@@ -50,11 +47,10 @@ import { PipesModule } from './shared/pipes/pipe.module';
     LoaderComponent,
     ConfirmationButtonComponent,
     AlertComponent,
-    ProductFormComponent,
     RestorPasswordComponent,
     SearchComponent,
     RangePipe,
-    CartItemComponent,
+    // CartItemComponent,
     RecipeComponent,
     HomeContentComponent,
     CarouselComponent,
@@ -89,7 +85,6 @@ import { PipesModule } from './shared/pipes/pipe.module';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    SharedModule,
     PipesModule
   ],
   providers: [

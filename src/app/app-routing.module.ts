@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './client/page-not-found/page-not-found.component';
 
 
 const routes: Routes = [

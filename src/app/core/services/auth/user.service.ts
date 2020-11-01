@@ -4,7 +4,8 @@ import { map } from 'rxjs/operators';
 import UserCredential = firebase.auth.UserCredential;
 import { fromPromise } from "rxjs/internal-compatibility";
 import { Observable } from "rxjs";
-import { AuthSignInErrorCode, AuthSignUpErrorCode } from '../../models/auth-error.model';
+import { AuthSignInErrorCode, AuthSignUpErrorCode } from 'src/app/models/auth-error.model';
+
 
 @Injectable({
   providedIn: 'root'
