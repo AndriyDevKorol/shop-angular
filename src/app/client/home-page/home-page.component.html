@@ -1,17 +1,9 @@
 <div class="container">
   <div class="content d-flex jusfy-content">
-    <!-- <div class="right-section col" *ngIf="products$">
-      <div class="btn-group dropright"  *ngFor=" let product of products$">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{product.category}}
-        </button>
-      </div>
-    </div> -->
     <div class="content">
       <app-product-tile [products]="products$"></app-product-tile>
     </div>
   </div>
-  <!-- <article id="mainArticle"><router-outlet class="main-content"></router-outlet></article> -->
 </div>
 
 

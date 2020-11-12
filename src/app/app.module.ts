@@ -28,7 +28,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { SearchComponent } from './shared/components/search/search.component';
 import { RangePipe } from './shared/pipes/range.pipe';
-import { RecipeComponent } from './features/cart/recipe/recipe.component';
 import { HomeContentComponent } from './features/main/home-content/home-content.component';
 import { CarouselComponent } from './shared/components/carousel/carousel.component';
 import { ProductWidgetComponent } from './shared/components/widgets/product-widget/product-widget.component';
@@ -40,6 +39,7 @@ import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './core/auth/auth.module';
 import { AuthGuardService } from './core/services/guards/auth-guard.service';
 import { PipesModule } from './shared/pipes/pipe.module';
+import { RecipeComponent } from './client/recipe/recipe.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,6 @@ import { PipesModule } from './shared/pipes/pipe.module';
     RestorPasswordComponent,
     SearchComponent,
     RangePipe,
-    // CartItemComponent,
     RecipeComponent,
     HomeContentComponent,
     CarouselComponent,
@@ -88,10 +87,6 @@ import { PipesModule } from './shared/pipes/pipe.module';
     PipesModule
   ],
   providers: [
-    // ProductService,
-    // CartService,
-    // UserService,
-    // FirebaseStoreService,
     AuthGuardService
   ],
   bootstrap: [AppComponent]
