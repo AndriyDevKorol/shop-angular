@@ -38,4 +38,9 @@ export class ProductService {
   postProduct(body: any): Observable<any[]> {
     return this.httpService.post<Observable<HttpEvent<any>>>(this.API_PRODUCTS, body);
   }
+
+  findProduct() {
+
+  }
+
 }

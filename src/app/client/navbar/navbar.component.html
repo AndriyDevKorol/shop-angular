@@ -4,14 +4,8 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active" *ngFor="let category of categories">
-          <a class="nav-link" (click)="getCategory($event.target.text)" [routerLink]="['/products']">{{category}}
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-      </ul>
+    <div class="text-white" *ngFor="let category of categories$">
+      {{category.category}}
     </div>
     <div class="mt-2">
       <a class="navbar-item mr-2 p-1"[routerLink]="['/products']"  routerLinkActive="active" >Products</a>

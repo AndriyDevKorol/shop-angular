@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { ProductService } from 'src/app/core/services/product.service';
+import { ProductModel } from 'src/app/models/product.model';
 import { ProductFilterService } from 'src/app/shared/services/filter/product-filter.service';
 
 
@@ -8,22 +11,20 @@ import { ProductFilterService } from 'src/app/shared/services/filter/product-fil
   styleUrls: ['./navbar.component.less']
 })
 export class NavbarComponent implements OnInit {
-  categories: string[];
-  category: string;
+  categories$: ProductModel[];
 
   constructor(
-    // private categoryService: ProductFilterService,
+    private productService: ProductService,
   ) { }
 
   ngOnInit() {
-  //  this.categoryService.categoryListEvent.subscribe(res => {this.categories = res});
-  //  this.categoryService.selectedCategoryEvent.subscribe(res => {this.category = res});
+    this.productService.getProducts().subscribe(res => {
+      this.categories$ = res
+    });
   }
 
   // getCategory(category: string) {
   //   this.categoryService.getSelectedCategoryListener(category);
   // }
 
-   getCategory(category: string) {
-      }
 }
