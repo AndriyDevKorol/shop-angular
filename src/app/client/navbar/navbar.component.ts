@@ -23,4 +23,7 @@ export class NavbarComponent implements OnInit {
   // getCategory(category: string) {
   //   this.categoryService.getSelectedCategoryListener(category);
   // }
+
+   getCategory(category: string) {
+      }
 }

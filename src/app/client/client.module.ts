@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
 import { HomeModule } from './home-page/home.module';
+import { CartModule } from './cart/cart.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomeModule } from './home-page/home.module';
   imports: [
     CommonModule,
     ClientRoutingModule,
-    HomeModule
+    HomeModule,
+    CartModule
   ]
 })
 export class ClientModule{ }
