@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/core/services/product.service';
+import { ProductModel } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-client-portal',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client-portal.component.less']
 })
 export class ClientPortalComponent implements OnInit {
+  products: ProductModel[];
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
+    this.productService.getProducts().subscribe(res => {
+      this.products = res
+    });
   }
 
 }

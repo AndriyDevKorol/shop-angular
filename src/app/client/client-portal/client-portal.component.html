@@ -1,7 +1,7 @@
 <app-header></app-header>
-<app-navbar></app-navbar>
+<app-navbar  [products$]="products"></app-navbar>
 <div class="container d-flex">
-  <app-left-menu></app-left-menu>
-  <router-outlet></router-outlet>
+  <app-left-menu [products$]="products"></app-left-menu>
+  <router-outlet ></router-outlet>
 </div>
 <app-footer></app-footer>

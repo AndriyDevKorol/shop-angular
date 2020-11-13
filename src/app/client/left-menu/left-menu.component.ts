@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/core/services/product.service';
 import { ProductModel } from 'src/app/models/product.model';
+import { Product } from 'src/app/shared/modules/Product';
 
 @Component({
   selector: 'app-left-menu',
@@ -8,13 +9,11 @@ import { ProductModel } from 'src/app/models/product.model';
   styleUrls: ['./left-menu.component.less']
 })
 export class LeftMenuComponent implements OnInit {
-  categories$: ProductModel[];
+  @Input() products$: ProductModel[];
 
-  constructor(private productService: ProductService,) { }
+  constructor() { }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe(res => {
-      this.categories$ = res
-    });
+
   }
 }

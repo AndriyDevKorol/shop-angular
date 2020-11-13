@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { ProductService } from 'src/app/core/services/product.service';
@@ -11,20 +12,11 @@ import { ProductFilterService } from 'src/app/shared/services/filter/product-fil
   styleUrls: ['./navbar.component.less']
 })
 export class NavbarComponent implements OnInit {
-  categories$: ProductModel[];
+  @Input() products$: ProductModel[];
 
-  constructor(
-    private productService: ProductService,
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe(res => {
-      this.categories$ = res
-    });
   }
-
-  // getCategory(category: string) {
-  //   this.categoryService.getSelectedCategoryListener(category);
-  // }
 
 }
