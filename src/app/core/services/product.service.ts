@@ -6,6 +6,7 @@ import { HttpEvent } from '@angular/common/http';
 import { ProductsUrl } from 'src/app/core/productsUrl';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { Key } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,26 @@ export class ProductService {
   }
 
   findProduct() {
+  }
 
+  getProductByCategory(category: String): Observable<ProductModel[]> {
+    return this.httpService.get<ProductModel[]>(this.API_PRODUCTS).pipe(map((res: ProductModel[]) => {
+      const productArray: ProductModel[] = [];
+      const productsOfCategory: ProductModel[] = []
+
+      for(const key in res){
+        if(res.hasOwnProperty(key)){
+          productArray.push({ ...res[key], $key: key });
+        }
+      }
+      productArray.filter(res => {
+        if(res.category === category){
+          productsOfCategory.push({...res})
+        }
+      })
+
+      return productsOfCategory;
+    }))
   }
 
 }

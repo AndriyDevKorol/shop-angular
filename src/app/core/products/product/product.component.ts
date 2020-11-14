@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { ProductService } from 'src/app/core/services/product.service';
 import { ProductModel } from '../../../models/product.model';
 
@@ -10,16 +12,28 @@ import { ProductModel } from '../../../models/product.model';
   styleUrls: ['./product.component.less']
 })
 export class ProductComponent implements OnInit {
+  destroy$: Subject<void> = new Subject<void>();
   products$: ProductModel[] = [];
-  public searchTerm: string;
+  searchTerm: string;
+  @Input() category: string;
 
   constructor(
     private router: Router,
     private productService: ProductService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.getProducts();
+    if(this.category){
+      this.route.paramMap.pipe(takeUntil(this.destroy$)).subscribe(params => {
+        const id = +params.get('category');
+         this.productService.getProductByCategory(this.category).subscribe(res => {
+          this.products$ = res
+         });
+      });
+    } else {
+      this.getProducts();
+    }
   }
 
   private getProducts(){

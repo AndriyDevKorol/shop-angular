@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/core/services/product.service';
 import { ProductModel } from 'src/app/models/product.model';
-import { Product } from 'src/app/shared/modules/Product';
 
 @Component({
   selector: 'app-left-menu',
@@ -11,9 +10,14 @@ import { Product } from 'src/app/shared/modules/Product';
 export class LeftMenuComponent implements OnInit {
   @Input() products$: ProductModel[];
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
 
+  }
+
+  getProductOfCategory(){
+    this.productService.getProductByCategory('Мішок');
+    console.log(this.productService.getProductByCategory('Мішок'))
   }
 }
