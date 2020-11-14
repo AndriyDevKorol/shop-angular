@@ -84,7 +84,7 @@ import { RecipeComponent } from './client/recipe/recipe.component';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    PipesModule
+    PipesModule,
   ],
   providers: [
     AuthGuardService

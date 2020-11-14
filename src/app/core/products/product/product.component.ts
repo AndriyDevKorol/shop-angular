@@ -12,8 +12,9 @@ import { ProductModel } from '../../../models/product.model';
   styleUrls: ['./product.component.less']
 })
 export class ProductComponent implements OnInit {
+  @Input() products$: ProductModel[];
   destroy$: Subject<void> = new Subject<void>();
-  products$: ProductModel[] = [];
+  // products$: ProductModel[] = [];
   searchTerm: string;
   @Input() category: string;
 

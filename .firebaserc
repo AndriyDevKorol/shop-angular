@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "web-shop-fc3e0"
+  },
+  "targets": {
+    "web-shop-fc3e0": {
+      "hosting": {
+        "web-shop": [
+          "web-shop-fc3e0"
+        ]
+      }
+    }
   }
 }
