@@ -21,7 +21,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     ProductDetailsComponent
   ],
   providers: [
-    ProductService
+    ProductService,
   ],
   exports:[
     ProductComponent,

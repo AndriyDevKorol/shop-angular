@@ -9,6 +9,7 @@ import { UserService } from "./services/auth/user.service";
 import { HttpService } from "./services/http.service";
 import { AlertService } from "./services/alert.service";
 import { ProductsModule } from './products/products.module';
+import { ShareDataService } from './services/shareData.service';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ProductsModule } from './products/products.module';
     GeneralInterceptor,
     AlertService,
     HttpService,
-    UserService
+    UserService,
+    ShareDataService
   ],
   imports: [
     BrowserModule,

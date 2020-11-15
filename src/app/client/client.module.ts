@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
 import { HomeModule } from './home-page/home.module';
 import { CartModule } from './cart/cart.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CartModule } from './cart/cart.module';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ClientRoutingModule,
     HomeModule,
     CartModule

@@ -6,7 +6,6 @@ import { HttpEvent } from '@angular/common/http';
 import { ProductsUrl } from 'src/app/core/productsUrl';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
-import { Key } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
