@@ -2,6 +2,7 @@ import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { ProductService } from 'src/app/core/services/product.service';
+import { ShareDataService } from 'src/app/core/services/shareData.service';
 import { ProductModel } from 'src/app/models/product.model';
 import { ProductFilterService } from 'src/app/shared/services/filter/product-filter.service';
 
@@ -14,9 +15,13 @@ import { ProductFilterService } from 'src/app/shared/services/filter/product-fil
 export class NavbarComponent implements OnInit {
   @Input() products$: ProductModel[];
 
-  constructor() { }
+  constructor( private shareDataService: ShareDataService,) { }
 
   ngOnInit() {
+  }
+
+  getValue(category: string){
+    this.shareDataService.changeCategory(category);
   }
 
 }
