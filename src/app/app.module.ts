@@ -44,6 +44,8 @@ import { RecipeComponent } from './client/recipe/recipe.component';
 @NgModule({
   declarations: [
     AppComponent,
+
+
     LoaderComponent,
     ConfirmationButtonComponent,
     AlertComponent,
@@ -60,10 +62,15 @@ import { RecipeComponent } from './client/recipe/recipe.component';
   imports: [
     BrowserModule,
     ClientModule,
+    HttpClientModule,
     AdminModule,
     CoreModule,
     AuthModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+
+
     NoopAnimationsModule,
     MatToolbarModule,
     MatCardModule,
@@ -75,9 +82,7 @@ import { RecipeComponent } from './client/recipe/recipe.component';
     MatButtonModule,
     MatButtonToggleModule,
     MatSlideToggleModule,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
+
     AngularFireLite.forRoot(environment.config),
     AngularFireModule.initializeApp(environment.config),
     AngularFirestoreModule.enablePersistence(),

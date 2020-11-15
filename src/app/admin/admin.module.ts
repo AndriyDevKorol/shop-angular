@@ -4,6 +4,7 @@ import {CommonModule} from '@angular/common';
 import {AdminRoutingModule} from './admin-routing.module';
 import {AdminPortalComponent} from './admin-portal/admin-portal.component';
 import { ProductFormComponent } from './product-form/product-form.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +15,8 @@ import { ProductFormComponent } from './product-form/product-form.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule
   ]
 })
 export class AdminModule { }
