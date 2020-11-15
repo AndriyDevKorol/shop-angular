@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import { ProductTileComponent } from './product-tile/product-tile.component';
 import { HomePageComponent } from './home-page.component';
 import { RouterModule } from '@angular/router';
+import { CarouselComponent } from './carousel/carousel.component';
 
 
 
@@ -10,6 +11,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     ProductTileComponent,
     HomePageComponent,
+    CarouselComponent
   ],
   imports: [
     CommonModule,

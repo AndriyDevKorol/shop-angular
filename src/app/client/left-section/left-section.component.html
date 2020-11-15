@@ -1,14 +1,10 @@
-<!-- <div class="row">
+<div class="row">
   <div class="col">
     <div class="category-title d-flex p-1">
       <i class="fas fa-align-justify"></i>
       <h6>Categories</h6>
     </div>
-    <div class="list-group">
-      <ul class="p-0">
-        <li *ngFor="let category of categories"><a href="#" class="list-group-item" [routerLink]="['/products']" (click)="getCategory($event.target.text)">{{category}}</a></li>
-      </ul>
-    </div>
+    <app-left-menu [products$]="products$"></app-left-menu>
   </div>
 </div>
 <div class="row">
@@ -47,4 +43,4 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>

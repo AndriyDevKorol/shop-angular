@@ -29,10 +29,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { SearchComponent } from './shared/components/search/search.component';
 import { RangePipe } from './shared/pipes/range.pipe';
 import { HomeContentComponent } from './features/main/home-content/home-content.component';
-import { CarouselComponent } from './shared/components/carousel/carousel.component';
 import { ProductWidgetComponent } from './shared/components/widgets/product-widget/product-widget.component';
 import { AdsWidgetComponent } from './shared/components/widgets/ads-widget/ads-widget.component';
-import { LeftSectionComponent } from './features/main/left-section/left-section.component';
 import { CoreModule } from './core/core.module';
 import { ClientModule } from './client/client.module';
 import { AdminModule } from './admin/admin.module';
@@ -54,10 +52,8 @@ import { RecipeComponent } from './client/recipe/recipe.component';
     RangePipe,
     RecipeComponent,
     HomeContentComponent,
-    CarouselComponent,
     ProductWidgetComponent,
     AdsWidgetComponent,
-    LeftSectionComponent
   ],
   imports: [
     BrowserModule,

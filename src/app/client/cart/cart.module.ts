@@ -14,6 +14,10 @@ import { CartItemComponent } from './cart-item/cart-item.component';
   imports: [
     CommonModule,
     RouterModule
+  ],
+  exports:[
+    CartComponent,
+    CartItemComponent,
   ]
 })
 export class CartModule { }

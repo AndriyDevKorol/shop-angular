@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ProductModel } from 'src/app/models/product.model';
 import { ProductFilterService } from 'src/app/shared/services/filter/product-filter.service';
 
 @Component({
@@ -7,6 +8,8 @@ import { ProductFilterService } from 'src/app/shared/services/filter/product-fil
   styleUrls: ['./left-section.component.less']
 })
 export class LeftSectionComponent implements OnInit {
+  @Input() products$: ProductModel[];
+  products: ProductModel[];
 
   categories: string[];
   category: string;
@@ -16,8 +19,10 @@ export class LeftSectionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.categoryService.categoryListEvent.subscribe(res => {this.categories = res});
-    this.categoryService.selectedCategoryEvent.subscribe(res => {this.category = res});
+    console.log('prod', this.products);
+    console.log('prod2', this.products$);
+
+    // this.categoryService.categoryListEvent.subscribe(res => {this.categoriess
   }
 
    getCategory(category: string) {

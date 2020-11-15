@@ -25,6 +25,10 @@ const routes: Routes = [
         component: ProductComponent
       }
     ]
+  },
+  {
+    path: 'cart',
+    component: CartComponent
   }
 ];
 
