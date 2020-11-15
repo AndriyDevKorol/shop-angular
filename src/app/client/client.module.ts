@@ -10,9 +10,7 @@ import { HomeModule } from './home-page/home.module';
 import { CartModule } from './cart/cart.module';
 import { FormsModule } from '@angular/forms';
 import { LeftSectionModule } from './left-section/left-section.module';
-import { LeftSectionComponent } from './left-section/left-section.component';
 import { RouterModule } from '@angular/router';
-import { LeftMenuComponent } from './left-section/left-menu/left-menu.component';
 
 @NgModule({
   declarations: [

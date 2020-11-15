@@ -2,9 +2,7 @@ import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/modules/Product';
 import { ProductService } from 'src/app/shared/services/product/product.service';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { AngularFirestore } from 'angularfire2/firestore';
-import { HttpClient } from '@angular/common/http';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { EmailSenderService } from 'src/app/shared/services/emailSender/email-sender.service';
 
 @Component({

@@ -3,6 +3,8 @@ import {CommonModule} from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CartComponent } from './cart.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +15,9 @@ import { CartItemComponent } from './cart-item/cart-item.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     CartComponent,
