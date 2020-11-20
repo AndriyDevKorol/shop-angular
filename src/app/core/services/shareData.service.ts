@@ -10,7 +10,7 @@ export class ShareDataService {
 
   constructor() { }
 
-  changeCategory(category: string){
+  getProductsOfCategory(category: string){
     this.selectedCategory.next(category);
   }
 

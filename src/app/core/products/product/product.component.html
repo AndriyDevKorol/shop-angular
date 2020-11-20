@@ -1,5 +1,4 @@
-
-<div class="container">
+<!-- <div class="container">
   <div class="list mt-5 mb-5" *ngIf="products$">
     <div class="card" style="width: 18rem" *ngFor=" let product of products$" >
       <img class="card-img-top" src="..." alt="Card image cap">
@@ -11,57 +10,86 @@
     </div>
   </div>
   <p *ngIf="!products$">Немає жодного продукта</p>
+</div> -->
+
+
+
+<!-- <div class="card h-0" *ngIf="product" [routerLink]="['/product-details']" routerLinkActive="active">
+  <img src={{product.imgUrl}} class="card-img-top" alt="img">
+  <div class="card-body">
+    <h5 class="card-title">{{product.title}}</h5>
+    <p></p>
+    <p class="card-text">{{product.shortDescription}}</p>
+  </div>
+  <div class="card-footer">
+    <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
+  </div>
+</div> -->
+
+
+
+
+<div class="card" *ngFor=" let product of products$">
+  <div class="productCard" *ngIf="product">
+    <div class="cardHeader">
+      <p class="card-text">Product: {{product.title}}</p>
+    </div>
+    <div class="card-body" >
+      <div class="img-section flex-column">
+        <div class="img-content">
+          <div class="image">
+            <a class="imgages-view" href="">
+              <img src={{product.imgUrl}} alt="product" class="card-img" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="product-section flex-column">
+        <a [routerLink]="['/product-details']" routerLinkActive="active" class="link" (click)="onDetailsProduct(product)">
+          <div class="details">
+            <div class="details-header">
+              <label >Категорія: {{product.category}}</label>
+            </div>
+            <div class="flex-content">
+              <div class="product-details">
+                <p >Деталі продукта:<br>
+                <p>Категорія: {{product.category}}<br>
+                <p>Короткий опис: {{product.shortDescription}}<br>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="price-section border-left flex-column">
+        <div class="price-container">
+          <div class="price-header">
+            <div class="buttons-section" >
+              <button class="button danger" *ngIf="isAdmin" (click)="onDelete(product.$key)">Видалити</button>
+              <button class="button secondary" *ngIf="isAdmin" (click)="onEdit(product)"  >Редагувати</button>
+              <button class="button editbtn" (click)="onReset()" *ngIf="editProductKey">Відмінити</button>
+            </div>
+          </div>
+          <div class="price-content">
+            <div class="price">
+              <div class="cina-section">
+                <span class="cina">{{product.price }}</span>
+                <span class="valuta">грн/шт</span>
+              </div>
+              <span class="q-field">
+                <i class="material-icons" (click)="onCount(-1)">arrow_left</i>
+                <span>{{countVal}}</span>
+                <i class="material-icons" (click)="onCount(1)">arrow_right</i>
+              </span>
+              <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
-<!-- <h5 class="card-title">{{formData.$key ? 'Редагувати ' : 'Створити '}} продукт</h5>
-<form novalidate #form="ngForm" class="subForm">
-  <div class="inputFields">
-    <div class="fields">
-      <div class="form-group"> -->
-                       <!-- <input type="text" placeholder="Save with Key" name="id" [(ngModel)]="id"> -->
-        <!-- <div class="upload-form">
-          <input type="file" (change)="showPreview($event)" s>
-          <button (click)="saveImg()" >Зберегти</button>
-        </div>
-        <button (click)="deleteImg()" hidden>Видалити (не працює)</button> -->
 
 
-                <!-- <input type="text" name="file" [(ngModel)]="file" placeholder="Enter Unique Search Key">
-                <button (click)="view()">View</button> -->
-      <!-- </div>
-      <div class="form-group">
-        <label for="title">Назва</label>
-        <input type="text" id="title" class="form-control"  [(ngModel)] = "formData.title" name="title" required>
-      </div>
-      <div class="form-group">
-        <label for="category">Категорія</label>
-        <input type="text" id="category" class="form-control"  [(ngModel)] = "formData.category" name="category" required>
-      </div>
-      <div class="form-group">
-        <label for="subCategory">Під-Категорія</label>
-        <input type="text" id="subCategory" class="form-control"  [(ngModel)] = "formData.subCategory" name="subCategory" required>
-      </div>
-      <div class="form-group">
-        <label for="price">Ціна</label>
-        <input type="number" id="price" class="form-control" [(ngModel)] = "formData.price" name="price" required>
-      </div>
-    </div>
-    <div class="fieldArea">
-      <div class="form-group">
-        <label for="shortDescription">Короткий опис</label>
-        <textarea type="text" id="shortDescription" class="form-control" [(ngModel)] = "formData.shortDescription" name="shortDescription" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="body">Опис</label>
-        <textarea type="text" id="body" class="form-control"  [(ngModel)] = "formData.body" name="body" required></textarea>
-      </div>
-    </div>
-  </div>
-  <div class="buttons">
-    <button class="btn btn-secondary" [hidden]="form.invalid" [disabled]="form.invalid" *ngIf="formData" (click)="onReset()" >Відміна</button>
-    <button class="btn btn-primary" [disabled]="form.invalid" *ngIf="!formData.$key" type="submit" (click)="onAddProduct()">Зберегти</button>
-  <button [ngClass]="ccclass" *ngIf="formData.$key" (click)="updateProduct()">Редагувати</button>
 
-  </div>
-  </form> -->

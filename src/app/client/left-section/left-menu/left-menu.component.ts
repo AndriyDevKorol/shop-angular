@@ -18,6 +18,6 @@ export class LeftMenuComponent implements OnInit {
   }
 
   getValue(category: string){
-    this.shareDataService.changeCategory(category);
+    this.shareDataService.getProductsOfCategory(category);
   }
 }

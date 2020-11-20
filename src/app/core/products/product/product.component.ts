@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ProductService } from 'src/app/core/services/product.service';
@@ -17,12 +18,15 @@ export class ProductComponent implements OnInit {
   destroy$: Subject<void> = new Subject<void>();
   searchTerm: string;
   selectedCategory: string;
+  isAdmin = this.afauth.auth.currentUser;
+  countVal = 1;
 
   constructor(
     private router: Router,
     private productService: ProductService,
     private route: ActivatedRoute,
-    private shareDataService: ShareDataService
+    private shareDataService: ShareDataService,
+    private afauth: AngularFireAuth
   ) { }
 
   ngOnInit() {
@@ -49,5 +53,21 @@ export class ProductComponent implements OnInit {
 
   getProductOfCategory(selectedCategory: string){
     this.productService.getProductByCategory(selectedCategory);
+  }
+
+  onDelete($key: string): void {
+    // this.productService.onDelete(this.product.$key);
+    // alert('Продукт успішно видалено');
+  }
+
+  onEdit(product: ProductModel): void {
+    //  this.productService.emitEditProduct(product);
+  }
+
+  onCount(counter: number) {
+    this.countVal = this.countVal + counter;
+    if (this.countVal < 1) {
+      this.countVal = 1;
+    }
   }
 }

@@ -1,51 +1,58 @@
-<h5 class="card-title">{{formData.$key ? 'Редагувати ' : 'Створити '}} продукт</h5>
-<form novalidate #form="ngForm" class="subForm">
-  <div class="inputFields">
-    <div class="fields">
-      <div class="form-group">
-                       <input type="text" placeholder="Save with Key" name="id" [(ngModel)]="id">
-        <div class="upload-form">
-          <input type="file" (change)="showPreview($event)" s>
-          <button (click)="saveImg()" >Зберегти</button>
+<div class="container">
+  <div class="card">
+    <h5 class="card-title">{{formData.$key ? 'Редагувати ' : 'Створити '}} продукт</h5>
+    <form novalidate #form="ngForm" class="subForm">
+      <div class="inputFields">
+        <div class="fields">
+          <div class="form-group">
+                           <input type="text" placeholder="Save with Key" name="id" [(ngModel)]="id">
+            <div class="upload-form">
+              <input type="file" (change)="showPreview($event)" s>
+              <button (click)="saveImg()" >Зберегти</button>
+            </div>
+            <button (click)="deleteImg()" hidden>Видалити (не працює)</button>
+
+
+                    <input type="text" name="file" [(ngModel)]="file" placeholder="Enter Unique Search Key">
+                    <button (click)="view()">View</button>
+          </div>
+          <div class="form-group">
+            <label for="title">Назва</label>
+            <input type="text" id="title" class="form-control"  [(ngModel)] = "formData.title" name="title" required>
+          </div>
+          <div class="form-group">
+            <label for="category">Категорія</label>
+            <input type="text" id="category" class="form-control"  [(ngModel)] = "formData.category" name="category" required>
+          </div>
+          <div class="form-group">
+            <label for="subCategory">Під-Категорія</label>
+            <input type="text" id="subCategory" class="form-control"  [(ngModel)] = "formData.subCategory" name="subCategory" required>
+          </div>
+          <div class="form-group">
+            <label for="price">Ціна</label>
+            <input type="number" id="price" class="form-control" [(ngModel)] = "formData.price" name="price" required>
+          </div>
         </div>
-        <button (click)="deleteImg()" hidden>Видалити (не працює)</button>
+        <div class="fieldArea">
+          <div class="form-group">
+            <label for="shortDescription">Короткий опис</label>
+            <textarea type="text" id="shortDescription" class="form-control" [(ngModel)] = "formData.shortDescription" name="shortDescription" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="body">Опис</label>
+            <textarea type="text" id="body" class="form-control"  [(ngModel)] = "formData.body" name="body" required></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-secondary" [hidden]="form.invalid" [disabled]="form.invalid" *ngIf="formData" (click)="onReset()" >Відміна</button>
+        <button class="btn btn-primary" [disabled]="form.invalid" *ngIf="!formData.$key" type="submit" (click)="onAddProduct()">Зберегти</button>
+      <button [ngClass]="ccclass" *ngIf="formData.$key" (click)="updateProduct()">Редагувати</button>
 
-
-                <input type="text" name="file" [(ngModel)]="file" placeholder="Enter Unique Search Key">
-                <button (click)="view()">View</button>
       </div>
-      <div class="form-group">
-        <label for="title">Назва</label>
-        <input type="text" id="title" class="form-control"  [(ngModel)] = "formData.title" name="title" required>
-      </div>
-      <div class="form-group">
-        <label for="category">Категорія</label>
-        <input type="text" id="category" class="form-control"  [(ngModel)] = "formData.category" name="category" required>
-      </div>
-      <div class="form-group">
-        <label for="subCategory">Під-Категорія</label>
-        <input type="text" id="subCategory" class="form-control"  [(ngModel)] = "formData.subCategory" name="subCategory" required>
-      </div>
-      <div class="form-group">
-        <label for="price">Ціна</label>
-        <input type="number" id="price" class="form-control" [(ngModel)] = "formData.price" name="price" required>
-      </div>
-    </div>
-    <div class="fieldArea">
-      <div class="form-group">
-        <label for="shortDescription">Короткий опис</label>
-        <textarea type="text" id="shortDescription" class="form-control" [(ngModel)] = "formData.shortDescription" name="shortDescription" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="body">Опис</label>
-        <textarea type="text" id="body" class="form-control"  [(ngModel)] = "formData.body" name="body" required></textarea>
-      </div>
-    </div>
+    </form>
   </div>
-  <div class="buttons">
-    <button class="btn btn-secondary" [hidden]="form.invalid" [disabled]="form.invalid" *ngIf="formData" (click)="onReset()" >Відміна</button>
-    <button class="btn btn-primary" [disabled]="form.invalid" *ngIf="!formData.$key" type="submit" (click)="onAddProduct()">Зберегти</button>
-  <button [ngClass]="ccclass" *ngIf="formData.$key" (click)="updateProduct()">Редагувати</button>
+</div>
 
-  </div>
-  </form>
+
+
