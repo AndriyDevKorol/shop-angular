@@ -28,10 +28,8 @@ export class ProductsListComponent implements OnInit {
   isAdmin = this.afauth.auth.currentUser;
   selectedCategory: string;
   categoryList: string[];
-  searchCategory;
   searchTitle;
-  searchPrice;
-  searchBody;
+
 
   constructor(
     private productService: ProductService,
@@ -54,8 +52,6 @@ export class ProductsListComponent implements OnInit {
         this.getProducts();
       }
     });
-    // this.filterService.selectedCategoryEvent.subscribe(res =>  {this.getProductList(res)});
-    // this.loadData();
   }
 
   private getProducts(){
@@ -70,34 +66,4 @@ export class ProductsListComponent implements OnInit {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
-
-  // getProductList(selectedCategory: string) {
-
-  //   this.productService
-  //   .getProducts().snapshotChanges()
-  //   .subscribe(data => {
-  //     let productsList = data.map(e => {
-  //       return {
-  //         $key: e.key,
-  //         ...e.payload.val()
-  //       }
-  //     }).reverse();
-  //     console.log('1', productsList);
-  //     console.log('2', selectedCategory);
-  //     this.products = this.filterService.getCategory(productsList, selectedCategory);
-  //     console.log('prtt', this.products);
-  //     this.categoryList = [...new Set(productsList.map(res => res.category))];
-  //     this.filterService.getCategoryListListener(this.categoryList);
-  //   });
-  // }
-
-
-  // loadData(){
-  //   this.productService.getProducts().valueChanges().subscribe(e => {
-  //     let rendomValue = Math.random();
-  //     this.products = e.slice(1,2)
-  //   });
-  // }
-
-
 }

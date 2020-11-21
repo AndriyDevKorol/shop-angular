@@ -32,26 +32,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.shareDataService.currentCategory.subscribe(res => {
-      if(res){
-        this.route.paramMap.pipe(takeUntil(this.unsubscribe$)).subscribe(params => {
-          const id = +params.get('category');
-           this.productService.getProductByCategory(res).subscribe(res => {
-            this.products$ = res
-           });
-        });
-      } else {
-        this.getProducts();
-      }
-    });
   }
 
-  private getProducts(){
-    this.productService.getProducts()
-    .subscribe(res => {
-      this.products$ = res
-    });
-  }
 
   getProductOfCategory(selectedCategory: string){
     this.productService.getProductByCategory(selectedCategory);
