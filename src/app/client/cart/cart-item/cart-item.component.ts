@@ -39,7 +39,6 @@ export class CartItemComponent implements OnInit {
   }
 
   onCount(counter: number) {
-    console.log('c', counter);
     let prCount = this.product.count;
     prCount = prCount + counter;
     if (prCount < 0) {

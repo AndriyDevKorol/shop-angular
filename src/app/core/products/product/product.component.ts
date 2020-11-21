@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Subject } from 'rxjs';
@@ -13,9 +13,10 @@ import { ShareDataService } from '../../services/shareData.service';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.less']
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, OnDestroy {
   @Input() product: ProductModel;
-  destroy$: Subject<void> = new Subject<void>();
+  products$: ProductModel[];
+  unsubscribe$: Subject<void> = new Subject<void>();
   searchTerm: string;
   selectedCategory: string;
   isAdmin = this.afauth.auth.currentUser;
@@ -33,10 +34,10 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.shareDataService.currentCategory.subscribe(res => {
       if(res){
-        this.route.paramMap.pipe(takeUntil(this.destroy$)).subscribe(params => {
+        this.route.paramMap.pipe(takeUntil(this.unsubscribe$)).subscribe(params => {
           const id = +params.get('category');
            this.productService.getProductByCategory(res).subscribe(res => {
-            // this.products$ = res
+            this.products$ = res
            });
         });
       } else {
@@ -48,7 +49,7 @@ export class ProductComponent implements OnInit {
   private getProducts(){
     this.productService.getProducts()
     .subscribe(res => {
-      // this.products$ = res
+      this.products$ = res
     });
   }
 
@@ -77,6 +78,11 @@ export class ProductComponent implements OnInit {
 
   onDetailsProduct(product: ProductModel) {
     // this.productService.emitDetailProduct(product);
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
 }

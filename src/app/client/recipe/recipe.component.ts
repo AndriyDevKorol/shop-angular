@@ -19,13 +19,11 @@ export class RecipeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('recipe');
     // this.total = this.total + (this.product.count * this.product.price);
   }
 
 
   ngOndestroy() {
-    console.log('destroy recipe');
     this.recipeEventSubscription.unsubscribe();
   }
 

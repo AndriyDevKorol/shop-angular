@@ -3,10 +3,13 @@ import { FormControl } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Product } from 'src/app/shared/modules/Product';
 import { ProductFilterService } from 'src/app/shared/services/filter/product-filter.service';
-import { map } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 import { keyframes } from '@angular/animations';
 import { ProductService } from '../../services/product.service';
 import { ProductModel } from 'src/app/models/product.model';
+import { Subject } from 'rxjs';
+import { ShareDataService } from '../../services/shareData.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -17,6 +20,7 @@ import { ProductModel } from 'src/app/models/product.model';
 })
 export class ProductsListComponent implements OnInit {
   products$: ProductModel[];
+  unsubscribe$ = new Subject();
   product: Product;
   categories: any;
   searchFormControl: FormControl;
@@ -32,12 +36,24 @@ export class ProductsListComponent implements OnInit {
   constructor(
     private productService: ProductService,
     public filterService: ProductFilterService,
-    private afauth: AngularFireAuth
+    private shareDataService: ShareDataService,
+    private afauth: AngularFireAuth,
+    private route: ActivatedRoute,
     ) { }
 
   ngOnInit() {
-    this.getProducts();
-    console.log("product", this.products$);
+    this.shareDataService.currentCategory.subscribe(res => {
+      if(res){
+        this.route.paramMap.pipe(takeUntil(this.unsubscribe$)).subscribe(params => {
+          const id = +params.get('category');
+           this.productService.getProductByCategory(res).subscribe(res => {
+            this.products$ = res
+           });
+        });
+      } else {
+        this.getProducts();
+      }
+    });
     // this.filterService.selectedCategoryEvent.subscribe(res =>  {this.getProductList(res)});
     // this.loadData();
   }
@@ -48,6 +64,11 @@ export class ProductsListComponent implements OnInit {
       this.products$ = res
 
     });
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   // getProductList(selectedCategory: string) {

@@ -18,7 +18,7 @@ export class GeneralInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((err: HttpErrorResponse) => {
         if (err.status === HttpStatus.UNATGHORIZED) {
-          console.log('UnAuthorized');
+          console.log('UnserAuthorized');
         }
         return throwError(err);
       })

@@ -129,8 +129,6 @@ export class ProductFormComponent implements OnInit {
    }
 
   view() {
-  console.log(this.id);
-  console.log(this.firebaseStoraService.getImageDetailList());
 
   this.firebaseStoraService.getImage(this.file);
   }

@@ -19,8 +19,6 @@ export class LeftSectionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('prod', this.products);
-    console.log('prod2', this.products$);
 
     // this.categoryService.categoryListEvent.subscribe(res => {this.categoriess
   }

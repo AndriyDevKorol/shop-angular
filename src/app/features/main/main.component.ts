@@ -36,7 +36,6 @@ export class MainComponent implements OnInit {
       this.getProductList(res)
     });
     // this.loadData();
-    console.log('load', this.productService.loadProducts());
   }
 
   getProductList(selectedCategory: string) {
@@ -49,8 +48,6 @@ export class MainComponent implements OnInit {
           ...e.payload.val()
         }
       }).reverse();
-      console.log('1', productsList);
-      console.log('2', selectedCategory);
       this.products = this.filterService.getCategory(productsList, selectedCategory);
       this.categoryList = [...new Set(productsList.map(res => res.category))];
       this.filterService.getCategoryListListener(this.categoryList);

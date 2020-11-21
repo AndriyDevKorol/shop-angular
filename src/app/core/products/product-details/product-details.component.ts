@@ -43,6 +43,5 @@ export class ProductDetailsComponent implements OnInit {
   // }
 
   onCount(val: number){
-    console.log(val);
   }
 }

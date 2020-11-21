@@ -18,7 +18,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
   declarations: [
     ProductComponent,
     ProductsListComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
   ],
   providers: [
     ProductService,

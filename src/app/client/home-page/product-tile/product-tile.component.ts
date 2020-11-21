@@ -17,7 +17,6 @@ export class ProductTileComponent implements OnInit {
   }
 
   public addToCart(product){
-    console.log(product);
   }
 
   onCount(counter: number) {

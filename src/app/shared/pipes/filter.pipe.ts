@@ -7,10 +7,10 @@ import { Product } from '../modules/Product';
 export class FilterPipe implements PipeTransform {
 
   transform(products: Product[], searchTerm: string): any[] {
-    if(!products || !searchTerm) return products;
+    if( !searchTerm) return products;
     searchTerm = searchTerm.toLowerCase();
     return products.filter( it => {
-      return it.category.toLowerCase().includes(searchTerm);
+      return it.title.toLowerCase().includes(searchTerm);
     });
    }
 

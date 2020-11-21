@@ -21,11 +21,8 @@ export class ProductFilterService {
 
 
   getCategory(products:Product[], category: string): Product[] {
-    console.log('filt', category);
-    console.log('filt', products);
     if (!category) { return products}
     return products.filter(e => {
-      console.log('e', e.category);
       e.category == category
     });
   }
