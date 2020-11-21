@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Product } from 'src/app/shared/modules/Product';
@@ -6,6 +6,7 @@ import { ProductFilterService } from 'src/app/shared/services/filter/product-fil
 import { map } from 'rxjs/operators';
 import { keyframes } from '@angular/animations';
 import { ProductService } from '../../services/product.service';
+import { ProductModel } from 'src/app/models/product.model';
 
 
 
@@ -15,8 +16,8 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./products-list.component.less']
 })
 export class ProductsListComponent implements OnInit {
+  products$: ProductModel[];
   product: Product;
-  products: Product[];
   categories: any;
   searchFormControl: FormControl;
   editProductKey: string;
@@ -29,14 +30,24 @@ export class ProductsListComponent implements OnInit {
   searchBody;
 
   constructor(
-    public productService: ProductService,
+    private productService: ProductService,
     public filterService: ProductFilterService,
     private afauth: AngularFireAuth
     ) { }
 
   ngOnInit() {
+    this.getProducts();
+    console.log("product", this.products$);
     // this.filterService.selectedCategoryEvent.subscribe(res =>  {this.getProductList(res)});
     // this.loadData();
+  }
+
+  private getProducts(){
+    this.productService.getProducts()
+    .subscribe(res => {
+      this.products$ = res
+
+    });
   }
 
   // getProductList(selectedCategory: string) {

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ProductService } from 'src/app/core/services/product.service';
+import { ProductService } from '../../services/product.service';
 import { ProductModel } from '../../../models/product.model';
 import { ShareDataService } from '../../services/shareData.service';
 
@@ -14,12 +14,13 @@ import { ShareDataService } from '../../services/shareData.service';
   styleUrls: ['./product.component.less']
 })
 export class ProductComponent implements OnInit {
-  @Input() products$: ProductModel[];
+  @Input() product: ProductModel;
   destroy$: Subject<void> = new Subject<void>();
   searchTerm: string;
   selectedCategory: string;
   isAdmin = this.afauth.auth.currentUser;
   countVal = 1;
+  editProductKey: string;
 
   constructor(
     private router: Router,
@@ -35,7 +36,7 @@ export class ProductComponent implements OnInit {
         this.route.paramMap.pipe(takeUntil(this.destroy$)).subscribe(params => {
           const id = +params.get('category');
            this.productService.getProductByCategory(res).subscribe(res => {
-            this.products$ = res
+            // this.products$ = res
            });
         });
       } else {
@@ -47,7 +48,7 @@ export class ProductComponent implements OnInit {
   private getProducts(){
     this.productService.getProducts()
     .subscribe(res => {
-      this.products$ = res
+      // this.products$ = res
     });
   }
 
@@ -70,4 +71,12 @@ export class ProductComponent implements OnInit {
       this.countVal = 1;
     }
   }
+  addToCart(product: ProductModel){}
+
+  onReset(){}
+
+  onDetailsProduct(product: ProductModel) {
+    // this.productService.emitDetailProduct(product);
+  }
+
 }

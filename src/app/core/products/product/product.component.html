@@ -1,35 +1,4 @@
-<!-- <div class="container">
-  <div class="list mt-5 mb-5" *ngIf="products$">
-    <div class="card" style="width: 18rem" *ngFor=" let product of products$" >
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">{{product.title}}</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-  <p *ngIf="!products$">Немає жодного продукта</p>
-</div> -->
-
-
-
-<!-- <div class="card h-0" *ngIf="product" [routerLink]="['/product-details']" routerLinkActive="active">
-  <img src={{product.imgUrl}} class="card-img-top" alt="img">
-  <div class="card-body">
-    <h5 class="card-title">{{product.title}}</h5>
-    <p></p>
-    <p class="card-text">{{product.shortDescription}}</p>
-  </div>
-  <div class="card-footer">
-    <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
-  </div>
-</div> -->
-
-
-
-
-<div class="card" *ngFor=" let product of products$">
+<div class="card" >
   <div class="productCard" *ngIf="product">
     <div class="cardHeader">
       <p class="card-text">Product: {{product.title}}</p>

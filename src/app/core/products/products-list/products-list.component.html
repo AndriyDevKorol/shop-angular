@@ -1,3 +1,14 @@
+<div class="row">
+  <div class="container">
+      <div><input [(ngModel)]="searchTitle" type="input"  placeholder="Назва продукта" name="searchTitle" id='name' value=""/></div>
+      <div>
+        <app-product class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let product of products$" [product]="product"></app-product>
+      </div>
+  </div>
+</div>
+
+
+
 <!-- <div class="row">
   <div class="container">
       <div><input [(ngModel)]="searchTitle" type="input"  placeholder="Назва продукта" name="searchTitle" id='name' value=""/></div>
@@ -5,8 +16,8 @@
       <app-product class="col-lg-3 col-md-6 mb-2" *ngFor="let product of products | filter: 'price': searchPrice  | filter: 'category': searchCategory | filter: 'body': searchBody | filter: 'title': searchTitle" [product]="product"></app-product>
     </div>
   </div>
-</div>
+</div> -->
 
 
- -->
- <p>Product List qwr qw r</p>
+
+

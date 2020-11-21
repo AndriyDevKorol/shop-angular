@@ -1,71 +1,37 @@
-<div class="card h-0" *ngIf="products" >
-  <div *ngFor="let product of products">
-    <div class="productCard" *ngIf="product"  [routerLink]="['/product-details']" routerLinkActive="active">
-      <div class="cardHeader">
-        <p class="card-text">Product: {{product.title}}</p>
-      </div>
-      <div class="card-body" >
-        <div class="img-section flex-column">
-          <div class="img-content">
-            <div class="image">
-              <a class="imgages-view" href="">
-                <img src={{product.imgUrl}} alt="product" class="card-img" />
-              </a>
-            </div>
+<div class="card h-0" *ngIf="product$" >
+  <div class="productCard" *ngIf="product$"  [routerLink]="['/product-details']" routerLinkActive="active">
+
+    <div class="card-body" >
+      <div class="img-section flex-column">
+        <div class="img-content">
+          <div class="image">
+            <a class="imgages-view" [routerLink]="['/product-details']">
+              <img src={{product$.imgUrl}} alt="product" class="card-img" />
+            </a>
           </div>
         </div>
-        <div class="product-section flex-column">
-          <a [routerLink]="['/product-details']" routerLinkActive="active" class="link" >
-            <div class="details">
-              <div class="details-header">
-                <label >Категорія: {{product.category}}</label>
+      </div>
+
+      <div class="cardHeader">
+        <p class="card-text">Product: {{product$.title}}</p>
+      </div>
+      <div class="cardHeader">
+        <p class="card-text">Category: {{product$.category}}</p>
+      </div>
+
+      <div class="price-section border-left flex-column">
+        <div class="price-container">
+          <div class="price-content">
+            <div class="price">
+              <div class="cina-section">
+                <span class="cina">{{product$.price }}</span>
+                <span class="valuta">грн/шт</span>
               </div>
-              <div class="flex-content">
-                <div class="product-details">
-                  <p >Деталі продукта:<br>
-                  <p>Категорія: {{product.category}}<br>
-                  <p>Короткий опис: {{product.shortDescription}}<br>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="price-section border-left flex-column">
-          <div class="price-container">
-            <div class="price-header">
-              <div class="buttons-section" >
-                <!-- <button class="button danger" *ngIf="isAdmin" (click)="onDelete(product.$key)">Видалити</button>
-                <button class="button secondary" *ngIf="isAdmin" (click)="onEdit(product)"  >Редагувати</button>
-                <button class="button editbtn" (click)="onReset()" *ngIf="editProductKey">Відмінити</button> -->
-                Button Section
-              </div>
-            </div>
-            <div class="price-content">
-              <div class="price">
-                <div class="cina-section">
-                  <span class="cina">{{product.price }}</span>
-                  <span class="valuta">грн/шт</span>
-                </div>
-                <span class="q-field">
-                  <i class="material-icons" (click)="onCount(-1)">arrow_left</i>
-                  <span>{{countVal}}</span>
-                  <i class="material-icons" (click)="onCount(1)">arrow_right</i>
-                </span>
-                <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
-              </div>
+              <button class="button buy"  color="accent" (click)="addToCart(product$)">Купити</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- <img src={{products.imgUrl}} class="card-img-top" alt="img">
-  <div class="card-body">
-    <h5 class="card-title">{{products.title}}</h5>
-    <p></p>
-    <p class="card-text">{{products.shortDescription}}</p>
-  </div>
-  <div class="card-footer">
-    <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
-  </div> -->
 </div>

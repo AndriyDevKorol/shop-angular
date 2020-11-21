@@ -7,7 +7,7 @@ import { ProductModel } from 'src/app/models/product.model';
   styleUrls: ['./product-tile.component.less']
 })
 export class ProductTileComponent implements OnInit {
-  @Input() products: ProductModel[];
+  @Input() product$: ProductModel;
 
   countVal = 1;
 
