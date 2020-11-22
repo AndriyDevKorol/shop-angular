@@ -5,7 +5,7 @@ import { ProductModel } from 'src/app/models/product.model';
 import { Input } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { takeUntil } from 'rxjs/operators';
-import { Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -14,12 +14,12 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./product-details.component.less']
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
-  @Input() public product: ProductModel;
+  // @Input() public product: ProductModel;
   private unsubscribe$ = new Subject();
   detailsEventSubscription: Subscription;
-  products: Product[];
+  product: ProductModel;
   countVal = 1;
-  route: any;
+  id: any
   // product: ProductModel = {
   //   $key: '',
   //   title: '',
@@ -32,34 +32,27 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductService,
     private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    debugger
-    this.route.params
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((params: Params) => {
-        this.getProduct();
-      });
-    // this.detailsEventSubscription = this.productService.detailProductEvent.subscribe((product: Product[]) => {
-    //   this.products = product;
-    // });
+    this.getProduct();
+    // this.id = this.route.snapshot.params['id'];
+
+    // if(this.id){
+    //   this.getProduct(this.id);
+    // }
   }
   // unsubscribe$(unsubscribe$: any): any {
   //   throw new Error('Method not implemented.');
   // }
   getProduct() {
-    debugger
-    // throw new Error('Method not implemented.');
-    const id = +this.route.snapshot.paramMap.get('id');
-
+    const id = this.route.snapshot.paramMap.get('id');
     this.productService.getProduct(id)
     .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((product: Product) => {
+      .subscribe((product) => {
         if (product) {
           this.product = product;
-          // this.setupProduct();
-          // this.productLoading = false;
         } else {
           this.router.navigate(['/404-product-not-found']);
         }

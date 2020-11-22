@@ -36,17 +36,32 @@ export class ProductService {
     }))
   }
 
-  getProduct(id: any): Observable<ProductModel | null>  {
+  getProduct(id: any):Observable<any> {
+    return this.httpService.get<ProductModel[]>(this.API_PRODUCTS).pipe(map((res: ProductModel[]) => {
+      const productArray: ProductModel[] = [];
+      let productSelected: ProductModel;
 
-    return ;
+      for(const key in res){
+        if(res.hasOwnProperty(key)){
+          productArray.push({ ...res[key], $key: key });
+        }
+      }
+      productArray.filter(res => {
+        if(res.$key === id){
+          productSelected = res
+        }
+      })
+
+      return productSelected;
+    }))
 
   }
 
-  postProduct(body: any): Observable<any[]> {
+  postProduct(body: any): Observable<ProductModel[]> {
     return this.httpService.post<Observable<HttpEvent<any>>>(this.API_PRODUCTS, body);
   }
 
-  addProduct(product: ProductModel){
+  addProduct(product: ProductModel) {
     return firebase.database().ref('products/').push(product)
     .then(() => {
       console.log('success deleting ' + product.title);

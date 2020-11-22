@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Subject } from 'rxjs';
-import { switchMap, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { ProductService } from '../../services/product.service';
 import { ProductModel } from '../../../models/product.model';
 import { ShareDataService } from '../../services/shareData.service';
@@ -34,18 +34,13 @@ export class ProductComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private shareDataService: ShareDataService,
     private afauth: AngularFireAuth,
-  ) { router.events
-    .subscribe(console.log);
+  ) {
+    // router.events.subscribe(console.log);
   }
 
   ngOnInit() {
-    // this.productId = this.product.$key;
-    // this.subscription = this.route.params.subscribe(params=>this.productId=params['id']);
-    this.route.paramMap.pipe(
-      switchMap(params => params.getAll('id'))
-  )
-  .subscribe(data=> this.productId = +data);
-
+    this.productId = this.product.$key;
+    this.subscription = this.route.params.subscribe(params=>this.productId=params['id']);
   }
 
 

@@ -13,10 +13,6 @@ const routes: Routes = [
     component: ClientPortalComponent,
     children: [
       {
-        path: '',
-        component: HomePageComponent
-      },
-      {
         path: 'products',
         component: ProductsListComponent
       },
@@ -25,13 +21,17 @@ const routes: Routes = [
         component: ProductsListComponent
       },
       {
-        path: 'details/:id',
+        path: 'product/:id',
         component: ProductDetailsComponent
       },
       {
         path: 'cart',
         component: CartComponent
-      }
+      },
+      {
+        path: '',
+        component: HomePageComponent
+      },
     ]
   },
 

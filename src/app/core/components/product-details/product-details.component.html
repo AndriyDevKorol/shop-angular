@@ -1,17 +1,10 @@
-
-<p>DETAILS PRODUCT</p>
-
-<div>{{product.title}}</div>
-
-
-
-<!-- <div class="cart">
+<div class="cart">
   <span  class="material-icons cart-section" [routerLink]="['/cart']"  routerLinkActive="active">
     <a class="link icon">shopping_cart</a>
   </span>
 </div>
-<div class="productCard" *ngFor="let product of products" >
-  <div class="card-body" >
+<!-- <div class="productCard" *ngFor="let product of products" > -->
+  <div class="card-body" *ngIf="product">
     <div class="top-section">
       <div class="img-section">
         <div class="image" >
@@ -54,5 +47,5 @@
         </div>
       </div>
     </div>
-</div> -->
+<!-- </div> -->
 
