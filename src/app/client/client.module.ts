@@ -11,6 +11,7 @@ import { CartModule } from './cart/cart.module';
 import { FormsModule } from '@angular/forms';
 import { LeftSectionModule } from './left-section/left-section.module';
 import { RouterModule } from '@angular/router';
+import { ProductsModule } from '../core/components/products.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RouterModule } from '@angular/router';
     ClientRoutingModule,
     HomeModule,
     CartModule,
-    LeftSectionModule
+    LeftSectionModule,
+    ProductsModule
   ]
 })
 export class ClientModule{ }

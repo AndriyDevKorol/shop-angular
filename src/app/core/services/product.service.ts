@@ -6,6 +6,8 @@ import { HttpEvent } from '@angular/common/http';
 import { ProductsUrl } from 'src/app/core/productsUrl';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { AngularFireDatabase } from '@angular/fire/database';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +17,9 @@ export class ProductService {
   API_PRODUCTS = `${this.BASE_URL}`+ ProductsUrl.productsUrl +".json";
 
   constructor(
-    private httpService: HttpService
-  ) {
-  }
+    private httpService: HttpService,
+    private angularFireDatabase: AngularFireDatabase,
+  ) {}
 
 
 
@@ -34,13 +36,48 @@ export class ProductService {
     }))
   }
 
+  getProduct(id: any): Observable<ProductModel | null>  {
+
+    return ;
+
+  }
 
   postProduct(body: any): Observable<any[]> {
     return this.httpService.post<Observable<HttpEvent<any>>>(this.API_PRODUCTS, body);
   }
 
-  findProduct() {
+  addProduct(product: ProductModel){
+    return firebase.database().ref('products/').push(product)
+    .then(() => {
+      console.log('success deleting ' + product.title);
+    })
+    .catch((error) => {
+      console.log('Delete failed ' + product.title)
+    });
   }
+
+  deleteProduct(product: ProductModel) {
+  //  return this.angularFireDatabase.object('products/' + product.$key).remove()
+
+  return firebase.database().ref('products/' + product.$key).remove()
+
+    // this.uploadService.deleteFile(product.imageRefs);
+
+    // return this.angularFireDatabase
+    //   .object<ProductModel>(url)
+    //   .remove()
+      .then(() => {
+        // this.log('success deleting' + product.name)
+        console.log('success deleting ' + product.$key);
+      })
+      .catch((error) => {
+        // this.messageService.addError('Delete failed ' + product.name);
+        // this.handleError('delete product');
+        console.log('Delete failed ' + product.$key)
+      });
+  }
+
+
 
   getProductByCategory(category: String): Observable<ProductModel[]> {
     return this.httpService.get<ProductModel[]>(this.API_PRODUCTS).pipe(map((res: ProductModel[]) => {

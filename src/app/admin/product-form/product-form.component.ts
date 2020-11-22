@@ -1,13 +1,14 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import { Product } from '../../shared/modules/Product';
 import { NgForm } from '@angular/forms';
-import { ProductService } from '../../shared/services/product/product.service';
+
 // import { AngularFirestore } from 'angularfire2/firestore';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FirebaseStoreService } from 'src/app/shared/services/firebaseStore/firebase-store.service';
 import { finalize } from 'rxjs/operators';
+import { ProductService } from 'src/app/core/services/product.service';
 
 
 @Component({
@@ -43,14 +44,14 @@ export class ProductFormComponent implements OnInit {
     @Inject(FirebaseStoreService) private firebaseStoraService: FirebaseStoreService,
     private productService: ProductService,
     private router: Router,
-    private afauth: AngularFireAuth
+    private afauth: AngularFireAuth,
   ) { }
 
   ngOnInit() {
     // this.firebaseStoraService.getImageDetailList();
-    this.productService.editProductEvent.subscribe((product: any) => {
-      this.formData = product;
-    });
+    // this.productService.editProductEvent.subscribe((product: any) => {
+    //   this.formData = product;
+    // });
   }
 
   showPreview(event: any) {
@@ -94,9 +95,6 @@ export class ProductFormComponent implements OnInit {
       alert('You are not logged. Plaes log in!');
       this.router.navigate(['/login']);
     }
-
-      // for firecloud
-    // this.firestore.collection('products').add(NewProduct);
    }
 
    updateProduct() {
@@ -111,7 +109,7 @@ export class ProductFormComponent implements OnInit {
     };
 
     const key: string = this.formData.$key;
-    this.productService.updateProduct(key, data);
+    // this.productService.updateProduct(key, data);
    }
 
    onReset() {
@@ -125,7 +123,7 @@ export class ProductFormComponent implements OnInit {
       subCategory: '',
       shortDescription: '',
     };
-    this.productService.emitEditProduct(formData);
+    // this.productService.emitEditProduct(formData);
    }
 
   view() {
