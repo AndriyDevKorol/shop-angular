@@ -6,6 +6,8 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { EmailSenderService } from 'src/app/shared/services/emailSender/email-sender.service';
 import { LocalStorageService } from 'src/app/core/services/storage/localStorage.service';
 import { ProductModel } from 'src/app/models/product.model';
+import { Subject } from 'rxjs/internal/Subject';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
@@ -24,6 +26,7 @@ total = 0;
 recipe: any[];
 isValidURL: any;
 isShow: boolean;
+unsubscribe$ = new Subject();
 
 product: Product = {
   $key: '',
@@ -57,7 +60,7 @@ product: Product = {
 
   getItems() {
     return this.localStorageService.getLocalStorageData('cart').map(res => {
-      this.productService.getProduct(res).subscribe(res => { this.products.push(res)})
+      this.productService.getProduct(res).pipe(takeUntil(this.unsubscribe$)).subscribe(res => { this.products.push(res)})
      });
   }
 
@@ -75,8 +78,9 @@ product: Product = {
   }
 
 
-  ngOnDestroy(): void {
-    this.cartEventSubscription.unsubscribe();
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
    submitData() {

@@ -10,6 +10,7 @@ import { ProductModel } from 'src/app/models/product.model';
 import { Subject } from 'rxjs';
 import { ShareDataService } from '../../services/shareData.service';
 import { ActivatedRoute } from '@angular/router';
+import { OnDestroy } from '@angular/core';
 
 
 
@@ -18,7 +19,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.less']
 })
-export class ProductsListComponent implements OnInit {
+export class ProductsListComponent implements OnInit, OnDestroy {
   products$: ProductModel[];
   unsubscribe$ = new Subject();
   product: Product;
@@ -56,6 +57,7 @@ export class ProductsListComponent implements OnInit {
 
   private getProducts(){
     this.productService.getProducts()
+    .pipe(takeUntil(this.unsubscribe$))
     .subscribe(res => {
       this.products$ = res
 

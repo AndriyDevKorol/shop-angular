@@ -19,7 +19,7 @@ import { LocalStorageService } from '../../services/storage/localStorage.service
 export class ProductComponent implements OnInit, OnDestroy {
   @Input() product: ProductModel;
   products$: ProductModel[];
-  unsubscribe$: Subject<void> = new Subject<void>();
+  unsubscribe$ = new Subject();
   searchTerm: string;
   selectedCategory: string;
   isAdmin = this.afauth.auth.currentUser;
@@ -43,7 +43,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.productId = this.product.$key;
-    this.subscription = this.route.params.subscribe(params=>this.productId=params['id']);
+    this.subscription = this.route.params.pipe(takeUntil(this.unsubscribe$)).subscribe(params=>this.productId=params['id']);
   }
 
 
