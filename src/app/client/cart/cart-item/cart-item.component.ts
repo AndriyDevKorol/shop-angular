@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ProductModel } from 'src/app/models/product.model';
 import { Product } from 'src/app/shared/modules/Product';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
@@ -12,9 +13,9 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 export class CartItemComponent implements OnInit {
 
   // tslint:disable-next-line:no-input-rename
-  @Input('product')
-  product: Product;
-  products: Product[];
+  @Input() products: ProductModel;
+  @Input('product') product: Product;
+  // products: Product[];
 
 
   constructor(
@@ -22,6 +23,7 @@ export class CartItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('prr', this.product);
     this.getProducts();
   }
 

@@ -8,6 +8,7 @@ import { ProductModel } from '../../../models/product.model';
 import { ShareDataService } from '../../services/shareData.service';
 import { ProductsModule } from '../products.module';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { LocalStorageService } from '../../services/storage/localStorage.service';
 
 
 @Component({
@@ -25,12 +26,14 @@ export class ProductComponent implements OnInit, OnDestroy {
   countVal = 1;
   editProductKey: string;
   productId: any;
+  storageValue = []
 
   private subscription: Subscription;
 
   constructor(
     private router: Router,
     private productService: ProductService,
+    private localStorageService: LocalStorageService,
     private route: ActivatedRoute,
     private shareDataService: ShareDataService,
     private afauth: AngularFireAuth,
@@ -63,7 +66,20 @@ export class ProductComponent implements OnInit, OnDestroy {
       this.countVal = 1;
     }
   }
-  addToCart(product: ProductModel){}
+
+
+  addToCart(value: string) {
+    let storageKey = 'cart';
+    let storageData = this.localStorageService.getLocalStorageData(storageKey) || [];
+
+    if(value){
+      let exist = storageData.some(item => item === value );
+      if(exist){return};
+      storageData.push(value);
+    }
+
+    this.localStorageService.setDataToLocalStorage(storageKey, storageData);
+  }
 
   onReset(){}
 

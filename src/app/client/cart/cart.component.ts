@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/modules/Product';
-import { ProductService } from 'src/app/shared/services/product/product.service';
+import { ProductService } from 'src/app/core/services/product.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { EmailSenderService } from 'src/app/shared/services/emailSender/email-sender.service';
+import { LocalStorageService } from 'src/app/core/services/storage/localStorage.service';
+import { ProductModel } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-cart',
@@ -12,10 +14,9 @@ import { EmailSenderService } from 'src/app/shared/services/emailSender/email-se
 })
 
 export class CartComponent implements OnInit, OnDestroy {
-
 editProductKey: string;
 cartEventSubscription: Subscription;
-products: Product[] = [];
+products: ProductModel[] = [];
 ourForm: FormGroup;
 submitting = false;
 submitted = false;
@@ -38,14 +39,22 @@ product: Product = {
   constructor(
     private productService: ProductService,
     private emailSender: EmailSenderService,
+    private localStorageService: LocalStorageService,
   ) {}
 
   ngOnInit() {
-    this.isShow = false;
-    this.cartEventSubscription = this.productService.addToCartEvent.subscribe((products: Product[]) => {
-      this.products = products;
-      this.recipe = this.products.map(pr => this.total = (pr.count * pr.price) + this.total);
+    // this.isShow = false;
+    // this.cartEventSubscription = this.productService.addToCartEvent.subscribe((products: Product[]) => {
+    //   this.products = products;
+    //   this.recipe = this.products.map(pr => this.total = (pr.count * pr.price) + this.total);
+    // });
+
+    this.localStorageService.getLocalStorageData('cart').map(res => {
+     this.productService.getProduct(res).subscribe(res => { this.products.push(res)})
     });
+
+
+    console.log('prs', this.products);
 
     this.ourForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
@@ -56,7 +65,7 @@ product: Product = {
   }
 
   clearCart() {
-    this.productService.clearCart();
+    // this.productService.clearCart();
     this.total = 0;
   }
 

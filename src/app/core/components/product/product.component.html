@@ -34,7 +34,7 @@
           <div class="price-header">
             <div class="buttons-section" >
               <button class="button danger" *ngIf="isAdmin" (click)="onDelete(product)">Видалити</button>
-              <button class="button secondary" *ngIf="isAdmin" (click)="onEdit(product)"  >Редагувати</button>
+              <button class="button secondary" *ngIf="isAdmin" (click)="onEdit(product)">Редагувати</button>
               <button class="button editbtn" (click)="onReset()" *ngIf="editProductKey">Відмінити</button>
             </div>
           </div>
@@ -49,7 +49,7 @@
                 <span>{{countVal}}</span>
                 <i class="material-icons" (click)="onCount(1)">arrow_right</i>
               </span>
-              <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
+              <button class="button buy"  color="accent" (click)="addToCart(product.$key)">Купити</button>
             </div>
           </div>
         </div>
