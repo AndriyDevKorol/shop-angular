@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/modules/Product';
 import { ProductService } from 'src/app/core/services/product.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
@@ -44,17 +44,8 @@ product: Product = {
 
   ngOnInit() {
     // this.isShow = false;
-    // this.cartEventSubscription = this.productService.addToCartEvent.subscribe((products: Product[]) => {
-    //   this.products = products;
-    //   this.recipe = this.products.map(pr => this.total = (pr.count * pr.price) + this.total);
-    // });
 
-    this.localStorageService.getLocalStorageData('cart').map(res => {
-     this.productService.getProduct(res).subscribe(res => { this.products.push(res)})
-    });
-
-
-    console.log('prs', this.products);
+    this.getItems();
 
     this.ourForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
@@ -64,8 +55,14 @@ product: Product = {
     });
   }
 
+  getItems() {
+    return this.localStorageService.getLocalStorageData('cart').map(res => {
+      this.productService.getProduct(res).subscribe(res => { this.products.push(res)})
+     });
+  }
+
   clearCart() {
-    // this.productService.clearCart();
+    this.localStorageService.setDataToLocalStorage('cart', []);
     this.total = 0;
   }
 
