@@ -53,7 +53,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   onDelete(product: ProductModel): void {
     this.productService.deleteProduct(product);
-    // alert('Продукт успішно видалено');
+    this.localStorageService.removeLocalStoargeData(product.$key);
   }
 
   onEdit(product: ProductModel): void {

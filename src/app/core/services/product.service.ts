@@ -72,9 +72,9 @@ export class ProductService {
   }
 
   deleteProduct(product: ProductModel) {
-  //  return this.angularFireDatabase.object('products/' + product.$key).remove()
+   return this.angularFireDatabase.object('products/' + product.$key).remove()
 
-  return firebase.database().ref('products/' + product.$key).remove()
+  // return firebase.database().ref('products/' + product.$key).remove()
 
     // this.uploadService.deleteFile(product.imageRefs);
 
@@ -82,13 +82,11 @@ export class ProductService {
     //   .object<ProductModel>(url)
     //   .remove()
       .then(() => {
-        // this.log('success deleting' + product.name)
         console.log('success deleting ' + product.$key);
+        alert('Продукт ' + product.title + ' успішно видалено');
       })
       .catch((error) => {
-        // this.messageService.addError('Delete failed ' + product.name);
-        // this.handleError('delete product');
-        console.log('Delete failed ' + product.$key)
+        console.log('Delete failed ' + product.$key + ' - ' + error);
       });
   }
 

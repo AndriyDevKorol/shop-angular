@@ -41,9 +41,9 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit() {
-    this.shareDataService.currentCategory.subscribe(res => {
+    this.shareDataService.currentCategory.pipe(takeUntil(this.unsubscribe$)).subscribe(res => {
       if(res){
-        this.route.paramMap.pipe(takeUntil(this.unsubscribe$)).subscribe(params => {
+        this.route.paramMap.subscribe(params => {
           const id = +params.get('category');
            this.productService.getProductByCategory(res).subscribe(res => {
             this.products$ = res
@@ -56,7 +56,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   private getProducts(){
-    this.productService.getProducts()
+    return this.productService.getProducts()
     .pipe(takeUntil(this.unsubscribe$))
     .subscribe(res => {
       this.products$ = res

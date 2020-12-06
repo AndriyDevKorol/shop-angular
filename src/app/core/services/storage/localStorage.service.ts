@@ -18,7 +18,16 @@ export class LocalStorageService  {
       return this.storage.get(STORAGE_KEY);
      }
 
-     removeLocalStoargeData() {
+     removeLocalStoargeData(key: string) {
 
+     let items = this.storage
+     .get('cart')
+     .filter(el => el !== key);
+
+      return this.setDataToLocalStorage('cart', items);
+     }
+
+     clearLocalStoargeData() {
+      this.storage.clear();
      }
 }
