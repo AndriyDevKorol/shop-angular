@@ -4,12 +4,14 @@ import { RouterModule } from '@angular/router';
 import { CartComponent } from './cart.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RecipeComponent } from './recipe/recipe.component';
 
 
 
 @NgModule({
   declarations: [
     CartComponent,
+    RecipeComponent
   ],
   imports: [
     CommonModule,

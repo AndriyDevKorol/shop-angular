@@ -51,7 +51,7 @@
             <div class="count">К-сть</div>
             <div class="price">Ціна</div>
           </div>
-          <!-- <app-recipe [product]="product" *ngFor="let product of products" class="order-item"></app-recipe> -->
+          <app-recipe [product]="product" *ngFor="let product of products" class="order-item"></app-recipe>
         </div>
         <div class="total">Total: {{total}} грн.</div>
         <div><button (click)="submitData()" class="sen-order">Відправити замовлення</button></div>

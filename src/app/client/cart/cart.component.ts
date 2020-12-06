@@ -3,7 +3,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/modules/Product';
 import { ProductService } from 'src/app/core/services/product.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { EmailSenderService } from 'src/app/shared/services/emailSender/email-sender.service';
+import { EmailSenderService } from '../../core/services/emailSender/email-sender.service';
 import { LocalStorageService } from 'src/app/core/services/storage/localStorage.service';
 import { ProductModel } from 'src/app/models/product.model';
 import { Subject } from 'rxjs/internal/Subject';

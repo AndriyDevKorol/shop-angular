@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoaderComponent } from './shared/components/loader/loader.component';
-import { ConfirmationButtonComponent } from './shared/components/confirmation-button/confirmation-button.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -37,7 +36,6 @@ import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './core/auth/auth.module';
 import { AuthGuardService } from './core/services/guards/auth-guard.service';
 import { PipesModule } from './shared/pipes/pipe.module';
-import { RecipeComponent } from './client/recipe/recipe.component';
 
 @NgModule({
   declarations: [
@@ -45,12 +43,10 @@ import { RecipeComponent } from './client/recipe/recipe.component';
 
 
     LoaderComponent,
-    ConfirmationButtonComponent,
     AlertComponent,
     RestorPasswordComponent,
     SearchComponent,
     RangePipe,
-    RecipeComponent,
     HomeContentComponent,
     ProductWidgetComponent,
     AdsWidgetComponent,

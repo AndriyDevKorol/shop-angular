@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Product } from 'src/app/shared/modules/Product';
 import { Subscription } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.less']
 })
-export class RecipeComponent implements OnInit {
+export class RecipeComponent implements OnInit, OnDestroy {
 
   @Input()
   product: Product;
@@ -19,11 +19,11 @@ export class RecipeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // this.total = this.total + (this.product.count * this.product.price);
+    this.total = this.total + (this.product.count * this.product.price);
   }
 
 
-  ngOndestroy() {
+  ngOnDestroy() {
     this.recipeEventSubscription.unsubscribe();
   }
 

@@ -2,10 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { environment } from '../../../../environments/environment';
+import { ProductsUrl } from '../../productsUrl';
 
 
 const KEY = environment.config.SENDGRID_KEY;
 const URL = environment.config.SENGRID_URL;
+
+const BASE_URL = environment.config.databaseURL;
+const API_PRODUCTS = `${BASE_URL}`+ ProductsUrl.emailUrl +".json";
 
 const httpOptions = {
   headers: new HttpHeaders({
