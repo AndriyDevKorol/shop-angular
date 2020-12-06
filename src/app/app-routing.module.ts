@@ -1,38 +1,30 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { CartComponent } from './components/cart/cart.component';
-import { LoginComponent } from './shared/components/login/login.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
-import { ProductsListComponent } from './components/products/products-list/products-list.component'
-import { HomeContentComponent } from './components/home/home-content/home-content.component';
+import { PageNotFoundComponent } from './client/page-not-found/page-not-found.component';
 
-const childRoutes: Routes = [
-  {path: '', component: HomeContentComponent},
-  {path: 'products', component: ProductsListComponent}
-]
 
 const routes: Routes = [
-  {path: '', component: HomeComponent, children: childRoutes},
-  {path: 'cart', component: CartComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'product-details', component: ProductDetailsComponent},
+    { path: '',
+      pathMatch: 'full',
+      loadChildren: () => import('./client/client.module').then(client => client.ClientModule)
+    },
+    {
+      path: 'auth',
+      loadChildren: () => import('./core/auth/auth.module').then(login => login.AuthModule)
+    },
+    {
+      path: 'admin',
+      loadChildren: () => import('./admin/admin.module').then(admin => admin.AdminModule),
+    },
+    { path: '**', component: PageNotFoundComponent}
+]
 
-  {path: '**', component: PageNotFoundComponent}
-];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
-export const RoutingComponent = [
-  HomeComponent,
-  CartComponent,
-  LoginComponent,
-  PageNotFoundComponent,
-  ProductDetailsComponent,
-  ProductsListComponent,
-  HomeContentComponent
-];
+
+export class AppRoutingModule{ }
+

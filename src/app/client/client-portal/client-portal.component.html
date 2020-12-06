@@ -1,0 +1,7 @@
+<app-header></app-header>
+<app-navbar  [products$]="products"></app-navbar>
+<div class="container d-flex" >
+  <app-left-section  [products$]="products" class="col-3 mt-4"></app-left-section>
+  <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

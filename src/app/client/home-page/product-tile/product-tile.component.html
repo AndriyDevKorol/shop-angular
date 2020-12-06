@@ -1,0 +1,37 @@
+<div class="card h-0" *ngIf="product$" >
+  <div class="productCard" *ngIf="product$" >
+
+    <div class="card-body" >
+      <div class="img-section flex-column">
+        <div class="img-content">
+          <div class="image">
+            <a class="imgages-view" [routerLink]="['/product/', product$.$key]">
+              <img src={{product$.imgUrl}} alt="product" class="card-img" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cardHeader">
+        <p class="card-text">Product: {{product$.title}}</p>
+      </div>
+      <div class="cardHeader">
+        <p class="card-text">Category: {{product$.category}}</p>
+      </div>
+
+      <div class="price-section border-left flex-column">
+        <div class="price-container">
+          <div class="price-content">
+            <div class="price">
+              <div class="cina-section">
+                <span class="cina">{{product$.price }}</span>
+                <span class="valuta">грн/шт</span>
+              </div>
+              <button class="button buy"  color="accent" (click)="addToCart(product$)">Купити</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

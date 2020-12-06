@@ -1,0 +1,12 @@
+<div class="container-fluid bg-dark p-0">
+  <div class="container p-0 bg-dark navbar-dark d-flex flex-column space-between">
+    <div class="mt-2 d-flex justify-content-center">
+      <a class="navbar-item mr-4 p-1"[routerLink]="['']"  routerLinkActive="active" >Home</a>
+      <a class="navbar-item mr-4 p-1"[routerLink]="['/products']"  routerLinkActive="active" (click)="getValue('')">Products</a>
+      <a class="navbar-item mr-4 p-1"[routerLink]="['/cart']"  routerLinkActive="active" >Корзина</a>
+    </div>
+    <div class=" d-flex flex-row justify-content-between" >
+      <a class="text-white mr-2 p-1" *ngFor="let products of products$" [routerLink]="['/products']"  routerLinkActive="active" (click)="getValue($event.target.innerText)">{{products.category}}</a>
+    </div>
+  </div>
+</div>

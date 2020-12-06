@@ -1,0 +1,15 @@
+Product structure
+
+|- Home
+    --- navbar top and left
+    --- search by product
+    --- several product section of categories + several products in the section
+
+| - Categories list of products
+    --- navbar top
+    --- filter by product
+
+| - Cart
+
+
+

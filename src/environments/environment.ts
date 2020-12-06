@@ -9,7 +9,7 @@ export const environment = {
     messagingSenderId: '445703680065',
     appId: '1:445703680065:web:f33d33d116e9cdfb7b96c0',
     measurementId: 'G-T2WJDJGMJ7',
-    SENDGRID_KEY: '',
+    SENDGRID_KEY: 'Bearer ',
     SENGRID_URL: 'https://cors-anywhere.herokuapp.com/https://api.sendgrid.com/v3/mail/send',
   }
 };

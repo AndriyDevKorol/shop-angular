@@ -2,11 +2,11 @@ import { Injectable} from '@angular/core';
 import { Product } from '../../modules/Product';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { AngularFirestoreDocument } from 'angularfire2/firestore';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from 'angularfire2/auth';
-import { ProductsUrl } from '../../productsUrl';
-import { map } from 'rxjs/operators';
+import { ProductsUrl } from '../../../core/productsUrl';
+import { map, catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -24,7 +24,6 @@ export class ProductService {
   detailProductEvent = this.detailsProduct.asObservable();
   private deleteFromCart: BehaviorSubject<Product[]> = new BehaviorSubject([]);
   deleteFromCartEvent = this.deleteFromCart.asObservable();
-  count: number;
   cartProducts: Product[] = [];
   productDetails: any;
   database = firebase.database();
@@ -38,28 +37,18 @@ export class ProductService {
         this.products = db.list(this.productsUrl);
     }
 
-  loadData(){
-    let dat;
-    // var myUserId = firebase.auth().currentUser.uid;  -  verify if a user is logged
-    // var topUserPostsRef = firebase.database().ref(this.productsUrl).once("value", (snapshot) => {
-    //   snapshot.val();
-    // }, (errorObject) => {
-    //   console.log("The read failed: " + errorObject.message);
-    // }).then(el => console.log(el.val()));
-    // console.log(dat);
-    // console.log(topUserPostsRef);
-  }
 
   getProducts() {
      return this.products;
   }
 
-  // getAllProducts(){
-  //   return this.db
-  //   .list<Product>('products')
-  //   .snapshotChanges()
-  //   .pipe(map(arr => arr.reverse()))
-  // }
+  loadProducts() {
+    return this.db
+    .list<Product>('products', (ref) => ref.orderByChild('date'))
+      .valueChanges()
+      .pipe(map((arr) => arr.reverse()));
+  }
+
 
   addProduct(product: Product): void {
      this.db.list(this.productsUrl).push(product);

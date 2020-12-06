@@ -23,7 +23,6 @@ export class SearchService {
   }
 
   searchProducts() {
-    console.log('productDoc', this.productDoc);
     // return this.products.valueChanges().subscribe((searchtxt) =>{this.products.});
     // // .pipe(
     // //   map(res => console.log('search service', value))
