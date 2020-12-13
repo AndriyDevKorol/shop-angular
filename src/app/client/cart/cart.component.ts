@@ -7,7 +7,7 @@ import { EmailSenderService } from '../../core/services/emailSender/email-sender
 import { LocalStorageService } from 'src/app/core/services/storage/localStorage.service';
 import { ProductModel } from 'src/app/models/product.model';
 import { Subject } from 'rxjs/internal/Subject';
-import { takeUntil } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
@@ -59,9 +59,10 @@ product: Product = {
   }
 
   getItems() {
-    return this.localStorageService.getLocalStorageData('cart').map(res => {
-      this.productService.getProduct(res).pipe(takeUntil(this.unsubscribe$)).subscribe(res => { this.products.push(res)})
-     });
+    return this.localStorageService.getLocalStorageData('cart')
+    .forEach(res => this.productService.getProduct(res)
+    .pipe(takeUntil(this.unsubscribe$)).
+    subscribe(res => { this.products.push(res)}))
   }
 
   clearCart() {

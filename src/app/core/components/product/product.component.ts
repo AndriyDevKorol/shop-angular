@@ -48,7 +48,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 
 
   getProductOfCategory(selectedCategory: string){
-    this.productService.getProductByCategory(selectedCategory);
+    this.productService.getProductByCategory(selectedCategory).pipe(takeUntil(this.unsubscribe$));
   }
 
   onDelete(product: ProductModel): void {
@@ -70,11 +70,23 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   addToCart(value: string) {
     let storageKey = 'cart';
-    let storageData = this.localStorageService.getLocalStorageData(storageKey) || [];
+    let storageData = [];
+
+    this.localStorageService.getLocalStorageData(storageKey)
+    .forEach(res => {
+      storageData.push(res);
+    });
+
 
     if(value){
-      let exist = storageData.some(item => item === value );
-      if(exist){return};
+      let exist= storageData.some(item => {
+        console.log('21', item);
+        console.log('33', value);
+        item === value
+      });
+
+      console.log('sdf', exist)
+      if (exist){return}
       storageData.push(value);
     }
 
