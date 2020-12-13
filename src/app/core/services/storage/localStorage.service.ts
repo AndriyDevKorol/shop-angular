@@ -5,8 +5,6 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class LocalStorageService  {
-     anotherTodolist = [];
-
      constructor(
        @Inject(LOCAL_STORAGE) private storage: StorageService
        ) { }
