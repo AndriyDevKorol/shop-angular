@@ -36,7 +36,7 @@ export class ProductService {
     }))
   }
 
-  getProduct(id: any):Observable<any> {
+  getProduct(id: any):Observable<ProductModel> {
     return this.httpService.get<ProductModel[]>(this.API_PRODUCTS).pipe(map((res: ProductModel[]) => {
       const productArray: ProductModel[] = [];
       let productSelected: ProductModel;

@@ -24,7 +24,7 @@ export class RecipeComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy() {
-    this.recipeEventSubscription.unsubscribe();
+    // this.recipeEventSubscription.unsubscribe();
   }
 
 
