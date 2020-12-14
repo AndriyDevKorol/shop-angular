@@ -2,13 +2,14 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 import { ProductService } from '../../services/product.service';
 import { ProductModel } from '../../../models/product.model';
 import { ShareDataService } from '../../services/shareData.service';
 import { ProductsModule } from '../products.module';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { LocalStorageService } from '../../services/storage/localStorage.service';
+import { fromPromise } from 'rxjs/internal-compatibility';
 
 
 @Component({
@@ -70,27 +71,8 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   addToCart(value: string) {
     let storageKey = 'cart';
-    let storageData = [];
 
-    this.localStorageService.getLocalStorageData(storageKey)
-    .forEach(res => {
-      storageData.push(res);
-    });
-
-
-    if(value){
-      let exist= storageData.some(item => {
-        console.log('21', item);
-        console.log('33', value);
-        item === value
-      });
-
-      console.log('sdf', exist)
-      if (exist){return}
-      storageData.push(value);
-    }
-
-    this.localStorageService.setDataToLocalStorage(storageKey, storageData);
+    this.localStorageService.setDataToLocalStorage(storageKey, value);
   }
 
   onReset(){}

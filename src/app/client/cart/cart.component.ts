@@ -59,15 +59,18 @@ product: Product = {
   }
 
   getItems() {
+    let storageData = this.localStorageService.getLocalStorageData('cart');
+    if (storageData){
     return this.localStorageService.getLocalStorageData('cart')
     .forEach(res => this.productService.getProduct(res)
     .pipe(takeUntil(this.unsubscribe$)).
     subscribe(res => { this.products.push(res)}))
+    }
+    return
   }
 
   clearCart() {
-    this.localStorageService.setDataToLocalStorage('cart', []);
-    this.total = 0;
+    this.localStorageService.clearLocalStoargeData();
   }
 
   showRecipe() {
