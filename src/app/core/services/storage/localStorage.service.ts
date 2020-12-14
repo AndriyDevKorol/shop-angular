@@ -10,10 +10,14 @@ export class LocalStorageService  {
        ) { }
 
      setDataToLocalStorage(key:string, value: any) {
-      this.storage.set(key, value);
+      let storageData:string[] = this.storage.get(key) || [];
+
+      if(storageData.some(item => item === value)){return}
+
+      this.storage.set(key, [...storageData, value]);
      }
 
-     getLocalStorageData(STORAGE_KEY: any): Observable<[]>  {
+     getLocalStorageData(STORAGE_KEY: any):String[] {
       return this.storage.get(STORAGE_KEY);
      }
 
