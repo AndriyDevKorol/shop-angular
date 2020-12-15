@@ -16,26 +16,27 @@ import { map, takeUntil } from 'rxjs/operators';
 })
 
 export class CartComponent implements OnInit, OnDestroy {
-editProductKey: string;
-cartEventSubscription: Subscription;
-products: ProductModel[] = [];
-ourForm: FormGroup;
-submitting = false;
-submitted = false;
-total = 0;
-recipe: any[];
-isValidURL: any;
-isShow: boolean;
-unsubscribe$ = new Subject();
+  storageData;
+  editProductKey: string;
+  cartEventSubscription: Subscription;
+  products: ProductModel[] = [];
+  ourForm: FormGroup;
+  submitting = false;
+  submitted = false;
+  total = 0;
+  recipe: any[];
+  isValidURL: any;
+  isShow: boolean;
+  unsubscribe$ = new Subject();
 
-product: Product = {
-  $key: '',
-  title: '',
-  price: 0,
-  body: '',
-  category: '',
-  shortDescription: ''
-};
+  product: Product = {
+    $key: '',
+    title: '',
+    price: 0,
+    body: '',
+    category: '',
+    shortDescription: ''
+  };
 
   name = new FormControl('', [Validators.required]);
 
@@ -59,9 +60,10 @@ product: Product = {
   }
 
   getItems() {
-    let storageData = this.localStorageService.getLocalStorageData('cart');
-    if (storageData){
-    return this.localStorageService.getLocalStorageData('cart')
+    this.storageData = this.localStorageService.getLocalStorageData('cart');
+    if (this.storageData){
+    this.localStorageService.updateStore(this.storageData);
+    return this.storageData
     .forEach(res => this.productService.getProduct(res)
     .pipe(takeUntil(this.unsubscribe$)).
     subscribe(res => { this.products.push(res)}))
@@ -70,6 +72,7 @@ product: Product = {
   }
 
   clearCart() {
+    this.products = [];
     this.localStorageService.clearLocalStoargeData();
   }
 

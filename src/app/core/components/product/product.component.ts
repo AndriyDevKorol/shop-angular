@@ -9,7 +9,6 @@ import { ShareDataService } from '../../services/shareData.service';
 import { ProductsModule } from '../products.module';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { LocalStorageService } from '../../services/storage/localStorage.service';
-import { fromPromise } from 'rxjs/internal-compatibility';
 
 
 @Component({
