@@ -5,9 +5,6 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable()
 export class LocalStorageService  {
-  // private dataStorage = new BehaviorSubject<string[]>([]);
-  // dataStorageEvent = this.dataStorage.asObservable();
-
 
     constructor(
       @Inject(LOCAL_STORAGE) private storage: StorageService
@@ -20,17 +17,10 @@ export class LocalStorageService  {
 
     storageData.push(value);
     this.storage.set(key, storageData);
-    // console.log('service', this.dataStorage);
-    // this.dataStorage.next(storageData);
     }
 
     getLocalStorageData(STORAGE_KEY: any):String[] {
     return this.storage.get(STORAGE_KEY);
-    }
-
-    updateStore(data){
-      console.log('dd', data);
-      // this.dataStorage.next(data);
     }
 
     removeLocalStoargeData(key: string) {

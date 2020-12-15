@@ -7,10 +7,11 @@ import { map, takeUntil } from 'rxjs/operators';
 import { keyframes } from '@angular/animations';
 import { ProductService } from '../../services/product.service';
 import { ProductModel } from 'src/app/models/product.model';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ShareDataService } from '../../services/shareData.service';
 import { ActivatedRoute } from '@angular/router';
 import { OnDestroy } from '@angular/core';
+import { LocalStorageService } from '../../services/storage/localStorage.service';
 
 
 
@@ -19,7 +20,7 @@ import { OnDestroy } from '@angular/core';
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.less']
 })
-export class ProductsListComponent implements OnInit, OnDestroy {
+export class ProductsListComponent implements OnInit, OnDestroy{
   products$: ProductModel[];
   unsubscribe$ = new Subject();
   product: Product;
@@ -38,6 +39,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     private shareDataService: ShareDataService,
     private afauth: AngularFireAuth,
     private route: ActivatedRoute,
+    private localStorageService: LocalStorageService,
     ) { }
 
   ngOnInit() {
@@ -55,12 +57,11 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     });
   }
 
-  private getProducts(){
+  private getProducts() {
     return this.productService.getProducts()
     .pipe(takeUntil(this.unsubscribe$))
     .subscribe(res => {
       this.products$ = res
-
     });
   }
 

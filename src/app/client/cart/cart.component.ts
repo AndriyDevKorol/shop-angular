@@ -62,7 +62,6 @@ export class CartComponent implements OnInit, OnDestroy {
   getItems() {
     this.storageData = this.localStorageService.getLocalStorageData('cart');
     if (this.storageData){
-    this.localStorageService.updateStore(this.storageData);
     return this.storageData
     .forEach(res => this.productService.getProduct(res)
     .pipe(takeUntil(this.unsubscribe$)).

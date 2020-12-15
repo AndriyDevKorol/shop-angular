@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LocalStorageService } from 'src/app/core/services/storage/localStorage.service';
 import { ProductModel } from 'src/app/models/product.model';
 
 @Component({
@@ -11,12 +12,15 @@ export class ProductTileComponent implements OnInit {
 
   countVal = 1;
 
-  constructor() { }
+  constructor( private localStorageService: LocalStorageService,) { }
 
   ngOnInit() {
   }
 
-  public addToCart(product){
+  addToCart(value: string) {
+    let storageKey = 'cart';
+
+    this.localStorageService.setDataToLocalStorage(storageKey, value);
   }
 
   onCount(counter: number) {
