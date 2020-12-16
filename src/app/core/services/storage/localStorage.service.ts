@@ -11,28 +11,25 @@ export class LocalStorageService  {
       ) { }
 
     setDataToLocalStorage(key:string, value: any) {
-    let storageData:string[] = this.storage.get(key) || [];
-
-    if(storageData.some(item => item === value)){return}
-
-    storageData.push(value);
-    this.storage.set(key, storageData);
+      let storageData:string[] = this.storage.get(key) || [];
+      if(storageData.some(item => item === value))
+      {return}
+      storageData.push(value);
+      this.storage.set(key, storageData);
     }
 
     getLocalStorageData(STORAGE_KEY: any):String[] {
-    return this.storage.get(STORAGE_KEY);
+      return this.storage.get(STORAGE_KEY);
     }
 
     removeLocalStoargeData(key: string) {
-
-    let items = this.storage
-    .get('cart')
-    .filter(el => el !== key);
-
-    return this.setDataToLocalStorage('cart', items);
+      let items = this.storage
+      .get('cart')
+      .filter(el => el !== key);
+      return this.setDataToLocalStorage('cart', items);
     }
 
     clearLocalStoargeData() {
-    this.storage.clear();
+      this.storage.clear();
     }
 }

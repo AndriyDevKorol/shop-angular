@@ -46,7 +46,7 @@
               </div>
               <span class="q-field">
                 <i class="material-icons" (click)="onCount(-1)">arrow_left</i>
-                <span>{{countVal}}</span>
+                <input type="number" id="count"  [(ngModel)]="countVal" placeholder={{countVal}}>
                 <i class="material-icons" (click)="onCount(1)">arrow_right</i>
               </span>
               <button class="button buy"  color="accent" (click)="addToCart(product.$key)">Купити</button>

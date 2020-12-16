@@ -23,15 +23,17 @@
         <table class="table" >
           <thead class="thead-light">
             <tr>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">Продукт</th>
+              <th scope="col">Назва</th>
+              <th scope="col">К-сть</th>
+              <th scope="col">Вартість</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let product of products">
               <td><img src={{product.imgUrl}}  alt="product" class="card-img" /></td>
               <td>{{product.title}}</td>
+              <td><input type="number" id="count"  [(ngModel)]="countVal" placeholder={{countVal}}></td>
               <td>{{product.price}}</td>
             </tr>
           </tbody>

@@ -28,6 +28,7 @@ export class CartComponent implements OnInit, OnDestroy {
   isValidURL: any;
   isShow: boolean;
   unsubscribe$ = new Subject();
+  countVal = 1;
 
   product: Product = {
     $key: '',
@@ -51,6 +52,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
     this.getItems();
 
+
     this.ourForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       phone: new FormControl(''),
@@ -62,12 +64,18 @@ export class CartComponent implements OnInit, OnDestroy {
   getItems() {
     this.storageData = this.localStorageService.getLocalStorageData('cart');
     if (this.storageData){
-    return this.storageData
-    .forEach(res => this.productService.getProduct(res)
-    .pipe(takeUntil(this.unsubscribe$)).
-    subscribe(res => { this.products.push(res)}))
+      return this.storageData
+      .forEach(res => this.productService.getProduct(res)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(
+        res => { {
+          res.count = 1;
+          this.products.push(res);
+          console.log('cart-pr', this.products);
+       }}
+      ));
     }
-    return
+    return;
   }
 
   clearCart() {
