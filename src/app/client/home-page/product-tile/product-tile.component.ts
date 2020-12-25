@@ -1,4 +1,8 @@
+import { OnDestroy } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { CartService } from 'src/app/core/services/cart.service';
 import { LocalStorageService } from 'src/app/core/services/storage/localStorage.service';
 import { ProductModel } from 'src/app/models/product.model';
 
@@ -7,20 +11,27 @@ import { ProductModel } from 'src/app/models/product.model';
   templateUrl: './product-tile.component.html',
   styleUrls: ['./product-tile.component.less']
 })
-export class ProductTileComponent implements OnInit {
+export class ProductTileComponent implements OnInit, OnDestroy {
   @Input() product$: ProductModel;
-
+  cartProducts:ProductModel[];
+  unsubscribe$ = new Subject();
   countVal = 1;
 
-  constructor( private localStorageService: LocalStorageService,) { }
+  constructor(
+    private localStorageService: LocalStorageService,
+    private cartService: CartService
+    ) { }
 
   ngOnInit() {
+    this.cartService.addCartProductsEvent.pipe(takeUntil(this.unsubscribe$)).subscribe(data => this.cartProducts = data);
   }
 
-  addToCart(value: string) {
-    let storageKey = 'cart';
-
-    this.localStorageService.setDataToLocalStorage(storageKey, value);
+  addToCart(data: ProductModel) {
+    let exist = this.cartProducts.some(item => item.$key == data.$key);
+    if(!exist){
+      this.cartProducts.push(data);
+      this.cartService.addCartProducts(this.cartProducts);
+    }
   }
 
   onCount(counter: number) {
@@ -28,5 +39,10 @@ export class ProductTileComponent implements OnInit {
     if (this.countVal < 1) {
       this.countVal = 1;
     }
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

@@ -7,6 +7,7 @@ import { PipesModule } from 'src/app/shared/pipes/pipe.module';
 import { ProductService } from '../services/product.service';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { CartService } from '../services/cart.service';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
   ],
   providers: [
     ProductService,
+    CartService
   ],
   exports:[
     ProductComponent,

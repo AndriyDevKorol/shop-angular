@@ -9,6 +9,8 @@ import { ShareDataService } from '../../services/shareData.service';
 import { ProductsModule } from '../products.module';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { LocalStorageService } from '../../services/storage/localStorage.service';
+import { CartService } from '../../services/cart.service';
+import { StorageCartModel } from 'src/app/models/storage.model';
 
 
 @Component({
@@ -26,7 +28,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   countVal = 1;
   editProductKey: string;
   productId: any;
-  storageValue = []
+  storageValue = [];
+  cartProducts:ProductModel[];
 
   private subscription: Subscription;
 
@@ -37,6 +40,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private shareDataService: ShareDataService,
     private afauth: AngularFireAuth,
+    private cartService: CartService
   ) {
     // router.events.subscribe(console.log);
   }
@@ -44,6 +48,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.productId = this.product.$key;
     this.subscription = this.route.params.pipe(takeUntil(this.unsubscribe$)).subscribe(params=>this.productId=params['id']);
+    this.cartService.addCartProductsEvent.pipe(takeUntil(this.unsubscribe$)).subscribe(data => this.cartProducts = data);
   }
 
 
@@ -68,10 +73,12 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
 
-  addToCart(value: string) {
-    let storageKey = 'cart';
-
-    this.localStorageService.setDataToLocalStorage(storageKey, value);
+  addToCart(data: ProductModel) {
+    let exist = this.cartProducts.some(item => item.$key == data.$key);
+    if(!exist){
+      this.cartProducts.push(data);
+      this.cartService.addCartProducts(this.cartProducts);
+    }
   }
 
   onReset(){}

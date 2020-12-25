@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/modules/Product';
 import { ProductService } from 'src/app/core/services/product.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
@@ -8,6 +8,8 @@ import { LocalStorageService } from 'src/app/core/services/storage/localStorage.
 import { ProductModel } from 'src/app/models/product.model';
 import { Subject } from 'rxjs/internal/Subject';
 import { map, takeUntil } from 'rxjs/operators';
+import { StorageCartModel } from 'src/app/models/storage.model';
+import { CartService } from 'src/app/core/services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -16,10 +18,10 @@ import { map, takeUntil } from 'rxjs/operators';
 })
 
 export class CartComponent implements OnInit, OnDestroy {
-  storageData;
+  storageData:StorageCartModel[];
   editProductKey: string;
   cartEventSubscription: Subscription;
-  products: ProductModel[] = [];
+  products:any = [];
   ourForm: FormGroup;
   submitting = false;
   submitted = false;
@@ -28,7 +30,7 @@ export class CartComponent implements OnInit, OnDestroy {
   isValidURL: any;
   isShow: boolean;
   unsubscribe$ = new Subject();
-  countVal = 1;
+  newItem;
 
   product: Product = {
     $key: '',
@@ -45,12 +47,14 @@ export class CartComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private emailSender: EmailSenderService,
     private localStorageService: LocalStorageService,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
-    // this.isShow = false;
 
-    this.getItems();
+    // this.isShow = false;
+    this.cartService.addCartProductsEvent.pipe(takeUntil(this.unsubscribe$)).subscribe(data => {this.products = data;});
+
 
 
     this.ourForm = new FormGroup({
@@ -62,8 +66,8 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   getItems() {
-    this.storageData = this.localStorageService.getLocalStorageData('cart');
-    if (this.storageData){
+    // this.storageData = this.localStorageService.getLocalStorageData('cart');
+    if (this.products){
       return this.storageData
       .forEach(res => this.productService.getProduct(res)
       .pipe(takeUntil(this.unsubscribe$))
@@ -71,11 +75,16 @@ export class CartComponent implements OnInit, OnDestroy {
         res => { {
           res.count = 1;
           this.products.push(res);
-          console.log('cart-pr', this.products);
        }}
       ));
     }
-    return;
+
+    return this.products
+    .forEach(res => { {
+          if(res.$key = this.newItem.$key){return}
+          this.products.push(this.newItem);
+       }}
+      );
   }
 
   clearCart() {
@@ -91,6 +100,22 @@ export class CartComponent implements OnInit, OnDestroy {
     this.isShow = !this.isShow;
   }
 
+  updateNumberOfProduct(productId: string, number:number) {
+    if(number <= 0) {number = 1}
+    this.localStorageService.getLocalStorageData('cart').forEach(item => {
+      if(item === productId){
+
+        // this.localStorageService.setDataToLocalStorage('cart', )
+          }
+
+    })
+    // this.products.forEach(product =>{
+    //   if(product.$key === productId){
+    //     product.count = number
+    //   }
+    // })
+    // return this.products;
+  }
 
   ngOnDestroy() {
     this.unsubscribe$.next();
@@ -233,8 +258,6 @@ export class CartComponent implements OnInit, OnDestroy {
 
     const completeRecipe = gridHeader + k;
     this.emailSender.sendMessage(completeRecipe, name).subscribe(res => console.log(res));
-    console.log('body', k);
-    console.log('body', completeRecipe);
     alert('Email was sent');
     this.isShow = !this.isShow;
   }
