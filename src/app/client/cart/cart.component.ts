@@ -21,7 +21,7 @@ export class CartComponent implements OnInit, OnDestroy {
   storageData:StorageCartModel[];
   editProductKey: string;
   cartEventSubscription: Subscription;
-  products:any = [];
+  products:ProductModel[] = [];
   ourForm: FormGroup;
   submitting = false;
   submitted = false;
@@ -90,6 +90,13 @@ export class CartComponent implements OnInit, OnDestroy {
   clearCart() {
     this.products = [];
     this.localStorageService.clearLocalStoargeData();
+  }
+
+  deleteItem(productId: string){
+    if(productId){
+      this.products = this.products.filter(item => item.$key != productId);
+      this.cartService.addCartProducts(this.products);
+    }
   }
 
   showRecipe() {

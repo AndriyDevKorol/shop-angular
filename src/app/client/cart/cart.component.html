@@ -27,6 +27,7 @@
               <th scope="col">Назва</th>
               <th scope="col">К-сть</th>
               <th scope="col">Вартість</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -38,6 +39,7 @@
                 placeholder={{product.count}}
                 (change)="updateNumberOfProduct(product.$key, product.count)"></td>
               <td>{{product.price}}</td>
+              <td><button (click)="deleteItem(product.$key)">Delete</button></td>
             </tr>
           </tbody>
         </table>
