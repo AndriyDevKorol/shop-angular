@@ -25,7 +25,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   searchTerm: string;
   selectedCategory: string;
   isAdmin = this.afauth.auth.currentUser;
-  countVal = 1;
+  countVal:number = 1;
   editProductKey: string;
   productId: any;
   storageValue = [];
@@ -65,8 +65,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     //  this.productService.emitEditProduct(product);
   }
 
-  onCount(counter: number) {
-    this.countVal = this.countVal + counter;
+  onCount() {
     if (this.countVal < 1) {
       this.countVal = 1;
     }
@@ -74,8 +73,10 @@ export class ProductComponent implements OnInit, OnDestroy {
 
 
   addToCart(data: ProductModel) {
+    console.log('count', this.countVal);
     let exist = this.cartProducts.some(item => item.$key == data.$key);
     if(!exist){
+      data.count = this.countVal;
       this.cartProducts.push(data);
       this.cartService.addCartProducts(this.cartProducts);
     }

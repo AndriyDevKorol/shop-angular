@@ -31,6 +31,7 @@ export class CartComponent implements OnInit, OnDestroy {
   isShow: boolean;
   unsubscribe$ = new Subject();
   newItem;
+  countVal: number;
 
   product: Product = {
     $key: '',
@@ -116,12 +117,19 @@ export class CartComponent implements OnInit, OnDestroy {
           }
 
     })
+
     // this.products.forEach(product =>{
     //   if(product.$key === productId){
     //     product.count = number
     //   }
     // })
     // return this.products;
+  }
+
+  onCount() {
+    if (this.countVal < 1) {
+      this.countVal = 1;
+    }
   }
 
   ngOnDestroy() {

@@ -45,9 +45,10 @@
                 <span class="valuta">грн/шт</span>
               </div>
               <span class="q-field">
-                <i class="material-icons" (click)="onCount(-1)">arrow_left</i>
-                <input type="number" id="count"  [(ngModel)]="countVal" placeholder={{countVal}}>
-                <i class="material-icons" (click)="onCount(1)">arrow_right</i>
+                <input type="number" id="count"
+                  [(ngModel)]="countVal"
+                  placeholder={{product.count}}
+                  (click)="onCount()">
               </span>
               <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
             </div>

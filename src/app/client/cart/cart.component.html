@@ -35,9 +35,9 @@
               <td><img src={{product.imgUrl}}  alt="product" class="card-img" /></td>
               <td>{{product.title}}</td>
               <td><input type="number" id="count"
-                [(ngModel)]="product.count"
+                [(ngModel)]="countVal"
                 placeholder={{product.count}}
-                (change)="updateNumberOfProduct(product.$key, product.count)"></td>
+                (click)="onCount()"></td>
               <td>{{product.price}}</td>
               <td><button (click)="deleteItem(product.$key)">Delete</button></td>
             </tr>
