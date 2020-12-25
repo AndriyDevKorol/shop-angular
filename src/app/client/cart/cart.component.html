@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngIf="!products.length "><p>Корзина пуста</p></div>
+  <div *ngIf="!products.length"><p>Корзина пуста</p></div>
   <button (click)="clearCart()" *ngIf="products.length > 0" class="clear-cart">Очистити все</button>
   <div class="d-flex flex-column" >
     <div class="orderForm"  *ngIf="products.length > 0">
@@ -23,19 +23,27 @@
         <table class="table" >
           <thead class="thead-light">
             <tr>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">Продукт</th>
+              <th scope="col">Назва</th>
+              <th scope="col">К-сть</th>
+              <th scope="col">Вартість</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let product of products">
               <td><img src={{product.imgUrl}}  alt="product" class="card-img" /></td>
               <td>{{product.title}}</td>
+              <td><input type="number" id="count"
+                [(ngModel)]="countVal"
+                placeholder={{product.count}}
+                (click)="onCount()"></td>
               <td>{{product.price}}</td>
+              <td><button (click)="deleteItem(product.$key)">Delete</button></td>
             </tr>
           </tbody>
         </table>
+        <button (click)="getItems()">Get Products</button>
       </div>
     </div>
 

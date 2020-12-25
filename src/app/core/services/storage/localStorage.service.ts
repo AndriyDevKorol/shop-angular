@@ -1,48 +1,40 @@
 import { Inject, Injectable } from '@angular/core';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { StorageCartModel } from 'src/app/models/storage.model';
 
 
 @Injectable()
 export class LocalStorageService  {
-  // private dataStorage = new BehaviorSubject<string[]>([]);
-  // dataStorageEvent = this.dataStorage.asObservable();
-
 
     constructor(
       @Inject(LOCAL_STORAGE) private storage: StorageService
       ) { }
 
-    setDataToLocalStorage(key:string, value: any) {
-    let storageData:string[] = this.storage.get(key) || [];
-
-    if(storageData.some(item => item === value)){return}
-
-    storageData.push(value);
-    this.storage.set(key, storageData);
-    // console.log('service', this.dataStorage);
-    // this.dataStorage.next(storageData);
+    setDataToLocalStorage(storageKey:string, value: any) {
+      let storageData:any[] = JSON.parse(localStorage.getItem(localStorage.getItem(storageKey))) || [];
+      // let storageItem:StorageCartModel;
+      if(storageData.some(item => item === value))
+      {return}
+      let storageItem:StorageCartModel = {$key: value, count: 1};
+      // storageItem.$key = value;
+      // storageItem.count = 1;
+      storageData.push(storageItem);
+      this.storage.set(storageKey, JSON.stringify(storageData));
     }
 
-    getLocalStorageData(STORAGE_KEY: any):String[] {
-    return this.storage.get(STORAGE_KEY);
-    }
-
-    updateStore(data){
-      console.log('dd', data);
-      // this.dataStorage.next(data);
+    getLocalStorageData(STORAGE_KEY: any):any[] {
+      return JSON.parse(localStorage.getItem(localStorage.getItem(STORAGE_KEY)));
     }
 
     removeLocalStoargeData(key: string) {
-
-    let items = this.storage
-    .get('cart')
-    .filter(el => el !== key);
-
-    return this.setDataToLocalStorage('cart', items);
+      let items = this.storage
+      .get('cart')
+      .filter(el => el !== key);
+      return this.setDataToLocalStorage('cart', items);
     }
 
     clearLocalStoargeData() {
-    this.storage.clear();
+      this.storage.clear();
     }
 }
