@@ -7,6 +7,7 @@ import { Subject } from 'rxjs/internal/Subject';
 import { takeUntil } from 'rxjs/operators';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -14,11 +15,11 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./product-details.component.less']
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
-  // @Input() public product: ProductModel;
   private unsubscribe$ = new Subject();
   detailsEventSubscription: Subscription;
   product: ProductModel;
   countVal = 1;
+  cartProducts:ProductModel[];
   id: any
   // product: ProductModel = {
   //   $key: '',
@@ -32,11 +33,13 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cartService: CartService
   ) { }
 
   ngOnInit() {
     this.getProduct();
+    this.cartService.addCartProductsEvent.pipe(takeUntil(this.unsubscribe$)).subscribe(data => this.cartProducts = data);
     // this.id = this.route.snapshot.params['id'];
 
     // if(this.id){
@@ -58,18 +61,25 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
         }
       });
   }
-
-  addToCart(product: Product): void {
-    this.product.count = this.countVal;
-    // this.productService.emitAddToCart(product);
-    alert('Продукт успішно додано в корзину');
+  addToCart(data: ProductModel) {
+    let exist = this.cartProducts.some(item => item.$key == data.$key);
+    if(!exist){
+      data.count = this.countVal;
+      this.cartProducts.push(data);
+      this.cartService.addCartProducts(this.cartProducts);
+      alert('Продукт успішно додано в корзину');
+    }
   }
+
 
   // ngOnDestroy(): void {
   //   this.detailsEventSubscription.unsubscribe();
   // }
 
-  onCount(val: number){
+  onCount(){
+    if (this.countVal < 1) {
+      this.countVal = 1;
+    }
   }
 
   ngOnDestroy() {

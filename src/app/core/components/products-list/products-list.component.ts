@@ -3,15 +3,13 @@ import { FormControl } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Product } from 'src/app/shared/modules/Product';
 import { ProductFilterService } from 'src/app/shared/services/filter/product-filter.service';
-import { map, takeUntil } from 'rxjs/operators';
-import { keyframes } from '@angular/animations';
+import { takeUntil } from 'rxjs/operators';
 import { ProductService } from '../../services/product.service';
 import { ProductModel } from 'src/app/models/product.model';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { ShareDataService } from '../../services/shareData.service';
 import { ActivatedRoute } from '@angular/router';
 import { OnDestroy } from '@angular/core';
-import { LocalStorageService } from '../../services/storage/localStorage.service';
 
 
 
@@ -39,7 +37,6 @@ export class ProductsListComponent implements OnInit, OnDestroy{
     private shareDataService: ShareDataService,
     private afauth: AngularFireAuth,
     private route: ActivatedRoute,
-    private localStorageService: LocalStorageService,
     ) { }
 
   ngOnInit() {

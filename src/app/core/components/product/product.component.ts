@@ -6,11 +6,8 @@ import { map, takeUntil } from 'rxjs/operators';
 import { ProductService } from '../../services/product.service';
 import { ProductModel } from '../../../models/product.model';
 import { ShareDataService } from '../../services/shareData.service';
-import { ProductsModule } from '../products.module';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { LocalStorageService } from '../../services/storage/localStorage.service';
 import { CartService } from '../../services/cart.service';
-import { StorageCartModel } from 'src/app/models/storage.model';
 
 
 @Component({
@@ -36,7 +33,6 @@ export class ProductComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private productService: ProductService,
-    private localStorageService: LocalStorageService,
     private route: ActivatedRoute,
     private shareDataService: ShareDataService,
     private afauth: AngularFireAuth,
@@ -58,7 +54,6 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   onDelete(product: ProductModel): void {
     this.productService.deleteProduct(product);
-    this.localStorageService.removeLocalStoargeData(product.$key);
   }
 
   onEdit(product: ProductModel): void {
@@ -73,7 +68,6 @@ export class ProductComponent implements OnInit, OnDestroy {
 
 
   addToCart(data: ProductModel) {
-    console.log('count', this.countVal);
     let exist = this.cartProducts.some(item => item.$key == data.$key);
     if(!exist){
       data.count = this.countVal;

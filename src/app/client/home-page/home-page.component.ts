@@ -29,7 +29,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.productService.getProducts()
     .pipe(takeUntil(this.unsubscribe$))
     .subscribe(res => {
-      this.products$ = res
+      this.products$ = res.slice(0,6);
     });
   }
 

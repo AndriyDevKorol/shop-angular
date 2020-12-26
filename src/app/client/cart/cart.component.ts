@@ -4,7 +4,6 @@ import { Product } from 'src/app/shared/modules/Product';
 import { ProductService } from 'src/app/core/services/product.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { EmailSenderService } from '../../core/services/emailSender/email-sender.service';
-import { LocalStorageService } from 'src/app/core/services/storage/localStorage.service';
 import { ProductModel } from 'src/app/models/product.model';
 import { Subject } from 'rxjs/internal/Subject';
 import { map, takeUntil } from 'rxjs/operators';
@@ -47,7 +46,6 @@ export class CartComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductService,
     private emailSender: EmailSenderService,
-    private localStorageService: LocalStorageService,
     private cartService: CartService
   ) {}
 
@@ -67,7 +65,6 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   getItems() {
-    // this.storageData = this.localStorageService.getLocalStorageData('cart');
     if (this.products){
       return this.storageData
       .forEach(res => this.productService.getProduct(res)
@@ -90,7 +87,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
   clearCart() {
     this.products = [];
-    this.localStorageService.clearLocalStoargeData();
+    this.cartService.addCartProducts(this.products);
   }
 
   deleteItem(productId: string){
@@ -106,24 +103,6 @@ export class CartComponent implements OnInit, OnDestroy {
 
   hideRecipe() {
     this.isShow = !this.isShow;
-  }
-
-  updateNumberOfProduct(productId: string, number:number) {
-    if(number <= 0) {number = 1}
-    this.localStorageService.getLocalStorageData('cart').forEach(item => {
-      if(item === productId){
-
-        // this.localStorageService.setDataToLocalStorage('cart', )
-          }
-
-    })
-
-    // this.products.forEach(product =>{
-    //   if(product.$key === productId){
-    //     product.count = number
-    //   }
-    // })
-    // return this.products;
   }
 
   onCount() {

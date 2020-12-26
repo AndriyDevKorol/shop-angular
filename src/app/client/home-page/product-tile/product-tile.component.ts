@@ -3,7 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CartService } from 'src/app/core/services/cart.service';
-import { LocalStorageService } from 'src/app/core/services/storage/localStorage.service';
 import { ProductModel } from 'src/app/models/product.model';
 
 @Component({
@@ -15,10 +14,9 @@ export class ProductTileComponent implements OnInit, OnDestroy {
   @Input() product$: ProductModel;
   cartProducts:ProductModel[];
   unsubscribe$ = new Subject();
-  countVal = 1;
+  countVal:number = 1;
 
   constructor(
-    private localStorageService: LocalStorageService,
     private cartService: CartService
     ) { }
 
@@ -29,13 +27,13 @@ export class ProductTileComponent implements OnInit, OnDestroy {
   addToCart(data: ProductModel) {
     let exist = this.cartProducts.some(item => item.$key == data.$key);
     if(!exist){
+      data.count = this.countVal;
       this.cartProducts.push(data);
       this.cartService.addCartProducts(this.cartProducts);
     }
   }
 
-  onCount(counter: number) {
-    this.countVal = this.countVal + counter;
+  onCount() {
     if (this.countVal < 1) {
       this.countVal = 1;
     }
