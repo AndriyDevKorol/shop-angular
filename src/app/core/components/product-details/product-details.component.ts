@@ -67,7 +67,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       data.count = this.countVal;
       this.cartProducts.push(data);
       this.cartService.addCartProducts(this.cartProducts);
-      alert('Продукт успішно додано в корзину');
     }
   }
 

@@ -36,6 +36,8 @@ import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './core/auth/auth.module';
 import { AuthGuardService } from './core/services/guards/auth-guard.service';
 import { PipesModule } from './shared/pipes/pipe.module';
+import { ToastrModule } from 'ngx-toastr';
+import { MessageService } from './core/services/messages/message.service';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { PipesModule } from './shared/pipes/pipe.module';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    ToastrModule.forRoot(),
+
 
 
     NoopAnimationsModule,
@@ -84,7 +88,8 @@ import { PipesModule } from './shared/pipes/pipe.module';
     PipesModule,
   ],
   providers: [
-    AuthGuardService
+    AuthGuardService,
+    MessageService,
   ],
   bootstrap: [AppComponent]
 })

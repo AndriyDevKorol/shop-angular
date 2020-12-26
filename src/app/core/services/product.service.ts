@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { AngularFireDatabase } from '@angular/fire/database';
 import * as firebase from 'firebase';
+import { MessageService } from './messages/message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class ProductService {
   constructor(
     private httpService: HttpService,
     private angularFireDatabase: AngularFireDatabase,
+    private messageService: MessageService
   ) {}
 
 
@@ -64,10 +66,10 @@ export class ProductService {
   addProduct(product: ProductModel) {
     return firebase.database().ref('products/').push(product)
     .then(() => {
-      console.log('success deleting ' + product.title);
+      this.messageService.add('Продукт - ' + product.title + ' успішно додано');
     })
     .catch((error) => {
-      console.log('Delete failed ' + product.title)
+      this.messageService.addError(error);
     });
   }
 
@@ -82,11 +84,10 @@ export class ProductService {
     //   .object<ProductModel>(url)
     //   .remove()
       .then(() => {
-        console.log('success deleting ' + product.$key);
-        alert('Продукт ' + product.title + ' успішно видалено');
+        this.messageService.add('Продукт - ' + product.title + ' успішно видалено');
       })
       .catch((error) => {
-        console.log('Delete failed ' + product.$key + ' - ' + error);
+        this.messageService.addError(error);
       });
   }
 
