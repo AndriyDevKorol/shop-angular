@@ -10,6 +10,7 @@ import { HttpService } from "./services/http.service";
 import { AlertService } from "./services/alert.service";
 import { ProductsModule } from './components/products.module';
 import { ShareDataService } from './services/shareData.service';
+import { MessageService } from './services/messages/message.service';
 
 
 @NgModule({
@@ -26,8 +27,7 @@ import { ShareDataService } from './services/shareData.service';
     BrowserAnimationsModule,
     RouterModule,
     CommonModule,
-    ToastrModule.forRoot(),
     ProductsModule
-  ]
+  ],
 })
 export class CoreModule { }
