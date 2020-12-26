@@ -68,7 +68,6 @@ export class ProductComponent implements OnInit, OnDestroy {
 
 
   addToCart(data: ProductModel) {
-    console.log('count', this.countVal);
     let exist = this.cartProducts.some(item => item.$key == data.$key);
     if(!exist){
       data.count = this.countVal;
