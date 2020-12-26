@@ -10,7 +10,6 @@ import { HttpService } from "./services/http.service";
 import { AlertService } from "./services/alert.service";
 import { ProductsModule } from './components/products.module';
 import { ShareDataService } from './services/shareData.service';
-import { LocalStorageService } from './services/storage/localStorage.service';
 
 
 @NgModule({
@@ -21,7 +20,6 @@ import { LocalStorageService } from './services/storage/localStorage.service';
     HttpService,
     UserService,
     ShareDataService,
-    LocalStorageService
   ],
   imports: [
     BrowserModule,

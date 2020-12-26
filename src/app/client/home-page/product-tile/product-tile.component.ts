@@ -3,7 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CartService } from 'src/app/core/services/cart.service';
-import { LocalStorageService } from 'src/app/core/services/storage/localStorage.service';
 import { ProductModel } from 'src/app/models/product.model';
 
 @Component({
@@ -18,7 +17,6 @@ export class ProductTileComponent implements OnInit, OnDestroy {
   countVal = 1;
 
   constructor(
-    private localStorageService: LocalStorageService,
     private cartService: CartService
     ) { }
 
