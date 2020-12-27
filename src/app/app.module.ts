@@ -27,9 +27,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { SearchComponent } from './shared/components/search/search.component';
 import { RangePipe } from './shared/pipes/range.pipe';
-import { HomeContentComponent } from './features/main/home-content/home-content.component';
-import { ProductWidgetComponent } from './shared/components/widgets/product-widget/product-widget.component';
-import { AdsWidgetComponent } from './shared/components/widgets/ads-widget/ads-widget.component';
 import { CoreModule } from './core/core.module';
 import { ClientModule } from './client/client.module';
 import { AdminModule } from './admin/admin.module';
@@ -49,9 +46,6 @@ import { MessageService } from './core/services/messages/message.service';
     RestorPasswordComponent,
     SearchComponent,
     RangePipe,
-    HomeContentComponent,
-    ProductWidgetComponent,
-    AdsWidgetComponent,
   ],
   imports: [
     BrowserModule,
