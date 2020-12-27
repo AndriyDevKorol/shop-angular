@@ -1,10 +1,14 @@
 <div class="custom-container">
-  <app-header class="header"></app-header>
+  <app-header class="header d-flex justify-content-center"></app-header>
   <app-navbar  [products$]="products" class="navbar"></app-navbar>
   <div class="center-container d-flex justify-content-center">
-    <div class="col-10 d-flex">
-      <app-left-section  [products$]="products" class="col-3 mt-4 pl-0"></app-left-section>
-      <router-outlet></router-outlet>
+    <div class="center-container d-flex justify-content-center">
+      <div class="col-sm-12 col-md-10 d-flex justify-content-between">
+        <app-left-section  [products$]="products" class="left-section col-3 mt-4"></app-left-section>
+        <div class=" col-12 col-lg-9">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
     </div>
   </div>
   <app-footer class="footer"></app-footer>

@@ -14,8 +14,8 @@
         <span>price</span>
       </h6>
     </div>
-    <div class="col-lg-12 col-md-6 mb-4">
-      <app-ad-product *ngFor="let product of products" ></app-ad-product>
+    <div class="col-12 p-0 mb-4">
+      <app-ad-product *ngFor="let product of products" [product$]="product"></app-ad-product>
     </div>
   </div>
 </div>
