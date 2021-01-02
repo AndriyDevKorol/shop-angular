@@ -31,25 +31,26 @@
       </div>
       <div class="price-section border-left flex-column">
         <div class="price-container">
-          <div class="price-header">
+          <!-- <div class="price-header">
             <div class="buttons-section" >
               <button class="button danger" *ngIf="isAdmin" (click)="onDelete(product)">Видалити</button>
               <button class="button secondary" *ngIf="isAdmin" (click)="onEdit(product)">Редагувати</button>
               <button class="button editbtn" (click)="onReset()" *ngIf="editProductKey">Відмінити</button>
             </div>
-          </div>
+          </div> -->
+
           <div class="price-content">
-            <div class="price">
+            <div class="price d-flex">
+              <input type="number" class="count"
+              [(ngModel)]="countVal"
+              placeholder={{product.count}}
+              (click)="onCount()">
               <div class="cina-section">
-                <span class="cina">{{product.price }}</span>
-                <span class="valuta">грн/шт</span>
+                <span class="cina">{{product.price}} грн/шт</span>
               </div>
-              <span class="q-field">
-                <input type="number" id="count"
-                  [(ngModel)]="countVal"
-                  placeholder={{product.count}}
-                  (click)="onCount()">
-              </span>
+              <!-- <span class="q-field"> -->
+
+              <!-- </span> -->
               <button class="button buy"  color="accent" (click)="addToCart(product)">Купити</button>
             </div>
           </div>
