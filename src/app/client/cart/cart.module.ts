@@ -5,6 +5,7 @@ import { CartComponent } from './cart.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeComponent } from './recipe/recipe.component';
+import { CartRoutingModule } from './cart-routing.module';
 
 
 
@@ -17,7 +18,8 @@ import { RecipeComponent } from './recipe/recipe.component';
     CommonModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CartRoutingModule
   ],
   exports:[
     CartComponent,
