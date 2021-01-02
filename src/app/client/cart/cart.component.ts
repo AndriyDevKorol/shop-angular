@@ -98,7 +98,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   showRecipe() {
-    this.isShow = !this.isShow;
+    // this.isShow = !this.isShow;
   }
 
   hideRecipe() {

@@ -1,22 +1,23 @@
 <div class="container">
   <div *ngIf="!products.length"><p>Корзина пуста</p></div>
   <button (click)="clearCart()" *ngIf="products.length > 0" class="clear-cart">Очистити все</button>
-  <div class="d-flex flex-column" >
-    <div class="orderForm"  *ngIf="products.length > 0">
-      <form [formGroup]="ourForm" #form="ngForm">
-        <div class="form-container">
-          <div class="input-fields">
+  <div class="d-flex flex-column col" >
+    <button  value="Submit" [routerLink]="['recipe']" *ngIf="products.length >= 0" class="createOrder" h-5>Замовити</button>
+    <!-- <div class="orderForm"  *ngIf="products.length > 0">
+      <form [formGroup]="ourForm" #form="ngForm" class="col-11">
+        <div class="form-container flex-column">
+          <div class="input-fields col">
             <input type="text" name="name"  formControlName="name" placeholder="І'мя" required/>
             <input type="text" name="phone"  formControlName="phone" placeholder="Tel:" required/>
             <input type="email" id="email"  formControlName="email" placeholder="Email"/>
           </div>
-          <div class="input-Area">
+          <div class="input-Area col">
               <textarea type="text" name="comment" formControlName="comment" placeholder="Коментар..." class="txtArea"></textarea>
-              <button  value="Submit" (click)="showRecipe()" *ngIf="products.length >= 0" class="createOrder" [disabled]="form.invalid">Зробити замовлення</button>
+              <button  value="Submit" (click)="showRecipe()" [routerLink]="['recipe']" *ngIf="products.length >= 0" class="createOrder" [disabled]="form.invalid">Замовити</button>
           </div>
         </div>
       </form>
-    </div>
+    </div> -->
     <div class="product-list" *ngIf="products.length">
       <div class="products-section">
         <!-- <app-cart-item class="cart-item" *ngFor="let product of products" [product]="product"></app-cart-item> -->
@@ -43,7 +44,6 @@
             </tr>
           </tbody>
         </table>
-        <button (click)="getItems()">Get Products</button>
       </div>
     </div>
 

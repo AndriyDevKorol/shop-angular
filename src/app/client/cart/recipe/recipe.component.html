@@ -1,9 +1,33 @@
 
-<div class="grid-container">
-  <div class="id">1</div>
-  <div class="name">{{product.title}}</div>
-  <div class="count">{{product.count}}</div>
-  <div class="price">{{product.price * product.count}}</div>
+<div class="container mt-4">
+  <div *ngIf="!products.length" [routerLink]="['/products']" class="d-flex justify-content-center">
+    <p>Корзина пуста.<br> Натисніть тут, щоб повернутися до списку продуктів.</p>
+  </div>
+  <div class="order-content"  *ngIf="products.length > 0">
+    <div class="orderForm" >
+      <form [formGroup]="ourForm" #form="ngForm" class="col-11">
+        <div class="form-container flex-column">
+          <div class="input-fields col">
+            <input type="text" name="name"  formControlName="name" placeholder="І'мя" required/>
+            <input type="text" name="phone"  formControlName="phone" placeholder="Tel:" required/>
+            <input type="email" id="email"  formControlName="email" placeholder="Email"/>
+          </div>
+          <div class="input-Area col">
+            <textarea type="text" name="comment" formControlName="comment" placeholder="Коментар..." class="txtArea"></textarea>
+            <div><button (click)="submitData()" class="sen-order">Відправити замовлення</button></div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="grid-container" *ngFor="let product of products">
+      <div class="id">1</div>
+      <div class="name">{{product.title}}</div>
+      <div class="count">{{product.count}}</div>
+      <div class="price">{{product.price * product.count}}</div>
+    </div>
+    <div class="total">Total: {{total}} грн.</div>
+  </div>
 </div>
+
 
 
