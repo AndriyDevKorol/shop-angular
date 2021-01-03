@@ -14,10 +14,21 @@ import { ProductFilterService } from 'src/app/shared/services/filter/product-fil
 })
 export class NavbarComponent implements OnInit {
   @Input() products$: ProductModel[];
+  categories: string[] = [];
 
-  constructor( private shareDataService: ShareDataService,) { }
+  constructor(
+    private shareDataService: ShareDataService,
+    private productService: ProductService
+    ) { }
 
   ngOnInit() {
+    this.productService.getProducts().forEach(res => {
+      this.products$ = res;
+      this.products$.forEach(res => {
+        this.categories.push(res.category);
+        this.categories = [...new Set(this.categories)];
+      })
+   })
   }
 
   getValue(category: string){
