@@ -1,22 +1,21 @@
 @import '../../styles/global/_colors.less';
 @import '../../styles/global/_style.less';
 
-// @media (max-width: 1028px) and (orientation: landscape){
-//   .create-order{
-//     margin-top: 1.5rem;
-//     width: 15rem;
-//   }
-//  }
 
-
-// * cart component *
+// * buttons-top *
 .clear-cart{
-  position: absolute;
-  right: 0rem;
-  width: 8rem;
-  top: 2rem;
+  width: 10rem;
+  height: 2rem;
   border-radius: 1rem;
   background: @color-gray-line-gradient;
+}
+
+
+.createOrder{
+  border-radius: 1rem;
+  background: @color-green-line-gradient;
+  height: 2rem;
+  width: 10rem;
 }
 
 
@@ -87,15 +86,6 @@
   flex: 2 0 0;
 }
 
-.createOrder{
-  flex: 1 0 0 ;
-  border-radius: 1rem;
-  background: @color-green-line-gradient;
-  height: 2rem;
-  margin-top: 0.5rem;
-  width: 20rem;
-  max-height: 30px;
-}
 
 // * products-list *
 
@@ -127,9 +117,8 @@
 .container{
   display: flex;
   flex-wrap: wrap;
-  padding-top: 4rem;
-  justify-content: center;
-  min-height: 85vh;
+  padding-top: 1.5rem;
+  justify-content: start;
 }
 
 .row{
@@ -207,4 +196,9 @@
 .sen-order{
   padding: .2rem;
   margin: .2rem;
+}
+
+
+@media (max-width: 991px) {
+
 }

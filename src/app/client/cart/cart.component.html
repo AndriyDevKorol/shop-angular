@@ -1,8 +1,10 @@
 <div class="container">
-  <div *ngIf="!products.length"><p>Корзина пуста</p></div>
-  <button (click)="clearCart()" *ngIf="products.length > 0" class="clear-cart">Очистити все</button>
-  <div class="d-flex flex-column col"  *ngIf="products.length">
-    <button  value="Submit" [routerLink]="['recipe']" *ngIf="products.length >= 0" class="createOrder" h-5>Замовити</button>
+  <div *ngIf="!products.length" class="d-flex justify-content-center w-100"><p>Корзина пуста</p></div>
+  <div class=" d-flex justify-content-between col-12" *ngIf="products.length > 0" >
+    <button  value="Submit" [routerLink]="['recipe']" class="createOrder">Замовити</button>
+    <button (click)="clearCart()"  class="clear-cart">Очистити все</button>
+  </div>
+  <div class="d-flex flex-column p-0 col-12"  *ngIf="products.length">
     <!-- <div class="orderForm"  *ngIf="products.length > 0">
       <form [formGroup]="ourForm" #form="ngForm" class="col-11">
         <div class="form-container flex-column">
@@ -40,14 +42,14 @@
                 placeholder={{product.count}}
                 (click)="onCount()"></td>
               <td>{{product.price}}</td>
-              <td><button (click)="deleteItem(product.$key)">Delete</button></td>
+              <td><button (click)="deleteItem(product.$key)">Видалити</button></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="hidden modal-bg" [ngStyle]="{'display' : isShow ? 'flex' : 'none'}"  >
+    <!-- <div class="hidden modal-bg" [ngStyle]="{'display' : isShow ? 'flex' : 'none'}"  >
       <span class="close-bg" (click)="hideRecipe()"></span>
       <div class="modal-content" *ngIf="products.length > 0">
         <span (click)="hideRecipe()" class="close-btn">+</span>
@@ -64,6 +66,6 @@
         <div class="total">Total: {{total}} грн.</div>
         <div><button (click)="submitData()" class="sen-order">Відправити замовлення</button></div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
