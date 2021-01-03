@@ -1,8 +1,10 @@
-<div class="custom-container">
-  <app-header class="header d-flex justify-content-center"></app-header>
-  <app-navbar  [products$]="products" class="navbar"></app-navbar>
-  <div class="center-container d-flex justify-content-center">
-    <div class="center-container d-flex justify-content-center">
+<div class="d-flex flex-column w-100 h-100">
+  <div class="top-nav">
+    <app-header class="header d-flex justify-content-center"></app-header>
+    <app-navbar  [products$]="products" class="navbar"></app-navbar>
+  </div>
+  <div class="main d-flex justify-content-center">
+    <div class="main d-flex justify-content-center">
       <div class="col-sm-12 col-md-10 d-flex justify-content-between">
         <app-left-section  [products$]="products" class="left-section col-3 mt-4"></app-left-section>
         <div class=" col-12 col-lg-9">
@@ -13,4 +15,6 @@
   </div>
   <app-footer class="footer"></app-footer>
 </div>
+
+
 
