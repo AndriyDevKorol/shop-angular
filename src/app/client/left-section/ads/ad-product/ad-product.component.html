@@ -1,12 +1,12 @@
-<div class="card h-0" *ngIf="product$">
-  <a href="#"><img class="card-img-top" src="http://placehold.it/600x600" alt=""></a>
+<div class="card h-0 mt-2 mb-1 d-flex justify-content-center" *ngIf="product$">
+  <a href="#" class=" d-flex justify-content-center"><img class="card-img-top col-8 mt-3 mb-2" src={{product$.imgUrl}} alt=""></a>
   <div class="card-body">
-    <h4 class="card-title">
+    <h4 class="card-title  d-flex justify-content-center">
       <a href="#">{{product$.title}}</a>
     </h4>
-    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    <p class="card-text">{{product$.body}}</p>
   </div>
-  <div class="card-footer">
-    <small class="text-muted">{{product$.price}}</small>
+  <div class="card-footer  d-flex justify-content-center">
+    <small class="text-muted">{{product$.price}} грн</small>
   </div>
 </div>
