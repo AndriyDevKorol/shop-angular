@@ -9,6 +9,7 @@ import { Subject } from 'rxjs/internal/Subject';
 import { map, takeUntil } from 'rxjs/operators';
 import { StorageCartModel } from 'src/app/models/storage.model';
 import { CartService } from 'src/app/core/services/cart.service';
+import { MessageService } from 'src/app/core/services/messages/message.service';
 
 @Component({
   selector: 'app-cart',
@@ -46,7 +47,8 @@ export class CartComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductService,
     private emailSender: EmailSenderService,
-    private cartService: CartService
+    private cartService: CartService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
@@ -88,11 +90,15 @@ export class CartComponent implements OnInit, OnDestroy {
   clearCart() {
     this.products = [];
     this.cartService.addCartProducts(this.products);
+    this.messageService.successMessage('Продукти успішно видалені з корзини');
   }
 
   deleteItem(productId: string){
     if(productId){
-      this.products = this.products.filter(item => item.$key != productId);
+      this.products = this.products.filter(item => {
+        item.$key != productId
+        this.messageService.successMessage('Продукт - ' + item.title + ' успішно видалено з корзини');
+      });
       this.cartService.addCartProducts(this.products);
     }
   }

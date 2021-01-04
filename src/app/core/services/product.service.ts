@@ -66,10 +66,10 @@ export class ProductService {
   addProduct(product: ProductModel) {
     return firebase.database().ref('products/').push(product)
     .then(() => {
-      this.messageService.add('Продукт - ' + product.title + ' успішно додано');
+      this.messageService.successMessage('Продукт - ' + product.title + ' успішно додано');
     })
     .catch((error) => {
-      this.messageService.addError(error);
+      this.messageService.errorMessage(error);
     });
   }
 
@@ -84,10 +84,10 @@ export class ProductService {
     //   .object<ProductModel>(url)
     //   .remove()
       .then(() => {
-        this.messageService.add('Продукт - ' + product.title + ' успішно видалено');
+        this.messageService.successMessage('Продукт - ' + product.title + ' успішно видалено');
       })
       .catch((error) => {
-        this.messageService.addError(error);
+        this.messageService.errorMessage(error);
       });
   }
 

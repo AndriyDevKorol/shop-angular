@@ -8,6 +8,7 @@ import { ProductModel } from '../../../models/product.model';
 import { ShareDataService } from '../../services/shareData.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { CartService } from '../../services/cart.service';
+import { MessageService } from '../../services/messages/message.service';
 
 
 @Component({
@@ -36,7 +37,8 @@ export class ProductComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private shareDataService: ShareDataService,
     private afauth: AngularFireAuth,
-    private cartService: CartService
+    private cartService: CartService,
+    private messageService: MessageService
   ) {
     // router.events.subscribe(console.log);
   }
@@ -53,7 +55,13 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   onDelete(product: ProductModel): void {
-    this.productService.deleteProduct(product);
+    this.productService.deleteProduct(product)
+    .then(() => {
+      this.messageService.successMessage('Продукт - ' + product.title + ' успішно видалено');
+    })
+    .catch((error) => {
+      this.messageService.errorMessage(error);
+    });;
   }
 
   onEdit(product: ProductModel): void {
@@ -69,11 +77,14 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   addToCart(data: ProductModel) {
     let exist = this.cartProducts.some(item => item.$key == data.$key);
-    if(!exist){
-      data.count = this.countVal;
-      this.cartProducts.push(data);
-      this.cartService.addCartProducts(this.cartProducts);
+    if(exist){
+      this.messageService.infoMessage('Продукт - ' + data.title + ' вже доданий в корзину');
+      return;
     }
+    data.count = this.countVal;
+    this.cartProducts.push(data);
+    this.cartService.addCartProducts(this.cartProducts);
+    this.messageService.successMessage('Продукт - ' + data.title + ' успішно додано в корзину');
   }
 
   onReset(){}

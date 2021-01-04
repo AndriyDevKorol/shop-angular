@@ -6,6 +6,7 @@ import { ProductModel } from 'src/app/models/product.model';
 import { takeUntil } from 'rxjs/operators';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EmailSenderService } from 'src/app/core/services/emailSender/email-sender.service';
+import { MessageService } from 'src/app/core/services/messages/message.service';
 
 @Component({
   selector: 'app-recipe',
@@ -24,7 +25,9 @@ export class RecipeComponent implements OnInit, OnDestroy {
 
   constructor(
     private cartService: CartService,
-    private emailSender: EmailSenderService,) { }
+    private emailSender: EmailSenderService,
+    private messageService: MessageService
+    ) { }
 
   ngOnInit() {
     this.cartService.addCartProductsEvent.pipe(takeUntil(this.unsubscribe$)).subscribe(data => {
@@ -181,7 +184,9 @@ export class RecipeComponent implements OnInit, OnDestroy {
     });
 
     const completeRecipe = gridHeader + k;
-    this.emailSender.sendMessage(completeRecipe, name).subscribe(res => console.log(res));
+    this.emailSender.sendMessage(completeRecipe, name).subscribe(
+      res => this.messageService.successMessage('Замовленя успішнов відправлено ' + res),
+      error => this.messageService.errorMessage(error));
     alert('Email was sent');
     // this.isShow = !this.isShow;
   }
