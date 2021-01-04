@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CartService } from 'src/app/core/services/cart.service';
+import { MessageService } from 'src/app/core/services/messages/message.service';
 import { ProductModel } from 'src/app/models/product.model';
 
 @Component({
@@ -17,7 +18,8 @@ export class ProductTileComponent implements OnInit, OnDestroy {
   countVal:number = 1;
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private messageService: MessageService
     ) { }
 
   ngOnInit() {
@@ -26,11 +28,14 @@ export class ProductTileComponent implements OnInit, OnDestroy {
 
   addToCart(data: ProductModel) {
     let exist = this.cartProducts.some(item => item.$key == data.$key);
-    if(!exist){
-      data.count = this.countVal;
-      this.cartProducts.push(data);
-      this.cartService.addCartProducts(this.cartProducts);
+    if(exist){
+      this.messageService.infoMessage('Продукт - ' + data.title + ' вже доданий в корзину');
+      return
     }
+    data.count = this.countVal;
+    this.cartProducts.push(data);
+    this.cartService.addCartProducts(this.cartProducts);
+    this.messageService.successMessage('Продукт - ' + data.title + ' успішно додано в корзину');
   }
 
   onCount() {

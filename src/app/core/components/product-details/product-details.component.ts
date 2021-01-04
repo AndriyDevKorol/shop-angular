@@ -8,6 +8,7 @@ import { takeUntil } from 'rxjs/operators';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
+import { MessageService } from '../../services/messages/message.service';
 
 @Component({
   selector: 'app-product-details',
@@ -34,7 +35,8 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private router: Router,
     private route: ActivatedRoute,
-    private cartService: CartService
+    private cartService: CartService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -63,11 +65,14 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   }
   addToCart(data: ProductModel) {
     let exist = this.cartProducts.some(item => item.$key == data.$key);
-    if(!exist){
+    if(exist){
+      this.messageService.infoMessage('Продукт - ' + data.title + ' вже доданий в корзину');
+      return
+    }
       data.count = this.countVal;
       this.cartProducts.push(data);
       this.cartService.addCartProducts(this.cartProducts);
-    }
+      this.messageService.successMessage('Продукт - ' + data.title + ' успішно додано в корзину');
   }
 
 
